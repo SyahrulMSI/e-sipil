@@ -99,7 +99,7 @@
         </li>
     </ul>
     <div class="add-menu-sidebar">
-        <img src="{{ asset('dashboard/images/cv.png') }}" alt="" class="mr-2">
+        <img src="{{ asset('dashboard/images/cv.png') }}" alt="" class="mr-2" width="100%" style="box-shadow: 5px 5px 5px #333; border-radius: 10px 10px 10px 10px">
         <!-- <p class="	font-w500 mb-0">Create Workout Plan Now</p> -->
     </div>
     <div class="copyright">

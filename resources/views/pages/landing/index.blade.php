@@ -218,7 +218,7 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-lg-12">
-                        <form action="{{ route('login') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('go') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('POST')
                             <div class="form-group">

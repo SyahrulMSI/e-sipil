@@ -6,6 +6,12 @@ use App\Http\Controllers\Admin\DashboardController;
 use GuzzleHttp\Middleware;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
+use App\Http\Controllers\Admin\DataPelangganController;
+use App\Http\Controllers\Admin\Pemasangan\AccProyekController;
+use App\Http\Controllers\Admin\Pemasangan\AgendaPemasanganController;
+use App\Http\Controllers\Admin\Pemasangan\ListProyekController;
+use App\Http\Controllers\Admin\Pemasangan\LokasiPemasanganController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,7 +28,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::middleware(['auth', 'verified'])->group(function(){
 
         Route::resource('dashboard', DashboardController::class);
-
+        Route::resource('data_pelanggan', DataPelangganController::class);
+        Route::resource('agenda_pemasangan', AgendaPemasanganController::class);
+        Route::resource('lokasi_pemasangan', LokasiPemasanganController::class);
+        Route::resource('list_proyek', ListProyekController::class);
+        Route::resource('acc_proyek', AccProyekController::class);
     });
 
 });

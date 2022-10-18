@@ -13,7 +13,9 @@
 </head>
 <body>
 
-
+    <!--*******************
+        Preloader start
+    ********************-->
     <div id="preloader">
         <div class="sk-three-bounce">
             <div class="sk-child sk-bounce1"></div>
@@ -21,7 +23,13 @@
             <div class="sk-child sk-bounce3"></div>
         </div>
     </div>
+    <!--*******************
+        Preloader end
+    ********************-->
 
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
     <div id="main-wrapper">
 
 
@@ -32,11 +40,23 @@
                 <x-TopbarDashboard></x-TopbarDashboard>
             </div>
         </div>
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
 
-
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+        <div class="deznav">
            <x-SidebarDashboard></x-SidebarDashboard>
+        </div>
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
 
-
+		<!--**********************************
+            Content body start
+        ***********************************-->
         <div class="content-body">
             <!-- row -->
 			<div class="container-fluid">
@@ -47,62 +67,43 @@
 				</div>
             </div>
         </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
 
+        <!--**********************************
+            Footer start
+        ***********************************-->
         <div class="footer">
             <div class="copyright">
                 <p>Copyright © Designed &amp; Developed by <a href="http://dexignzone.com/" target="_blank">DexignZone</a> 2020</p>
             </div>
         </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
 
+		<!--**********************************
+           Support ticket button start
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button end
+        ***********************************-->
 
 
     </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
 
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <!-- Required vendors -->
 
         @stack('before-script')
             @include('includes.scripts')
-
-            <script>
-                function carouselReview(){
-                    /*  testimonial one function by = owl.carousel.js */
-                    jQuery('.testimonial-one').owlCarousel({
-                        loop:true,
-                        autoplay:true,
-                        margin:30,
-                        nav:false,
-                        dots: false,
-                        left:true,
-                        navText: ['<i class="fa fa-chevron-left" aria-hidden="true"></i>', '<i class="fa fa-chevron-right" aria-hidden="true"></i>'],
-                        responsive:{
-                            0:{
-                                items:1
-                            },
-                            484:{
-                                items:2
-                            },
-                            882:{
-                                items:3
-                            },
-                            1200:{
-                                items:2
-                            },
-
-                            1540:{
-                                items:3
-                            },
-                            1740:{
-                                items:4
-                            }
-                        }
-                    })
-                }
-                jQuery(window).on('load',function(){
-                    setTimeout(function(){
-                        carouselReview();
-                    }, 1000);
-                });
-            </script>
-
         @stack('after-script')
 
 </body>

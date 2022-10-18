@@ -16,10 +16,9 @@
             <span class="nav-text">Permohonan Layanan</span>
         </a>
         <ul aria-expanded="false">
-            <li><a href="./email-compose.html">List Permohonan</a></li>
+            <li><a href="{{ route('admin.list_permohonan.index') }}">List Permohonan</a></li>
             <li><a href="./chart-chartjs.html">DP Pemohon</a></li>
             <li><a href="./ecom-invoice.html">Cetak Permohonan</a></li>
-            <!-- <li><a href="./app-profile.html">Registrasi</a></li> -->
         </ul>
     </li>
         <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">

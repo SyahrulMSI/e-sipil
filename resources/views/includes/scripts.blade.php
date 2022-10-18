@@ -11,3 +11,5 @@
 
 	<script src="{{ asset('dashboard/js/dashboard/dashboard-1.js') }}"></script>
 
+    <script src="{{ asset('dashboard/vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('dashboard/js/plugins-init/datatables.init.js') }}"></script>

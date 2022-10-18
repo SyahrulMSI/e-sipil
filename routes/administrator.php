@@ -11,6 +11,8 @@ use App\Http\Controllers\Admin\Pemasangan\AccProyekController;
 use App\Http\Controllers\Admin\Pemasangan\AgendaPemasanganController;
 use App\Http\Controllers\Admin\Pemasangan\ListProyekController;
 use App\Http\Controllers\Admin\Pemasangan\LokasiPemasanganController;
+use App\Http\Controllers\Admin\Permohonan\CetakPermohonanController;
+use App\Http\Controllers\Admin\Permohonan\ListPermohonanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,10 +31,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::resource('dashboard', DashboardController::class);
         Route::resource('data_pelanggan', DataPelangganController::class);
+
         Route::resource('agenda_pemasangan', AgendaPemasanganController::class);
         Route::resource('lokasi_pemasangan', LokasiPemasanganController::class);
         Route::resource('list_proyek', ListProyekController::class);
         Route::resource('acc_proyek', AccProyekController::class);
+
+        Route::resource('list_permohonan', ListPermohonanController::class);
+        Route::resource('cetak_permohonan', CetakPermohonanController::class);
     });
 
 });

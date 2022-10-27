@@ -17,7 +17,7 @@
         </a>
         <ul aria-expanded="false">
             <li><a href="{{ route('admin.list_permohonan.index') }}">List Permohonan</a></li>
-            <li><a href="./chart-chartjs.html">DP Pemohon</a></li>
+            <li><a href="{{ route('admin.dp_pemohon.index') }}">DP Pemohon</a></li>
             <li><a href="./ecom-invoice.html">Cetak Permohonan</a></li>
         </ul>
     </li>
@@ -36,9 +36,6 @@
         <ul aria-expanded="false">
             <li><a href="./form-element.html">List Lokasi Pemasangan</a></li> <!--****** berisi kondisi lokasi *******-->
             <li><a href="./form-wizard.html">List Waktu Pemasangan</a></li>
-            <!-- <li><a href="./form-editor-summernote.html">Summernote</a></li>
-            <li><a href="form-pickers.html">Pickers</a></li>
-            <li><a href="form-validation-jquery.html">Jquery Validate</a></li> -->
         </ul>
     </li>
     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
@@ -47,7 +44,7 @@
     </a>
     <ul aria-expanded="false">
         <li><a href="{{ route('admin.agenda_pemasangan.index') }}">Agenda Pemasangan</a></li>
-        <li><a href="{{ route('admin.lokasi_pemasangan.index') }}">Lokasi Pemasangan</a></li>
+        {{--  <li><a href="{{ route('admin.lokasi_pemasangan.index') }}">Lokasi Pemasangan</a></li>  --}}
         <li><a href="{{ route('admin.list_proyek.index') }}">List Proyek</a></li>
         <li><a href="{{ route('admin.acc_proyek.index') }}">Acc Proyek</a></li>
     </ul>
@@ -57,8 +54,8 @@
             <span class="nav-text">Data Transaksi</span>
         </a>
         <ul aria-expanded="false">
-            <li><a href="table-bootstrap-basic.html">Pelunasan Dp</a></li> <!--****** struk bukti bayar *******-->
-            <li><a href="table-datatable-basic.html">Cetak Bukti Pelunasan</a></li>
+            <li><a href="{{ route('admin.pelunasan.index') }}">Pelunasan Transaksi</a></li> <!--****** struk bukti bayar *******-->
+            <li><a href="{{ route('admin.invoice.index') }}">Cetak Invoice</a></li>
         </ul>
     </li>
     <li><a href="widget-basic.html" class="ai-icon" aria-expanded="false">

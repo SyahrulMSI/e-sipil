@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Pemasangan;
+namespace App\Http\Controllers\Customer\Layanan;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class LokasiPemasanganController extends Controller
+class ServiceListrikBangunanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +15,10 @@ class LokasiPemasanganController extends Controller
     public function index()
     {
         $data = array(
-            'title'     =>  'Lokasi Pemasangan'
+            'title'     =>      'Service Listrik Bangunan'
         );
 
-        return view('pages.admin.pemasangan.lokasi.index', $data);
+        return view('pages.pelanggan.layanan.servicelistrik.index', $data);
     }
 
     /**

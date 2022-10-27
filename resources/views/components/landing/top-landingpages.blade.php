@@ -37,9 +37,23 @@
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->
+        @if (!empty(Auth::user()->role))
         <div class="right-side-box">
-            <button class="thm-btn header__cta-btn" type="button" data-toggle="modal" data-target="#login"><span>Masuk</span></button>
+            @if (Auth::user()->role == 1)
+                <a href="{{ route('admin.dashboard.index') }}" class="thm-btn header__cta-btn" type="button"><span>Dashboard</span></a>
+            @elseif (Auth::user()->role == 2)
+            <a href="#" class="thm-btn header__cta-btn" type="button"><span>Dashboard</span></a>
+            @elseif(    Auth::user()->role == 3)
+                <a href="{{ route('customer.dashboard.index') }}" class="thm-btn header__cta-btn" type="button"><span>Dashboard</span></a>
+            @endif
         </div><!-- /.right-side-box -->
+        @else
+            <div class="right-side-box">
+                <button class="thm-btn header__cta-btn" type="button" data-toggle="modal" data-target="#login"><span>Masuk</span></button>
+                <button class="thm-btn header__cta-btn" type="button" data-toggle="modal" data-target="#daftar"><span>Daftar</span></button>
+            </div><!-- /.right-side-box -->
+        @endif
+
     </div>
     <!-- /.container -->
 </nav>

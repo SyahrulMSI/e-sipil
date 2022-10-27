@@ -12,7 +12,10 @@ use App\Http\Controllers\Admin\Pemasangan\AgendaPemasanganController;
 use App\Http\Controllers\Admin\Pemasangan\ListProyekController;
 use App\Http\Controllers\Admin\Pemasangan\LokasiPemasanganController;
 use App\Http\Controllers\Admin\Permohonan\CetakPermohonanController;
+use App\Http\Controllers\Admin\Permohonan\DpPemohonController;
 use App\Http\Controllers\Admin\Permohonan\ListPermohonanController;
+use App\Http\Controllers\Admin\Transaksi\CetakinvoiceController;
+use App\Http\Controllers\Admin\Transaksi\PelunasanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +42,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::resource('list_permohonan', ListPermohonanController::class);
         Route::resource('cetak_permohonan', CetakPermohonanController::class);
+        Route::resource('dp_pemohon', DpPemohonController::class);
+
+        Route::resource('invoice', CetakinvoiceController::class);
+        Route::resource('pelunasan', PelunasanController::class);
+
+
     });
 
 });

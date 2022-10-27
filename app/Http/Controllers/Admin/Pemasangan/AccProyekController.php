@@ -14,7 +14,11 @@ class AccProyekController extends Controller
      */
     public function index()
     {
-        //
+        $data = array(
+            'title'     =>  'Acc Proyek'
+        );
+
+        return view('pages.admin.pemasangan.acc_proyek.index', $data);
     }
 
     /**

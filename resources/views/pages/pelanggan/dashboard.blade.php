@@ -1,10 +1,8 @@
-@extends('layouts.user')
+@extends('layouts.customer')
 
 
 @section('title', 'Dashboard')
 
-@section('header-1', 'Dashboard')
-@section('header-2', 'Dashboard')
 
 @section('content')
 

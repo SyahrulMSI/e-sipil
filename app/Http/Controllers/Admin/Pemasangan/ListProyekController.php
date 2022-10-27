@@ -14,7 +14,11 @@ class ListProyekController extends Controller
      */
     public function index()
     {
-        //
+        $data = array(
+            'title'     =>  'List Proyek'
+        );
+
+        return view('pages.admin.pemasangan.list_proyek.index', $data);
     }
 
     /**

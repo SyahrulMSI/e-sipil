@@ -244,6 +244,69 @@
     </div>
 </div>
 
+<div class="modal fade" id="daftar" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content" style="rounded">
+            <div class="modal-header bg-primary">
+            <h5 class="modal-title text-white" id="staticBackdropLabel">Buat Akun</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form action="{{ route('register') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            @method('POST')
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="nama">Nama Lengkap</label>
+                                        <input type="text" name="nama_lengkap" class="form-control" value="{{ old('nama_lengkap') }}">
+                                        @error('nama_lengkap')
+                                            <small class="text">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Alamat Email</label>
+                                        <input type="email" name="email" class="form-control" value="{{ old('email') }}">
+                                        @error('email')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="no_telp">Nomor Telepon / Whatsapp</label>
+                                        <input type="number" class="form-control" name="no_telp" value="{{ old('no_telp') }}">
+                                        @error('no_telp')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="psw">Password</label>
+                                        <input type="password" name="password" class="form-control">
+                                        @error('password')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success">Buat Akun</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 @endsection

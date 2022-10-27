@@ -48,7 +48,7 @@
             Sidebar start
         ***********************************-->
         <div class="deznav">
-           <x-SidebarDashboard></x-SidebarDashboard>
+           <x-SidebarUser></x-SidebarUser>
         </div>
         <!--**********************************
             Sidebar end
@@ -63,7 +63,6 @@
 				<div class="row">
 
                         @include('sweetalert::alert')
-
 
                         @yield('content')
 

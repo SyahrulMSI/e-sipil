@@ -20,7 +20,8 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        // return view('auth.register');
+        return abort(403);
     }
 
     /**
@@ -34,21 +35,32 @@ class RegisteredUserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
+            'nama_lengkap' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'no_telp' => ['required', 'string', 'max:255'],
+            'password' => ['required', Rules\Password::defaults()],
         ]);
 
         $user = User::create([
-            'name' => $request->name,
+            'nama_lengkap' => $request->nama_lengkap,
             'email' => $request->email,
+            'no_telp'   => $request->no_telp,
+            'role'  =>  3   ,
             'password' => Hash::make($request->password),
         ]);
 
-        event(new Registered($user));
+       $result =  event(new Registered($user));
 
+
+        if($result){
         Auth::login($user);
+        Alert::success('Success', 'Selamat, Pendaftaran anda berhasil. Silahkan Login !');
+        // return redirect(RouteServiceProvider::HOME);
+        return redirect('customer.dashboard.index');
+        } else {
+            Alert::error('Error', 'Selamat, Pendaftaran anda berhasil. Silahkan Ulangi Kembali !');
+        }
 
-        return redirect(RouteServiceProvider::HOME);
+
     }
 }

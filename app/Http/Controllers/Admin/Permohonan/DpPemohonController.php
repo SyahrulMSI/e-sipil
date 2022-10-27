@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Admin\Permohonan;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class DpPemohonController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +15,10 @@ class DashboardController extends Controller
     public function index()
     {
         $data = array(
-            'title'     =>      'Dashboard'
+            'title'     =>  'Data Dp Pemohon'
         );
 
-        return view('pages.pelanggan.dashboard', $data);
+        return view('pages.admin.permohonan.dp.index', $data);
     }
 
     /**

@@ -13,9 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pemasangam_baru', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('detail_user', function (Blueprint $table) {
+            $table->foreign('id_user', 'fk_detail_user_to_users')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -26,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pemasangam_baru');
+        Schema::table('detail_user', function (Blueprint $table) {
+            $table->dropForeign('fk_detail_user_to_users');
+        });
     }
 };

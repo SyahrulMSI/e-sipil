@@ -10,7 +10,11 @@ use App\Http\Controllers\Customer\Layanan\PasangMeterBaruController;
 use App\Http\Controllers\Customer\Layanan\ServiceListrikBangunanController;
 use App\Http\Controllers\Customer\Layanan\ServiceMeterListrikController;
 use App\Http\Controllers\Customer\Layanan\TambahDayaListrikController;
-
+use App\Http\Controllers\Customer\Permohonan\DaftarPermohonanController;
+use App\Http\Controllers\Customer\Pemasangan\AgendaController;
+use App\Http\Controllers\Customer\Pemasangan\HistoryController;
+use App\Http\Controllers\Customer\Transaksi\DpController;
+use App\Http\Controllers\Customer\Transaksi\PelunasanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +39,14 @@ Route::group(['prefix' => 'customer', 'as' => 'customer.'], function () {
         Route::resource('service_listrik_bangunan', ServiceListrikBangunanController::class);
         Route::resource('service_meter_listrik', ServiceMeterListrikController::class);
         Route::resource('tambah_daya_listrik', TambahDayaListrikController::class);
+
+        Route::resource('daftar_permohonan', DaftarPermohonanController::class);
+
+        Route::resource('agenda_pemasangan', AgendaController::class);
+        Route::resource('history', HistoryController::class);
+
+        Route::resource('transaksi_dp', DpController::class);
+        Route::resource('transaksi_pelunasan', PelunasanController::class);
 
     });
 });

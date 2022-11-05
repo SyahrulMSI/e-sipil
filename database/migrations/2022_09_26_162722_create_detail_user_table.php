@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('detail_user', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('id_user')->index('fk_detail_user_to_users');
             $table->string('profile');
             $table->string('npmwp', 12);
             $table->enum('jenis_kelamin', ['L', 'P']);

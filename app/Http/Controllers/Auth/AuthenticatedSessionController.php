@@ -34,7 +34,8 @@ class AuthenticatedSessionController extends Controller
 
         if(Auth::user()->role == 1){
             return redirect()->route('admin.dashboard.index');
-
+        } elseif(Auth::user()->role == 2){
+            return redirect()->route('petugas.dashboard.index');
         } elseif(Auth::user()->role == 3){
             return redirect()->route('customer.dashboard.index');
         } else {

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Petugas\DashboardController;
+use App\Http\Controllers\Petugas\ListTugasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,12 @@ use App\Http\Controllers\Petugas\DashboardController;
 
 Route::group(['prefix' => 'petugas', 'as' => 'petugas.'], function(){
 
-    Route::resource('dashboard', DashboardController::class);
+    Route::middleware(['auth', 'verified'])->group(function(){
+
+        Route::resource('dashboard', DashboardController::class);
+        Route::resource('list_tugas', ListTugasController::class);
+
+    });
 
 });
 

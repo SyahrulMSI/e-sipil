@@ -52,4 +52,6 @@ Route::group(['prefix' => 'customer', 'as' => 'customer.'], function () {
 });
 
 
+
+
 require __DIR__.'/auth.php';

@@ -99,9 +99,14 @@
                 <a class="nav-link" href="javascript:void(0)" role="button" data-toggle="dropdown">
                     <img src="{{ asset('dashboard/images/profile/17.jpg') }}" width="20" alt=""/>
                     <div class="header-info">
-                        <span class="text-black"><strong>{{ Auth::user()->nama_lengkap }}</strong></span>
-                        @if (Auth::user()->role == 1 )
-                        <span class="fs-12 mb-0 p-1 fw-bold text-white bg bg-success rounded">Super Admin</span>
+                        @if (!empty(Auth::user()))
+                            <span class="text-black"><strong>{{  Auth::user()->nama_lengkap }}</strong></span>
+                        @endif
+
+                        @if (!empty(Auth::user()))
+                            @if (Auth::user()->role == 1 )
+                                <span class="fs-12 mb-0 p-1 fw-bold text-white bg bg-success rounded">Super Admin</span>
+                            @endif
                         @endif
 
                     </div>

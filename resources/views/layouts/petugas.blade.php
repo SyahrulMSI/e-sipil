@@ -1,155 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <title>@yield('title') | SIPIL</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>@yield('title') | PT. SUMBER SAE SATU</title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('dashboard/images/favicon.png') }}">
+	@stack('before-style')
+        @include('includes.styles')
+    @stack('after-style')
+</head>
+<body>
 
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="description" content="Mega Able Bootstrap admin template made using Bootstrap 4 and it has huge amount of ready made feature, UI components, pages which completely fulfills any dashboard needs." />
-      <meta name="keywords" content="bootstrap, bootstrap admin template, admin theme, admin dashboard, dashboard template, admin template, responsive" />
-      <meta name="author" content="codedthemes" />
-      <!-- Favicon icon -->
-      <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
-
-        @stack('before-style')
-
-            @include('includes.styles')
-
-        @stack('after-style')
-
-  </head>
-
-  <body>
-    <!-- Pre-loader start -->
-    <div class="theme-loader">
-        <div class="loader-track">
-            <div class="preloader-wrapper">
-                <div class="spinner-layer spinner-blue">
-                    <div class="circle-clipper left">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="gap-patch">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="circle-clipper right">
-                        <div class="circle"></div>
-                    </div>
-                </div>
-                <div class="spinner-layer spinner-red">
-                    <div class="circle-clipper left">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="gap-patch">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="circle-clipper right">
-                        <div class="circle"></div>
-                    </div>
-                </div>
-
-                <div class="spinner-layer spinner-yellow">
-                    <div class="circle-clipper left">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="gap-patch">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="circle-clipper right">
-                        <div class="circle"></div>
-                    </div>
-                </div>
-
-                <div class="spinner-layer spinner-green">
-                    <div class="circle-clipper left">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="gap-patch">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="circle-clipper right">
-                        <div class="circle"></div>
-                    </div>
-                </div>
-            </div>
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
         </div>
     </div>
-    <!-- Pre-loader end -->
-  <div id="pcoded" class="pcoded">
+    <!--*******************
+        Preloader end
+    ********************-->
 
-      <div class="pcoded-overlay-box"></div>
-
-      <div class="pcoded-container navbar-wrapper">
-
-
-            <x-TopbarDashboard></x-TopbarDashboard>
-
-          <div class="pcoded-main-container">
-              <div class="pcoded-wrapper">
-
-                  <x-SidebarPetugas></x-SidebarPetugas>
-
-                  <div class="pcoded-content">
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
 
 
-                      <div class="page-header">
-                          <div class="page-block">
-                              <div class="row align-items-center">
-                                  <div class="col-md-8">
-                                      <div class="page-header-title">
-                                          <h5 class="m-b-10">@yield('header-1')</h5>
-                                      </div>
-                                  </div>
-                                  <div class="col-md-4">
-                                      <ul class="breadcrumb-title">
-                                          <li class="breadcrumb-item">
-                                              <a href="/"> <i class="fa fa-home"></i> </a>
-                                          </li>
-                                          <li class="breadcrumb-item"><a href="#">@yield('header-2')</a>
-                                          </li>
-                                      </ul>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
+            <x-NavHeader></x-NavHeader>
 
-
-
-                        <div class="pcoded-inner-content">
-
-                            <div class="main-body">
-                                <div class="page-wrapper">
-
-                                    <div class="page-body">
-
-                                        @yield('content')
-
-                                    </div>
-
-                                </div>
-
-                                <div id="styleSelector"> </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-
-                </div>
+        <div class="header">
+            <div class="header-content">
+                <x-TopbarDashboard></x-TopbarDashboard>
             </div>
         </div>
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+        <div class="deznav">
+           <x-SidebarPetugas></x-SidebarPetugas>
+        </div>
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+
+		<!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <!-- row -->
+			<div class="container-fluid">
+				<div class="row">
+
+                        @include('sweetalert::alert')
+
+
+                        @yield('content')
+
+				</div>
+            </div>
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+                <p>Copyright © Designed &amp; Developed by <a href="http://dexignzone.com/" target="_blank">DexignZone</a> 2020</p>
+            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+		<!--**********************************
+           Support ticket button start
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button end
+        ***********************************-->
+
 
     </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
 
-    @stack('before-script')
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <!-- Required vendors -->
 
-
-        @include('includes.scripts')
-
-
-    @stack('after-script')
+        @stack('before-script')
+            @include('includes.scripts')
+        @stack('after-script')
 
 </body>
-
 </html>

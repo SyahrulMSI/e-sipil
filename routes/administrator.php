@@ -17,6 +17,10 @@ use App\Http\Controllers\Admin\Permohonan\ListPermohonanController;
 use App\Http\Controllers\Admin\Transaksi\CetakinvoiceController;
 use App\Http\Controllers\Admin\Transaksi\PelunasanController;
 
+use App\Http\Controllers\Admin\User\Admin\AdminController;
+use App\Http\Controllers\Admin\User\Customer\CustomerController;
+use App\Http\Controllers\Admin\User\Petugas\PetugasController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,6 +51,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::resource('invoice', CetakinvoiceController::class);
         Route::resource('pelunasan', PelunasanController::class);
 
+        Route::resource('administrator', AdminController::class);
+        Route::resource('petugas', PetugasController::class);
+        Route::resource('customer', CustomerController::class);
 
     });
 

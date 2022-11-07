@@ -14,7 +14,11 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //
+        $data = array(
+            'title'     =>  'Data Administrator'
+        );
+
+        return view('pages.admin.users.admin.index', $data);
     }
 
     /**

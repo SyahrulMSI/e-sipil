@@ -63,6 +63,16 @@
             <span class="nav-text">Cetak Laporan Pelayanan</span> <!--****** bulanan dan tahunan *******-->
         </a>
     </li>
+    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+        <i class="flaticon-381-network"></i>
+        <span class="nav-text">Data Users</span>
+    </a>
+    <ul aria-expanded="false">
+        <li><a href="{{ route('admin.customer.index') }}">Customer</a></li> <!--****** struk bukti bayar *******-->
+        <li><a href="{{ route('admin.petugas.index') }}">Petugas</a></li>
+        <li><a href="{{ route('admin.administrator.index') }}">Administrator</a></li>
+    </ul>
+</li>
     </ul>
     <div class="add-menu-sidebar">
         <img src="{{ asset('dashboard/images/cv.png') }}" alt="" class="mr-2" width="100%" style="box-shadow: 5px 5px 5px #333; border-radius: 10px 10px 10px 10px">

@@ -14,7 +14,11 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        $data = array(
+            'title'     =>  'Data Customer'
+        );
+
+        return view('pages.admin.users.customer.index', $data);
     }
 
     /**

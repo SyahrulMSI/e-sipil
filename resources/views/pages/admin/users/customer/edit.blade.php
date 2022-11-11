@@ -39,7 +39,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="no">No Telephon: <small class="text-danger">*Optional</small></label>
-                                            <input type="number" type="no_telp" class="form-control {{ $errors->has('no_telp') ? 'is-invalid' : '' }} shadow" value="{{ $user == null ? old('no_telp') : $user->no_telp }}">
+                                            <input type="number" name="no_telp" class="form-control {{ $errors->has('no_telp') ? 'is-invalid' : '' }} shadow" value="{{ $user == null ? old('no_telp') : $user->no_telp }}">
                                             @error('no_telp')
                                                 <small class="text-danger">{{ $message }}</small>
                                             @enderror

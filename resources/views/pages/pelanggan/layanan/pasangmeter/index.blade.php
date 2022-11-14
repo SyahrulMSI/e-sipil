@@ -35,7 +35,7 @@
                                 <div class="form-group">
                                     <label for="jenis">Jenis Pemasangan:</label>
                                     <select name="jenis_pemasangan" id="jenis" class="form-control shadow {{ $errors->has('jenis_pemasangan' ? 'in-valid' : '') }}">
-                                        <option selected>-- Pilih Jenis Pemasangan --</option>
+                                        <option selected disabled>-- Pilih Jenis Pemasangan --</option>
                                         <option value="rumah" {{ old('jenis_pemasangan')  == 'rumah' ? 'selected' : ''}}>Rumah</option>
                                         <option value="bisnis" {{ old('jenis_pemasangan')  == 'bisnis' ? 'selected' : ''}}>Bisnis</option>
                                         <option value="perusahaan" {{ old('jenis_pemasangan')  == 'perusahaan' ? 'selected' : ''}}>Perusahaan</option>
@@ -48,7 +48,7 @@
                                 <div class="form-group">
                                     <label for="daya">Daya:</label>
                                     <select name="daya" id="daya" class="form-control shadow {{ $errors->has('daya' ? 'in-valid' : '') }}">
-                                        <option selected>-- Pilih Daya --</option>
+                                        <option selected disabled>-- Pilih Daya --</option>
                                         <option value="250">250</option>
                                         <option value="450">450</option>
                                         <option value="900">900</option>

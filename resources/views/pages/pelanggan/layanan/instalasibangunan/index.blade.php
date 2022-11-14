@@ -20,7 +20,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-12">
-                            <form action="#" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('customer.instalasi_bangunan_baru.store') }}" method="POST" enctype="multipart/form-data">
 
                                 @csrf
                                 @method('POST')
@@ -30,12 +30,35 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="nama">Nama Lengkap:</label>
-                                            <input type="text" name="nama_lengkap" class="form-control" value="" readonly>
+                                            <input type="text" name="nama_lengkap" class="form-control shadow" value="{{ Auth::user()->nama_lengkap }}" readonly>
                                         </div>
+
+                                        <div class="form-group">
+                                            <label for="jenis">Jenis Instalasi:</label>
+                                            <select name="jenis_instalasi" id="jenis" class="form-control shadow {{ $errors->has('jenis_instalasi') ? 'is-invalid' : '' }}">
+                                                <option selected disabled>-- Pilih Jenis Instalasi --</option>
+                                                <option value="rumah" {{ old('jenis_instalsi') == 'rumah' ? 'selected' : '' }}>Rumah</option>
+                                                <option value="panel control" {{ old('jenis_instalsi') == 'panel_control' ? 'selected' : '' }}>Panel Control</option>
+                                            </select>
+                                            @error('jenis_instalasi')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="hp">Harga Pertitik:</label>
+                                            <input type="number" name="penetapan_harga_per_titik" class="form-control shadow" value="40000">
+                                       </div>
                                     </div>
 
                                     <div class="col-lg-6">
-
+                                        <div class="form-group">
+                                            <label for="alamat">Alamat:</label>
+                                            <textarea name="alamat" class="form-control shadow {{ $errors->has('alamat') ? 'is-invalid' : '' }}" id="alamat" cols="30" rows="10">{{ old('alamat') }}</textarea>
+                                            @error('alamat')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                        </div>
                                     </div>
 
                                 </div>

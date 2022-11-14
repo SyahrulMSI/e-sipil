@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Customer\Layanan;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Alert;
+use App\Models\InstalasiBangunan;
+use Illuminate\Support\Facades\Auth;
+
 
 class InstalasiBangunanBaruController extends Controller
 {
@@ -39,7 +43,35 @@ class InstalasiBangunanBaruController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'jenis_instalasi'   => 'required',
+            'alamat'    =>  'required'
+        ]);
+
+        $jenis = $request->jenis_instalasi;
+        $alamat = $request->alamat;
+        $harga = $request->penetapan_harga_per_titik;
+
+        $data = array(
+            'id_user'   =>  Auth::user()->id,
+            'nomor_registrasi'  =>  date('Ymdis') . Auth::user()->id,
+            'tanggal'   => date('Y-m-d'),
+            'alamat'    =>  $alamat,
+            'jenis_instalasi'   => $jenis,
+            'penetapan_harga_per_titik'  =>  $harga,
+            'status_permohonan' => 1,
+        );
+
+        $result = InstalasiBangunan::create($data);
+
+        if($result){
+            Alert::success('Success', 'Data permohonan berhasil di buat.');
+            return redirect()->route('customer.instalasi_bangunan_baru.index');
+        } else {
+            Alert::error('Error', 'Data permohonan gagal di buat.');
+            return redirect()->route('customer.instalasi_bangunan_baru.index');
+        }
+
     }
 
     /**

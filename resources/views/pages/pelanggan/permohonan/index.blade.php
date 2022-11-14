@@ -157,18 +157,65 @@
                                     <div class="card">
                                         <div class="card-body">
                                             <div class="table-responsive">
-                                                <table id="ib_t" class="display min-w850">
+                                                <table id="ib_t" class="display min-w850 text-center" width="100%">
                                                     <thead>
                                                         <tr>
                                                             <th>No</th>
-                                                            <th>e</th>
+                                                            <th>Nomor Registrasi</th>
+                                                            <th>Tanggal</th>
+                                                            <th>Alamat</th>
+                                                            <th>Jenis Instalasi</th>
+                                                            <th>Harga Per Titik</th>
+                                                            <th>Jumlah Titik</th>
+                                                            <th>Total</th>
+                                                            <th>Status</th>
+                                                            <td>Aksi</td>
                                                         </tr>
                                                     </thead>
                                                    <tbody>
+                                                    @php
+                                                        $n=1;
+                                                    @endphp
+                                                  @foreach ($instalasi_bangunan as $ib)
                                                     <tr>
-                                                        <td>1</td>
-                                                        <td>e</td>
+                                                        <td>{{ $n }}</td>
+                                                        <td class="font-weight-bold">{{ $ib->nomor_registrasi }}</td>
+                                                        <td>{{ $ib->tanggal->format('d, M Y') }}</td>
+                                                        <td>{{ $ib->alamat }}</td>
+                                                        <td class="font-weight-bold">{{ Str::title($ib->jenis_instalasi) }}</td>
+                                                        <td>Rp. {{ number_format($ib->penetapan_harga_per_titik, 0) }}</td>
+                                                        <td>
+                                                            @if ($ib->jumlah_titik == null)
+                                                                <p>-</p>
+                                                            @else
+                                                                <p>{{ $ib->jumlah_titik }} Titik</p>
+                                                            @endif
+                                                        </td>
+                                                        <td>
+                                                            @if ($ib->jumlah_titik == null)
+                                                                <p>Rp. -</p>
+                                                            @else
+                                                                @php
+                                                                    $ht = $ib->penetapan_harga_per_titik;
+                                                                    $jt = $ib->jumlah_titik;
+                                                                    $tot = $ht * $jt;
+                                                                @endphp
+                                                                <p>Rp. {{ number_format($tot, 0) }}</p>
+                                                            @endif
+                                                        </td>
+                                                        <td>
+                                                            @if ($ib->status_permohonan == 1)
+
+                                                                <span class="badge badge-danger">Menungu Konfirmasi</span>
+
+                                                            @endif
+                                                        </td>
+                                                        <td></td>
                                                     </tr>
+                                                  @php
+                                                      $n++;
+                                                  @endphp
+                                                  @endforeach
                                                    </tbody>
                                                 </table>
                                             </div>

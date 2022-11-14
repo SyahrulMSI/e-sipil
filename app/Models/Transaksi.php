@@ -49,4 +49,9 @@ class Transaksi extends Model
     {
         return $this->belongsTo(PemasanganBaru::class, 'id_pemasangan_baru', 'id');
     }
+
+    public function InstalasiBangunan()
+    {
+        return $this->belongsTo(InstalasiBangunan::class, 'id_instalsi', 'id');
+    }
 }

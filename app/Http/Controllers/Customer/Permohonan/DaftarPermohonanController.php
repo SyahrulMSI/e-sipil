@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Customer\Permohonan;
 
 use App\Http\Controllers\Controller;
+use App\Models\InstalasiBangunan;
 use Illuminate\Http\Request;
 use App\Models\PemasanganBaru;
 use Illuminate\Support\Facades\Auth;
@@ -20,11 +21,14 @@ class DaftarPermohonanController extends Controller
 
         $pasang_meter = PemasanganBaru::where('id_user', Auth::user()->id)->orderBy('id', 'DESC')->get();
         $tambah_daya = TambahDaya::where('id_user', Auth::user()->id)->orderBy('id', 'DESC')->get();
+        $instalasi = InstalasiBangunan::where('id_user', Auth::user()->id)->orderBy('id', 'DESC')->get();
+
 
         $data = array(
             'title'     =>  'Dafar Permohonan Layanan',
             'pemasangan_baru'   =>  $pasang_meter,
-            'tambah_daya'   =>  $tambah_daya
+            'tambah_daya'   =>  $tambah_daya,
+            'instalasi_bangunan'    =>     $instalasi
         );
 
         return view('pages.pelanggan.permohonan.index', $data);

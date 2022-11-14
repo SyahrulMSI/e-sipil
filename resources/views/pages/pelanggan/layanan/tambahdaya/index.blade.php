@@ -64,7 +64,7 @@
                                                 <div class="form-group">
                                                     <label for="daya_lama">Daya Lama:</label>
                                                     <select name="daya_lama" id="daya_lama" class="form-control shadow {{ $errors->has('daya_lama') ? 'is-invalid' : '' }}">
-                                                        <option selected>-- Pilih Daya --</option>
+                                                        <option selected disabled>-- Pilih Daya --</option>
                                                         <option value="250">250</option>
                                                         <option value="450">450</option>
                                                         <option value="900">900</option>
@@ -78,7 +78,7 @@
                                                 <div class="form-group">
                                                     <label for="daya_baru">Daya Baru:</label>
                                                     <select name="daya_baru" id="daya_baru" class="form-control shadow {{ $errors->has('daya_baru') ? 'is-invalid' : '' }}">
-                                                        <option selected>-- Pilih Daya --</option>
+                                                        <option selected disabled>-- Pilih Daya --</option>
                                                         <option value="250">250</option>
                                                         <option value="450">450</option>
                                                         <option value="900">900</option>

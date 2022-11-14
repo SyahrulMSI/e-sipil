@@ -73,10 +73,10 @@ class TambahDayaListrikController extends Controller
 
         if($result){
             Alert::success('Success', 'Data permohonan berhasil di buat.');
-            return redirect()->route('customer.pasang_meter_baru.index');
+            return redirect()->route('customer.tambah_daya_listrik.index');
         } else {
             Alert::error('Error', 'Data permohonan gagal di buat.');
-            return redirect()->route('customer.pasang_meter_baru.index');
+            return redirect()->route('customer.tambah_daya_listrik.index');
         }
     }
 

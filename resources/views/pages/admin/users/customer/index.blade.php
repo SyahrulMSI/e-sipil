@@ -69,10 +69,11 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                       <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
-                                                      <button type="button" class="btn btn-danger btn-sm" onclick="event.preventDefault(); document.getElementById('hapus').submit();">Hapus</button>
+
                                                       <form action="{{ route('admin.customer.destroy', $us->id) }}" method="POST" id="hapus">
                                                         @csrf
                                                         @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
                                                       </form>
                                                     </div>
                                                   </div>

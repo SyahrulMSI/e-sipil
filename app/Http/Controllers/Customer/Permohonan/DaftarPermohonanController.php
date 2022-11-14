@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Customer\Permohonan;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\PemasanganBaru;
+use Illuminate\Support\Facades\Auth;
 
 class DaftarPermohonanController extends Controller
 {
@@ -14,8 +16,12 @@ class DaftarPermohonanController extends Controller
      */
     public function index()
     {
+
+        $pasang_meter = PemasanganBaru::where('id_user', Auth::user()->id)->orderBy('id', 'DESC')->get();
+
         $data = array(
-            'title'     =>  'Dafar Permohonan Layanan'
+            'title'     =>  'Dafar Permohonan Layanan',
+            'pemasangan_baru'   =>  $pasang_meter
         );
 
         return view('pages.pelanggan.permohonan.index', $data);

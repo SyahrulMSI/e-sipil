@@ -47,18 +47,48 @@
                                    <div class="card">
                                         <div class="card-body">
                                             <div class="table-responsive">
-                                                <table id="pmb_t" class="display min-w850">
+                                                <table id="pmb_t" class="display min-w850 text-center" width="100%">
                                                     <thead>
                                                         <tr>
                                                             <th>No</th>
-                                                            <th>e</th>
+                                                            <th>Nomor Registrasi</th>
+                                                            <th>Tanggal Permohonan</th>
+                                                            <th>Jenis Pemasangan</th>
+                                                            <th>Daya</th>
+                                                            <th>Lokasi Pemasangan</th>
+                                                            <th>Status</th>
+                                                            <th>Aksi</th>
                                                         </tr>
                                                     </thead>
                                                    <tbody>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>e</td>
-                                                    </tr>
+                                                        @php
+                                                            $n=1;
+                                                        @endphp
+                                                        @foreach ($pemasangan_baru as $pmb)
+                                                            <tr>
+                                                                <td>{{ $n }}.</td>
+                                                                <td class="font-weight-bold">{{ $pmb->nomor_registrasi }}</td>
+                                                                <td>{{ $pmb->tanggal->format('d. M Y') }}</td>
+                                                                <td>{{ Str::title($pmb->jenis_pemasangan) }}</td>
+                                                                <td>{{ $pmb->daya }}</td>
+                                                                <td>{{ $pmb->lokasi_pemasangan }}</td>
+                                                                <td>
+                                                                    @if ($pmb->status_permohonan == 1)
+                                                                        <span class="badge badge-danger">Menunggu Konfirmasi</span>
+                                                                    @elseif($pmb->status_permohonan == 2)
+                                                                    <span class="badge badge-info">Di Konfirmasi</span>
+                                                                    @endif
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <a href="#" class="btn btn-warning btn-sm font-weight-bold text-white"><i class="fa fa-edit"></i></a>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        @php
+                                                            $n++;
+                                                        @endphp
+                                                        @endforeach
                                                    </tbody>
                                                 </table>
                                             </div>

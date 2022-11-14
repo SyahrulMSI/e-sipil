@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Customer\Layanan;
 
 use App\Http\Controllers\Controller;
+use App\Models\TambahDaya;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Alert;
 
 class TambahDayaListrikController extends Controller
 {
@@ -39,7 +42,42 @@ class TambahDayaListrikController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'tarif_lama'  =>  'required',
+            'tarif_baru'  =>  'required',
+            'daya_lama'  =>  'required',
+            'daya_baru'  =>  'required',
+            'lokasi_meter' =>  'required|min:5|max:50'
+        ]);
+
+
+        $tarif_l = $request->tarif_lama;
+        $tarif_b = $request->tarif_baru;
+        $daya_l = $request->daya_lama;
+        $daya_b = $request->daya_baru;
+        $lokasi = $request->lokasi_meter;
+
+        $data = array(
+            'id_user'   =>  Auth::user()->id,
+            'nomor_registrasi'  =>  date('Ymdis') . Auth::user()->id,
+            'tanggal'   => date('Y-m-d'),
+            'tarif_lama'  => $tarif_l,
+            'tarif_baru'  => $tarif_b,
+            'daya_lama'  => $daya_l,
+            'daya_baru'  => $daya_b,
+            'lokasi_meter' =>  $lokasi,
+            'status_permohonan' =>  1
+        );
+
+        $result = TambahDaya::create($data);
+
+        if($result){
+            Alert::success('Success', 'Data permohonan berhasil di buat.');
+            return redirect()->route('customer.pasang_meter_baru.index');
+        } else {
+            Alert::error('Error', 'Data permohonan gagal di buat.');
+            return redirect()->route('customer.pasang_meter_baru.index');
+        }
     }
 
     /**

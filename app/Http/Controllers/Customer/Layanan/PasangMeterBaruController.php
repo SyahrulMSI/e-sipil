@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Customer\Layanan;
 
 use App\Http\Controllers\Controller;
+use App\Models\PemasanganBaru;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Alert;
 
 class PasangMeterBaruController extends Controller
 {
@@ -14,6 +17,7 @@ class PasangMeterBaruController extends Controller
      */
     public function index()
     {
+
         $data = array(
             'title'     =>      'Pasang Meter Baru'
         );
@@ -39,7 +43,37 @@ class PasangMeterBaruController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'jenis_pemasangan'  => 'required',
+            'daya'  =>  'required',
+            'lokasi_pemasangan' =>  'required|min:5|max:50'
+        ]);
+
+
+        $jenis = $request->jenis_pemasangan;
+        $daya = $request->daya;
+        $lokasi = $request->lokasi_pemasangan;
+
+        $data = array(
+            'id_user'   =>  Auth::user()->id,
+            'nomor_registrasi'  =>  date('Ymdis') . Auth::user()->id,
+            'tanggal'   => date('Y-m-d'),
+            'jenis_pemasangan'  =>  $jenis,
+            'daya'  => $daya,
+            'lokasi_pemasangan' =>  $lokasi,
+            'status_permohonan' =>  1
+        );
+
+        $result = PemasanganBaru::create($data);
+
+        if($result){
+            Alert::success('Success', 'Data permohonan berhasil di buat.');
+            return redirect()->route('customer.pasang_meter_baru.index');
+        } else {
+            Alert::error('Error', 'Data permohonan gagal di buat.');
+            return redirect()->route('customer.pasang_meter_baru.index');
+        }
+
     }
 
     /**

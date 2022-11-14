@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\PemasanganBaru;
 use Illuminate\Support\Facades\Auth;
+use App\Models\TambahDaya;
 
 class DaftarPermohonanController extends Controller
 {
@@ -18,10 +19,12 @@ class DaftarPermohonanController extends Controller
     {
 
         $pasang_meter = PemasanganBaru::where('id_user', Auth::user()->id)->orderBy('id', 'DESC')->get();
+        $tambah_daya = TambahDaya::where('id_user', Auth::user()->id)->orderBy('id', 'DESC')->get();
 
         $data = array(
             'title'     =>  'Dafar Permohonan Layanan',
-            'pemasangan_baru'   =>  $pasang_meter
+            'pemasangan_baru'   =>  $pasang_meter,
+            'tambah_daya'   =>  $tambah_daya
         );
 
         return view('pages.pelanggan.permohonan.index', $data);

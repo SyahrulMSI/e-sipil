@@ -18,7 +18,6 @@ return new class extends Migration
             $table->foreignId('id_user')->index('fk_tambah_daya_to_users');
             $table->string('nomor_registrasi', 20);
             $table->date('tanggal');
-            $table->string('nama_pelanggan', 50);
             $table->string('tarif_lama', 10);
             $table->string('tarif_baru', 10);
             $table->string('daya_lama', 10);

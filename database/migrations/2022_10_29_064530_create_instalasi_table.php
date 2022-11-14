@@ -21,6 +21,7 @@ return new class extends Migration
             $table->longText('alamat');
             $table->enum('jenis_instalasi', ['rumah', 'panel_control']);
             $table->string('penetapan_harga_per_titik');
+            $table->string('status_permohonan', 10);
             $table->softDeletes();
             $table->timestamps();
         });

@@ -100,18 +100,52 @@
                                     <div class="card">
                                         <div class="card-body">
                                             <div class="table-responsive">
-                                                <table id="tdl_t" class="display min-w850">
+                                                <table id="tdl_t" class="display min-w850 text-center" width="100%">
                                                     <thead>
                                                         <tr>
                                                             <th>No</th>
-                                                            <th>e</th>
+                                                            <th>Nomor Registrasi</th>
+                                                            <th>Tanggal Permohonan</th>
+                                                            <th>Tarif Lama</th>
+                                                            <th>Tarif Baru</th>
+                                                            <th>Daya Lama</th>
+                                                            <th>Daya Baru</th>
+                                                            <th>Lokasi Pemasangan</th>
+                                                            <th>Status</th>
+                                                            <th>Aksi</th>
                                                         </tr>
                                                     </thead>
                                                    <tbody>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>e</td>
-                                                    </tr>
+                                                        @php
+                                                            $n=1;
+                                                        @endphp
+                                                        @foreach ($tambah_daya as $td)
+                                                            <tr>
+                                                                <td>{{ $n }}.</td>
+                                                                <td class="font-weight-bold">{{ $td->nomor_registrasi }}</td>
+                                                                <td>{{ $td->tanggal->format('d. M Y') }}</td>
+                                                                <td>{{ $td->tarif_lama }}</td>
+                                                                <td>{{ $td->tarif_baru }}</td>
+                                                                <td>{{ $td->daya_lama }}</td>
+                                                                <td>{{ $td->daya_baru }}</td>
+                                                                <td>{{ $td->lokasi_meter }}</td>
+                                                                <td>
+                                                                    @if ($td->status_permohonan == 1)
+                                                                        <span class="badge badge-danger">Menunggu Konfirmasi</span>
+                                                                    @elseif($td->status_permohonan == 2)
+                                                                    <span class="badge badge-info">Di Konfirmasi</span>
+                                                                    @endif
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <a href="#" class="btn btn-warning btn-sm font-weight-bold text-white"><i class="fa fa-edit"></i></a>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        @php
+                                                            $n++;
+                                                        @endphp
+                                                        @endforeach
                                                    </tbody>
                                                 </table>
                                             </div>

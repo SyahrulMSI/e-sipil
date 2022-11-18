@@ -37,11 +37,11 @@
                                 <li class="nav-item">
                                     <a class="nav-link" id="service-tab" data-toggle="tab" href="#service" role="tab" aria-controls="service"
                                       aria-selected="false">Service Meter Listrik / Listrik Bangunan<i class="mdi mdi-book-arrow-up-outline:"></i></a>
-                                  </li>
-                              </ul>
+                                </li>
+                            </ul>
 
 
-                              <div class="tab-content" id="myTabContent">
+                            <div class="tab-content" id="myTabContent">
 
                                 <div class="tab-pane fade show active" id="pmb" role="tabpanel" aria-labelledby="pmb-tab">
                                    <div class="card">
@@ -231,22 +231,74 @@
                                                     <thead>
                                                         <tr>
                                                             <th>No</th>
-                                                            <th>e</th>
+                                                            <th>Jenis Service</th>
+                                                            <th>Nomor Registrasi</th>
+                                                            <th>Tanggal</th>
+                                                            <th>Alamat</th>
+                                                            <th>Jenis Kerusakan</th>
+                                                            <th>Deskripsi Kerusakan</th>
+                                                            <th>Status Permohonan</th>
+                                                            <th>Aksi</th>
                                                         </tr>
                                                     </thead>
-                                                   <tbody>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>e</td>
-                                                    </tr>
-                                                   </tbody>
-                                                </table>
+                                                    <tbody>
+                                                        @php
+                                                            $n=1;
+                                                        @endphp
+                                                        @foreach ($service as $sm)
+
+                                                            <tr>
+                                                                <td>{{ $n }}</td>
+                                                                <td>
+                                                                    @if ($sm->jenis_service == 'meter_listrik')
+                                                                        <span class="badge badge-primary">Meter Listrik</span>
+                                                                    @elseif($sm->jenis_service == 'listrik_bangunan')
+                                                                        <span class="badge badge-primary">Listrik Bangunan</span>
+                                                                    @else
+                                                                        <small class="text-danger">Not Found.</small>
+                                                                    @endif
+                                                                </td>
+                                                                <td>{{ $sm->nomor_registrasi }}</td>
+                                                                <td>{{ $sm->tanggal->format('d, M Y') }}</td>
+                                                                <td>{{ $sm->alamat }}</td>
+                                                                <td>
+                                                                    @foreach ($sm->JenisKerusakan as $js)
+                                                                        {{ $js->kerusakan }}
+                                                                    @endforeach
+                                                                </td>
+                                                                <td>
+                                                                    @foreach ($sm->JenisKerusakan as $js)
+                                                                        {{ $js->deskripsi }}
+                                                                    @endforeach
+                                                                </td>
+                                                                <td>
+                                                                    @if ($sm->status_permohonan == 1)
+                                                                        <span class="badge badge-danger">Menunggu Konfirmasi</span>
+                                                                    @else
+
+                                                                    @endif
+                                                                </td>
+                                                                <td>
+                                                                    <div class="btn-group">
+                                                                        <button class="btn btn-warning btn-sm rounded"><i class="fa fa-pencil"></i></button>
+                                                                        &nbsp;
+                                                                        <button class="btn btn-danger btn-sm rounded"><i class="fa fa-trash"></i></button>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+
+                                                        @php
+                                                            $n++;
+                                                        @endphp
+                                                        @endforeach
+                                                    </tbody>
                                             </div>
                                         </div>
                                    </div>
                                 </div>
 
-                              </div>
+
+                            </div>
 
                         </div>
                     </div>
@@ -274,6 +326,9 @@
 
     $(document).ready(function () {
         $('#service_t').DataTable();
+    });
+    $(document).ready(function () {
+        $('#s_b').DataTable();
     });
 </script>
 

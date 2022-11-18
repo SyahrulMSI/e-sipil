@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\PemasanganBaru;
 use Illuminate\Support\Facades\Auth;
 use App\Models\TambahDaya;
+use App\Models\Service;
 
 class DaftarPermohonanController extends Controller
 {
@@ -22,13 +23,15 @@ class DaftarPermohonanController extends Controller
         $pasang_meter = PemasanganBaru::where('id_user', Auth::user()->id)->orderBy('id', 'DESC')->get();
         $tambah_daya = TambahDaya::where('id_user', Auth::user()->id)->orderBy('id', 'DESC')->get();
         $instalasi = InstalasiBangunan::where('id_user', Auth::user()->id)->orderBy('id', 'DESC')->get();
+        $service = Service::where('id_user', Auth::user()->id)->orderBy('id', 'desc')->get();
 
 
         $data = array(
             'title'     =>  'Dafar Permohonan Layanan',
             'pemasangan_baru'   =>  $pasang_meter,
             'tambah_daya'   =>  $tambah_daya,
-            'instalasi_bangunan'    =>     $instalasi
+            'instalasi_bangunan'    =>     $instalasi,
+            'service' =>  $service,
         );
 
         return view('pages.pelanggan.permohonan.index', $data);

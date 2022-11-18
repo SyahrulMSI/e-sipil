@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin\Permohonan;
 
 use App\Http\Controllers\Controller;
+use App\Models\InstalasiBangunan;
+use App\Models\PemasanganBaru;
+use App\Models\TambahDaya;
 use Illuminate\Http\Request;
 
 class ListPermohonanController extends Controller
@@ -14,8 +17,17 @@ class ListPermohonanController extends Controller
      */
     public function index()
     {
+
+        $pasang_baru =  PemasanganBaru::orderBy('id', 'DESC')->get();
+        $tambah_daya = TambahDaya::orderBy('id', 'DESC')->get();
+        $instalasi_bangunan = InstalasiBangunan::orderBy('id', 'DESC')->get();
+
+
         $data = array(
-            'title'     =>  'List Data Permohonan'
+            'title'     =>  'List Data Permohonan',
+            'pasang_baru'   =>  $pasang_baru,
+            'tambah_daya'   =>  $tambah_daya,
+            'instalasi_bangunan'    =>  $instalasi_bangunan
         );
 
         return view('pages.admin.permohonan.list.index', $data);

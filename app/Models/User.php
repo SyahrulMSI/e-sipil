@@ -65,5 +65,10 @@ class User extends Authenticatable
             return $this->hasMany(Transaksi::class, 'id_user', 'id');
         }
 
+        public function Service()
+        {
+            return $this->hasMany(Service::class, 'id_user', 'id');
+        }
+
 
 }

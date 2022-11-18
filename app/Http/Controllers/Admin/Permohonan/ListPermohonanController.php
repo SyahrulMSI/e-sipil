@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Permohonan;
 use App\Http\Controllers\Controller;
 use App\Models\InstalasiBangunan;
 use App\Models\PemasanganBaru;
+use App\Models\Service;
 use App\Models\TambahDaya;
 use Illuminate\Http\Request;
 
@@ -21,13 +22,17 @@ class ListPermohonanController extends Controller
         $pasang_baru =  PemasanganBaru::orderBy('id', 'DESC')->get();
         $tambah_daya = TambahDaya::orderBy('id', 'DESC')->get();
         $instalasi_bangunan = InstalasiBangunan::orderBy('id', 'DESC')->get();
+        $service_meter = Service::where('jenis_service', 'meter_listrik')->orderBy('id', 'desc')->get();
+        $service_listrik_bangunan =  Service::where('jenis_service', 'listrik_bangunan')->orderBy('id', 'desc')->get();
 
 
         $data = array(
             'title'     =>  'List Data Permohonan',
             'pasang_baru'   =>  $pasang_baru,
             'tambah_daya'   =>  $tambah_daya,
-            'instalasi_bangunan'    =>  $instalasi_bangunan
+            'instalasi_bangunan'    =>  $instalasi_bangunan,
+            'service_meter' => $service_meter,
+            'listrik_bangunan'   =>  $service_listrik_bangunan
         );
 
         return view('pages.admin.permohonan.list.index', $data);

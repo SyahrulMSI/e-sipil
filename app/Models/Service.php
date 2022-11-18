@@ -15,13 +15,18 @@ class Service extends Model
     protected $fillable = [
         'id',
         'id_user',
+        'nomor_registrasi',
+        'tanggal',
+        'alamat',
         'jenis_service',
+        'status_permohonan',
         'deleted_at',
         'created_at',
         'updated_at'
     ];
 
     protected $dates = [
+        'tanggal',
         'deleted_at',
         'created_at',
         'updated_at'

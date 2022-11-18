@@ -29,8 +29,8 @@
                                     aria-selected="false">Servis Meter Listrik</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="si-tab" data-toggle="tab" href="#si" role="tab" aria-controls="si"
-                                      aria-selected="false">Servis Instalasi</a>
+                                    <a class="nav-link" id="lb-tab" data-toggle="tab" href="#lb" role="tab" aria-controls="lb"
+                                      aria-selected="false">Servis Listrik Bangunan</a>
                                   </li>
                               </ul>
                               <div class="tab-content" id="myTabContent">
@@ -247,74 +247,67 @@
 
                                     <div class="card">
                                         <div class="card-header">
-                                            <h4 class="card-title">Servis Instalasi</h4>
+                                            <h4 class="card-title">Servis Meter Listrik</h4>
                                         </div>
                                         <div class="card-body">
                                             <div class="table-responsive">
                                                 <table id="sml_tbl" class="display min-w850">
                                                     <thead>
                                                         <tr>
-                                                            <th>Name</th>
-                                                            <th>Position</th>
-                                                            <th>Office</th>
-                                                            <th>Age</th>
-                                                            <th>Start date</th>
-                                                            <th>Salary</th>
+                                                            <th>No</th>
+                                                            <th>Nama Pelanggan</th>
+                                                            <th>Nomor Registrasi</th>
+                                                            <th>Tanggal</th>
+                                                            <th>Alamat</th>
+                                                            <th>Jenis Kerusakan</th>
+                                                            <th>Deskripsi Kerusakan</th>
+                                                            <th>Status Permohonan</th>
+                                                            <th>Aksi</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td>Tiger Nixon</td>
-                                                            <td>System Architect</td>
-                                                            <td>Edinburgh</td>
-                                                            <td>61</td>
-                                                            <td>2011/04/25</td>
-                                                            <td>$320,800</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Garrett Winters</td>
-                                                            <td>Accountant</td>
-                                                            <td>Tokyo</td>
-                                                            <td>63</td>
-                                                            <td>2011/07/25</td>
-                                                            <td>$170,750</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Ashton Cox</td>
-                                                            <td>Junior Technical Author</td>
-                                                            <td>San Francisco</td>
-                                                            <td>66</td>
-                                                            <td>2009/01/12</td>
-                                                            <td>$86,000</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Cedric Kelly</td>
-                                                            <td>Senior Javascript Developer</td>
-                                                            <td>Edinburgh</td>
-                                                            <td>22</td>
-                                                            <td>2012/03/29</td>
-                                                            <td>$433,060</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Airi Satou</td>
-                                                            <td>Accountant</td>
-                                                            <td>Tokyo</td>
-                                                            <td>33</td>
-                                                            <td>2008/11/28</td>
-                                                            <td>$162,700</td>
-                                                        </tr>
+                                                        @php
+                                                            $n=1;
+                                                        @endphp
+                                                        @foreach ($service_meter as $sm)
 
+                                                            <tr>
+                                                                <td>{{ $n }}</td>
+                                                                <td>{{ $sm->User->nama_lengkap }}</td>
+                                                                <td>{{ $sm->nomor_registrasi }}</td>
+                                                                <td>{{ $sm->tanggal->format('d, M Y') }}</td>
+                                                                <td>{{ $sm->alamat }}</td>
+                                                                <td>
+                                                                    @foreach ($sm->JenisKerusakan as $js)
+                                                                        {{ $js->kerusakan }}
+                                                                    @endforeach
+                                                                </td>
+                                                                <td>
+                                                                    @foreach ($sm->JenisKerusakan as $js)
+                                                                        {{ $js->deskripsi }}
+                                                                    @endforeach
+                                                                </td>
+                                                                <td>
+                                                                    @if ($sm->status_permohonan == 1)
+                                                                        <span class="badge badge-danger">Menunggu Konfirmasi</span>
+                                                                    @else
+
+                                                                    @endif
+                                                                </td>
+                                                                <td>
+                                                                    <div class="btn-group">
+                                                                        <button class="btn btn-warning btn-sm rounded"><i class="fa fa-pencil"></i></button>
+                                                                        &nbsp;
+                                                                        <button class="btn btn-danger btn-sm rounded"><i class="fa fa-trash"></i></button>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+
+                                                        @php
+                                                            $n++;
+                                                        @endphp
+                                                        @endforeach
                                                     </tbody>
-                                                    <tfoot>
-                                                        <tr>
-                                                            <th>Name</th>
-                                                            <th>Position</th>
-                                                            <th>Office</th>
-                                                            <th>Age</th>
-                                                            <th>Start date</th>
-                                                            <th>Salary</th>
-                                                        </tr>
-                                                    </tfoot>
                                                 </table>
                                             </div>
                                         </div>
@@ -325,78 +318,71 @@
 
 
 
-                                <div class="tab-pane fade" id="si" role="tabpanel" aria-labelledby="si-tab">
+                                <div class="tab-pane fade" id="lb" role="tabpanel" aria-labelledby="lb-tab">
 
                                     <div class="card">
                                         <div class="card-header">
-                                            <h4 class="card-title">Pasang Meter Baru</h4>
+                                            <h4 class="card-title">Service Listrik Bangunan</h4>
                                         </div>
                                         <div class="card-body">
                                             <div class="table-responsive">
-                                                <table id="si_tbl" class="display min-w850">
+                                                <table id="lb_tbl" class="display min-w850">
                                                     <thead>
                                                         <tr>
-                                                            <th>Name</th>
-                                                            <th>Position</th>
-                                                            <th>Office</th>
-                                                            <th>Age</th>
-                                                            <th>Start date</th>
-                                                            <th>Salary</th>
+                                                            <th>No</th>
+                                                            <th>Nama Pelanggan</th>
+                                                            <th>Nomor Registrasi</th>
+                                                            <th>Tanggal</th>
+                                                            <th>Alamat</th>
+                                                            <th>Jenis Kerusakan</th>
+                                                            <th>Deskripsi Kerusakan</th>
+                                                            <th>Status Permohonan</th>
+                                                            <th>Aksi</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td>Tiger Nixon</td>
-                                                            <td>System Architect</td>
-                                                            <td>Edinburgh</td>
-                                                            <td>61</td>
-                                                            <td>2011/04/25</td>
-                                                            <td>$320,800</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Garrett Winters</td>
-                                                            <td>Accountant</td>
-                                                            <td>Tokyo</td>
-                                                            <td>63</td>
-                                                            <td>2011/07/25</td>
-                                                            <td>$170,750</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Ashton Cox</td>
-                                                            <td>Junior Technical Author</td>
-                                                            <td>San Francisco</td>
-                                                            <td>66</td>
-                                                            <td>2009/01/12</td>
-                                                            <td>$86,000</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Cedric Kelly</td>
-                                                            <td>Senior Javascript Developer</td>
-                                                            <td>Edinburgh</td>
-                                                            <td>22</td>
-                                                            <td>2012/03/29</td>
-                                                            <td>$433,060</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Airi Satou</td>
-                                                            <td>Accountant</td>
-                                                            <td>Tokyo</td>
-                                                            <td>33</td>
-                                                            <td>2008/11/28</td>
-                                                            <td>$162,700</td>
-                                                        </tr>
+                                                        @php
+                                                            $n=1;
+                                                        @endphp
+                                                        @foreach ($listrik_bangunan as $lb)
 
+                                                            <tr>
+                                                                <td>{{ $n }}</td>
+                                                                <td>{{ $lb->User->nama_lengkap }}</td>
+                                                                <td>{{ $lb->nomor_registrasi }}</td>
+                                                                <td>{{ $lb->tanggal->format('d, M Y') }}</td>
+                                                                <td>{{ $lb->alamat }}</td>
+                                                                <td>
+                                                                    @foreach ($lb->JenisKerusakan as $js)
+                                                                        {{ $js->kerusakan }}
+                                                                    @endforeach
+                                                                </td>
+                                                                <td>
+                                                                    @foreach ($lb->JenisKerusakan as $js)
+                                                                        {{ $js->deskripsi }}
+                                                                    @endforeach
+                                                                </td>
+                                                                <td>
+                                                                    @if ($lb->status_permohonan == 1)
+                                                                        <span class="badge badge-danger">Menunggu Konfirmasi</span>
+                                                                    @else
+
+                                                                    @endif
+                                                                </td>
+                                                                <td>
+                                                                    <div class="btn-group">
+                                                                        <button class="btn btn-warning btn-sm rounded"><i class="fa fa-pencil"></i></button>
+                                                                        &nbsp;
+                                                                        <button class="btn btn-danger btn-sm rounded"><i class="fa fa-trash"></i></button>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+
+                                                        @php
+                                                            $n++;
+                                                        @endphp
+                                                        @endforeach
                                                     </tbody>
-                                                    <tfoot>
-                                                        <tr>
-                                                            <th>Name</th>
-                                                            <th>Position</th>
-                                                            <th>Office</th>
-                                                            <th>Age</th>
-                                                            <th>Start date</th>
-                                                            <th>Salary</th>
-                                                        </tr>
-                                                    </tfoot>
                                                 </table>
                                             </div>
                                         </div>
@@ -434,6 +420,10 @@
 
                 $(document).ready(function () {
                     $('#sml_tbl').DataTable();
+                });
+
+                $(document).ready(function () {
+                    $('#lb_tbl').DataTable();
                 });
             </script>
 @endpush

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.petugas')
 
 
 @section('title', $title)
@@ -19,7 +19,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-12">
-                        <form action="{{ route('admin.my_profile.update', Auth::user()->id ) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('petugas.my_profile.update', Auth::user()->id ) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 
@@ -79,11 +79,11 @@
                     <div class="col-lg-12">
 
                         @if (Auth::user()->DetailUser()->exists())
-                        <form action="{{ route('admin.detail_profile.update', Auth::user()->DetailUser()->first()->id) }}" id="update_du" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('petugas.detail_profile.update', Auth::user()->DetailUser()->first()->id) }}" id="update_du" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                         @else
-                        <form action="{{ route('admin.detail_profile.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('petugas.detail_profile.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('POST')
                         @endif

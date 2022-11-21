@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\Profile\ProfileController;
+
 use App\Http\Controllers\LandingController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +16,8 @@ use App\Http\Controllers\Customer\Pemasangan\AgendaController;
 use App\Http\Controllers\Customer\Pemasangan\HistoryController;
 use App\Http\Controllers\Customer\Transaksi\DpController;
 use App\Http\Controllers\Customer\Transaksi\PelunasanController;
+use App\Http\Controllers\Customer\Profile\ProfileController;
+use App\Http\Controllers\Controller\Profile\DetailProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +52,7 @@ Route::group(['prefix' => 'customer', 'as' => 'customer.'], function () {
         Route::resource('transaksi_pelunasan', PelunasanController::class);
 
         Route::resource('my_profile', ProfileController::class);
+        Route::resource('detail_profile', DetailProfileController::class);
 
     });
 });

@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Petugas\Profile;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
+use Alert;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -14,7 +17,11 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        //
+        $data = array(
+            'title' => 'My Profile'
+        );
+
+        return view('pages.petugas.profile.index', $data);
     }
 
     /**
@@ -69,7 +76,54 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nama_lengkap'  =>  'required|min:2|max:50',
+            'email' =>  ['required', 'unique:users,email,' . Auth::user()->id],
+            'no_telp'   =>  'required|min:11|max:14',
+            'password'  =>  'nullable|min:8'
+        ]);
+
+        $nama = $request->nama_lengkap;
+        $email = $request->email;
+        $no = $request->no_telp;
+        $password = $request->password;
+
+        if($request->password == null){
+            $data = array(
+                'nama_lengkap'  =>  $nama,
+                'email' =>  $email,
+                'no_telp' =>    $no,
+            );
+
+            $result = User::where('id', $id)->update($data);
+
+            if($result){
+                Alert::success('Success', 'Profile berhasil di update');
+                return redirect()->route('petugas.my_profile.index');
+            } else {
+                Alert::error('Error', 'Profile gagal di update');
+                return redirect()->route('petugas.my_profile.index');
+            }
+
+        } else {
+            $data = array(
+                'nama_lengkap'  =>  $nama,
+                'email' =>  $email,
+                'no_telp' =>    $no,
+                'password'  => Hash::make($password)
+            );
+
+            $result = User::where('id', $id)->update($data);
+
+            if($result){
+                Alert::success('Success', 'Profile berhasil di update');
+                return redirect()->route('petugas.my_profile.index');
+            } else {
+                Alert::error('Error', 'Profile gagal di update');
+                return redirect()->route('petugas.my_profile.index');
+            }
+
+        }
     }
 
     /**

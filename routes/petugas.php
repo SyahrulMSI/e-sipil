@@ -6,6 +6,8 @@ use App\Http\Controllers\Petugas\DashboardController;
 use App\Http\Controllers\Petugas\ListTugasController;
 
 use App\Http\Controllers\Petugas\Profile\ProfileController;
+use App\Http\Controllers\Petugas\Profile\DetailProfileController;
+
 use Symfony\Component\HttpKernel\Profiler\Profile;
 
 /*
@@ -27,7 +29,7 @@ Route::group(['prefix' => 'petugas', 'as' => 'petugas.'], function(){
         Route::resource('list_tugas', ListTugasController::class);
 
         Route::resource('my_profile', ProfileController::class);
-
+        Route::resource('detail_profile', DetailProfileController::class);
     });
 
 });

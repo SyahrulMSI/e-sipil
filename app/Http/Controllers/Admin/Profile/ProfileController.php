@@ -7,6 +7,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Alert;
+use App\Models\DetailUser;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -42,7 +44,8 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
     }
 
     /**
@@ -105,6 +108,24 @@ class ProfileController extends Controller
                 return redirect()->route('admin.my_profile.index');
             }
 
+        } else {
+            $data = array(
+                'nama_lengkap'  =>  $nama,
+                'email' =>  $email,
+                'no_telp' =>    $no,
+                'password'  => Hash::make($password)
+            );
+
+            $result = User::where('id', $id)->update($data);
+
+            if($result){
+                Alert::success('Success', 'Profile berhasil di update');
+                return redirect()->route('admin.my_profile.index');
+            } else {
+                Alert::error('Error', 'Profile gagal di update');
+                return redirect()->route('admin.my_profile.index');
+            }
+
         }
 
     }
@@ -115,8 +136,8 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+
     }
 }

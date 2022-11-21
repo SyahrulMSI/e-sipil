@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\Pemasangan\LokasiPemasanganController;
 use App\Http\Controllers\Admin\Permohonan\CetakPermohonanController;
 use App\Http\Controllers\Admin\Permohonan\DpPemohonController;
 use App\Http\Controllers\Admin\Permohonan\ListPermohonanController;
+use App\Http\Controllers\Admin\Profile\DetailUserController;
 use App\Http\Controllers\Admin\Transaksi\CetakinvoiceController;
 use App\Http\Controllers\Admin\Transaksi\PelunasanController;
 
@@ -22,6 +23,7 @@ use App\Http\Controllers\Admin\User\Customer\CustomerController;
 use App\Http\Controllers\Admin\User\Petugas\PetugasController;
 
 use App\Http\Controllers\Admin\Profile\ProfileController;
+use App\Http\Controllers\Admin\Profile\DetailProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,6 +60,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::resource('customer', CustomerController::class);
 
         Route::resource('my_profile', ProfileController::class);
+        Route::resource('detail_profile', DetailProfileController::class);
 
     });
 

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Alert;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
+
 
 class ProfileController extends Controller
 {

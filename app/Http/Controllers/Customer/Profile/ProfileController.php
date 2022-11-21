@@ -18,7 +18,11 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        //
+        $data = array(
+            'title' =>  'My Profile'
+        );
+
+        return view('pages.pelanggan.profile.index', $data);
     }
 
     /**

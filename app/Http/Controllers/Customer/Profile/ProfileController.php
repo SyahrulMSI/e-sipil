@@ -1,14 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Petugas;
+namespace App\Http\Controllers\Customer\Profile;
 
 use App\Http\Controllers\Controller;
-use App\Models\Tugas;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-
-class DashboardController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,13 +14,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $data = array(
-            'title'     =>  'Dashboard',
-            'tugas'    => Tugas::where('id_petugas', Auth::user()->id)->whereNot('status', 4)->count(),
-            't_selesai'    => Tugas::where('id_petugas', Auth::user()->id)->where('status', 4)->count()
-        );
-
-        return view('pages.petugas.dashboard', $data);
+        //
     }
 
     /**

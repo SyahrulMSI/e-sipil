@@ -70,5 +70,9 @@ class User extends Authenticatable
             return $this->hasMany(Service::class, 'id_user', 'id');
         }
 
+        public function DetailUser(){
+            return $this->hasMany(DetailUser::class, 'id_user', 'id');
+        }
+
 
 }

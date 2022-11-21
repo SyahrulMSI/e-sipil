@@ -21,6 +21,8 @@ use App\Http\Controllers\Admin\User\Admin\AdminController;
 use App\Http\Controllers\Admin\User\Customer\CustomerController;
 use App\Http\Controllers\Admin\User\Petugas\PetugasController;
 
+use App\Http\Controllers\Admin\Profile\ProfileController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -54,6 +56,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::resource('administrator', AdminController::class);
         Route::resource('petugas', PetugasController::class);
         Route::resource('customer', CustomerController::class);
+
+        Route::resource('my_profile', ProfileController::class);
 
     });
 

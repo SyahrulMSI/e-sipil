@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Petugas\DashboardController;
 use App\Http\Controllers\Petugas\ListTugasController;
 
+use App\Http\Controllers\Petugas\Profile\ProfileController;
+use Symfony\Component\HttpKernel\Profiler\Profile;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,6 +25,8 @@ Route::group(['prefix' => 'petugas', 'as' => 'petugas.'], function(){
 
         Route::resource('dashboard', DashboardController::class);
         Route::resource('list_tugas', ListTugasController::class);
+
+        Route::resource('my_profile', ProfileController::class);
 
     });
 

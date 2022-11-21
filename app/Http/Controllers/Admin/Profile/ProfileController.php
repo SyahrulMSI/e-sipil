@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Petugas;
+namespace App\Http\Controllers\Admin\Profile;
 
 use App\Http\Controllers\Controller;
-use App\Models\Tugas;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Alert;
 
-
-class DashboardController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,12 +18,10 @@ class DashboardController extends Controller
     public function index()
     {
         $data = array(
-            'title'     =>  'Dashboard',
-            'tugas'    => Tugas::where('id_petugas', Auth::user()->id)->whereNot('status', 4)->count(),
-            't_selesai'    => Tugas::where('id_petugas', Auth::user()->id)->where('status', 4)->count()
+            'title' =>  'My Profile'
         );
 
-        return view('pages.petugas.dashboard', $data);
+        return view('pages.admin.profile.index', $data);
     }
 
     /**
@@ -78,7 +76,37 @@ class DashboardController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nama_lengkap'  =>  'required|min:2|max:50',
+            'email' =>  ['required', 'unique:users,email,' . Auth::user()->id],
+            'no_telp'   =>  'required|min:11|max:14',
+            'password'  =>  'nullable|min:8'
+        ]);
+
+        $nama = $request->nama_lengkap;
+        $email = $request->email;
+        $no = $request->no_telp;
+        $password = $request->password;
+
+        if($request->password == null){
+            $data = array(
+                'nama_lengkap'  =>  $nama,
+                'email' =>  $email,
+                'no_telp' =>    $no,
+            );
+
+            $result = User::where('id', $id)->update($data);
+
+            if($result){
+                Alert::success('Success', 'Profile berhasil di update');
+                return redirect()->route('admin.my_profile.index');
+            } else {
+                Alert::error('Error', 'Profile gagal di update');
+                return redirect()->route('admin.my_profile.index');
+            }
+
+        }
+
     }
 
     /**

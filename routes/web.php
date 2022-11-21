@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Profile\ProfileController;
 use App\Http\Controllers\LandingController;
 use Illuminate\Support\Facades\Route;
 
@@ -47,6 +48,8 @@ Route::group(['prefix' => 'customer', 'as' => 'customer.'], function () {
 
         Route::resource('transaksi_dp', DpController::class);
         Route::resource('transaksi_pelunasan', PelunasanController::class);
+
+        Route::resource('my_profile', ProfileController::class);
 
     });
 });

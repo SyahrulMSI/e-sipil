@@ -8,6 +8,7 @@ use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Alert;
+use App\Models\User;
 
 
 class ServiceMeterListrikController extends Controller
@@ -45,6 +46,7 @@ class ServiceMeterListrikController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'nama_lengkap'  =>  'required',
             'kerusakan' =>  'required',
             'deskripsi' =>  'required',
             'alamat'    =>  'required'
@@ -56,6 +58,10 @@ class ServiceMeterListrikController extends Controller
 
         $kerusakan = $request->kerusakan;
         $deskripsi = $request->deskripsi;
+
+        User::where('id', Auth::user()->id)->update([
+            'nama_lengkap'  =>  $request->nama_lengkap
+        ]);
 
 
         //query add data to service table

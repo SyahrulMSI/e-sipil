@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Alert;
 use App\Models\InstalasiBangunan;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 
 class InstalasiBangunanBaruController extends Controller
@@ -44,6 +45,7 @@ class InstalasiBangunanBaruController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'nama_lengkap'  =>  'required',
             'jenis_instalasi'   => 'required',
             'alamat'    =>  'required'
         ]);
@@ -51,6 +53,10 @@ class InstalasiBangunanBaruController extends Controller
         $jenis = $request->jenis_instalasi;
         $alamat = $request->alamat;
         $harga = $request->penetapan_harga_per_titik;
+
+        User::where('id', Auth::user()->id)->update([
+            'nama_lengkap'  =>  $request->nama_lengkap
+        ]);
 
         $data = array(
             'id_user'   =>  Auth::user()->id,

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Service;
 use App\Models\JenisKerusakan;
 USE Alert;
+use App\Models\User;
 
 class ServiceListrikBangunanController extends Controller
 {
@@ -44,9 +45,10 @@ class ServiceListrikBangunanController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'kerusakan' =>  'required',
-            'deskripsi' =>  'required',
-            'alamat'    =>  'required'
+            'nama_lengkap'  =>  'required',
+            'kerusakan'     =>  'required',
+            'deskripsi'     =>  'required',
+            'alamat'        =>  'required'
         ]);
 
         $id = Auth::user()->id;
@@ -56,6 +58,9 @@ class ServiceListrikBangunanController extends Controller
         $kerusakan = $request->kerusakan;
         $deskripsi = $request->deskripsi;
 
+        User::where('id', Auth::user()->id)->update([
+            'nama_lengkap'  =>  $request->nama_lengkap
+        ]);
 
         //query add data to service table
         $service = new Service();

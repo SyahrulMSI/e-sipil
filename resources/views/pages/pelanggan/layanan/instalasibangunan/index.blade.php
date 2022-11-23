@@ -30,7 +30,10 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="nama">Nama Lengkap:</label>
-                                            <input type="text" name="nama_lengkap" class="form-control shadow" value="{{ Auth::user()->nama_lengkap }}" readonly>
+                                            <input type="text" name="nama_lengkap" class="form-control shadow {{ $errors->has('nama_lengkap') ? 'is-invalid' ? '' }}" value="{{ Auth::user()->nama_lengkap }}">
+                                            @error('nama_lengkap')
+                                                <small class="text-danger">{{ $mesaage }}</small>
+                                            @enderror
                                         </div>
 
                                         <div class="form-group">

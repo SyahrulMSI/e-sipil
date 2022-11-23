@@ -7,6 +7,7 @@ use App\Models\TambahDaya;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Alert;
+use App\Models\User;
 
 class TambahDayaListrikController extends Controller
 {
@@ -43,6 +44,7 @@ class TambahDayaListrikController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'nama_lengkap'  =>  'required',
             'tarif_lama'  =>  'required',
             'tarif_baru'  =>  'required',
             'daya_lama'  =>  'required',
@@ -56,6 +58,10 @@ class TambahDayaListrikController extends Controller
         $daya_l = $request->daya_lama;
         $daya_b = $request->daya_baru;
         $lokasi = $request->lokasi_meter;
+
+        User::where('id', Auth::user()->id)->update([
+            'nama_lengkap'  =>  $request->nama_lengkap
+        ]);
 
         $data = array(
             'id_user'   =>  Auth::user()->id,

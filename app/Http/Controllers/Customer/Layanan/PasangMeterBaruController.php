@@ -7,6 +7,7 @@ use App\Models\PemasanganBaru;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Alert;
+use App\Models\User;
 
 class PasangMeterBaruController extends Controller
 {
@@ -44,6 +45,7 @@ class PasangMeterBaruController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'nama_lengkap'  =>  'required',
             'jenis_pemasangan'  => 'required',
             'daya'  =>  'required',
             'lokasi_pemasangan' =>  'required|min:5|max:50'
@@ -53,6 +55,10 @@ class PasangMeterBaruController extends Controller
         $jenis = $request->jenis_pemasangan;
         $daya = $request->daya;
         $lokasi = $request->lokasi_pemasangan;
+
+        User::where('id', Auth::user()->id)->update([
+            'nama_lengkap'  =>  $request->nama_lengkap
+        ]);
 
         $data = array(
             'id_user'   =>  Auth::user()->id,

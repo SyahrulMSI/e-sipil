@@ -9,6 +9,7 @@ use App\Models\Service;
 use App\Models\JenisKerusakan;
 USE Alert;
 use App\Models\User;
+use App\Models\DetailUser;
 
 class ServiceListrikBangunanController extends Controller
 {

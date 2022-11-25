@@ -8,6 +8,7 @@ use Alert;
 use App\Models\InstalasiBangunan;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\DetailUser;
 
 
 class InstalasiBangunanBaruController extends Controller

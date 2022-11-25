@@ -58,32 +58,43 @@ class ServiceListrikBangunanController extends Controller
         $kerusakan = $request->kerusakan;
         $deskripsi = $request->deskripsi;
 
-        User::where('id', Auth::user()->id)->update([
-            'nama_lengkap'  =>  $request->nama_lengkap
-        ]);
+        $cek = DetailUser::where('id_user', Auth::user()->id)->first();
 
-        //query add data to service table
-        $service = new Service();
-        $service->id_user = $id;
-        $service->nomor_registrasi = date('Ymdis') . Auth::user()->id;
-        $service->tanggal = date('Y-m-d');
-        $service->alamat = $alamat;
-        $service->jenis_service = $jenis_service;
-        $service->status_permohonan = 1;
-        $service->save();
+        if(empty($cek)){
 
-        //get service id current create
-        $id_service = $service->id;
+            Alert::info('Info'. 'Silahkan melengkapi biodata sebelum mengajukan permohonan !');
+            return redirect()->route('customer.my_profile.index');
 
-        //add to table jenis kerusakan
-        $jenis_kerusakan = new JenisKerusakan();
-        $jenis_kerusakan->id_service = $id_service;
-        $jenis_kerusakan->kerusakan = $kerusakan;
-        $jenis_kerusakan->deskripsi = $deskripsi;
-        $jenis_kerusakan->save();
+        } else {
 
-        Alert::success('Success', 'Permohonan berhasil dibuat.');
-        return redirect()->route('customer.service_listrik_bangunan.index');
+            User::where('id', Auth::user()->id)->update([
+                'nama_lengkap'  =>  $request->nama_lengkap
+            ]);
+
+            //query add data to service table
+            $service = new Service();
+            $service->id_user = $id;
+            $service->nomor_registrasi = date('Ymdis') . Auth::user()->id;
+            $service->tanggal = date('Y-m-d');
+            $service->alamat = $alamat;
+            $service->jenis_service = $jenis_service;
+            $service->status_permohonan = 1;
+            $service->save();
+
+            //get service id current create
+            $id_service = $service->id;
+
+            //add to table jenis kerusakan
+            $jenis_kerusakan = new JenisKerusakan();
+            $jenis_kerusakan->id_service = $id_service;
+            $jenis_kerusakan->kerusakan = $kerusakan;
+            $jenis_kerusakan->deskripsi = $deskripsi;
+            $jenis_kerusakan->save();
+
+            Alert::success('Success', 'Permohonan berhasil dibuat.');
+            return redirect()->route('customer.service_listrik_bangunan.index');
+
+        }
     }
 
     /**

@@ -12,13 +12,13 @@ class Transaksi extends Model
 
     public $table = 'transaksi';
 
-    protected $fillablbe = [
+    protected $fillable = [
         'id_user',
         'id_tambah_daya',
         'id_pemasangan_baru',
         'id_instalasi',
         'id_service',
-        'dp',
+        'total_bayar',
         'type_pembayaran',
         'url_midtrans',
         'status',

@@ -17,7 +17,7 @@ use App\Http\Controllers\Customer\Pemasangan\HistoryController;
 use App\Http\Controllers\Customer\Transaksi\DpController;
 use App\Http\Controllers\Customer\Transaksi\PelunasanController;
 use App\Http\Controllers\Customer\Profile\ProfileController;
-use App\Http\Controllers\Controller\Profile\DetailProfileController;
+use App\Http\Controllers\Customer\Profile\DetailProfileController;
 
 /*
 |--------------------------------------------------------------------------

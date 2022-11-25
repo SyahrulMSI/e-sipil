@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignId('id_pemasangan_baru')->index('fk_transaksi_to_pemasangan_baru')->nullable();
             $table->foreignId('id_instalasi')->index('fk_transaksi_to_instalasi')->nullable();
             $table->foreignId('id_service')->index('fk_transaksi_to_service')->nullable();
-            $table->string('dp');
+            $table->string('total_bayar');
             $table->string('type_pembayaran');
             $table->string('url_midtrans')->nullable();
             $table->string('status');

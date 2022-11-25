@@ -7,6 +7,7 @@ use App\Models\TambahDaya;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Alert;
+use App\Models\DetailUser;
 use App\Models\User;
 
 class TambahDayaListrikController extends Controller
@@ -59,30 +60,41 @@ class TambahDayaListrikController extends Controller
         $daya_b = $request->daya_baru;
         $lokasi = $request->lokasi_meter;
 
-        User::where('id', Auth::user()->id)->update([
-            'nama_lengkap'  =>  $request->nama_lengkap
-        ]);
+        $cek = DetailUser::where('id_user', Auth::user()->id)->first();
 
-        $data = array(
-            'id_user'   =>  Auth::user()->id,
-            'nomor_registrasi'  =>  date('Ymdis') . Auth::user()->id,
-            'tanggal'   => date('Y-m-d'),
-            'tarif_lama'  => $tarif_l,
-            'tarif_baru'  => $tarif_b,
-            'daya_lama'  => $daya_l,
-            'daya_baru'  => $daya_b,
-            'lokasi_meter' =>  $lokasi,
-            'status_permohonan' =>  1
-        );
+        if(empty($cek)){
 
-        $result = TambahDaya::create($data);
+            Alert::info('Info'. 'Silahkan melengkapi biodata sebelum mengajukan permohonan !');
+            return redirect()->route('customer.my_profile.index');
 
-        if($result){
-            Alert::success('Success', 'Data permohonan berhasil di buat.');
-            return redirect()->route('customer.tambah_daya_listrik.index');
         } else {
-            Alert::error('Error', 'Data permohonan gagal di buat.');
-            return redirect()->route('customer.tambah_daya_listrik.index');
+
+            User::where('id', Auth::user()->id)->update([
+                'nama_lengkap'  =>  $request->nama_lengkap
+            ]);
+
+            $data = array(
+                'id_user'   =>  Auth::user()->id,
+                'nomor_registrasi'  =>  date('Ymdis') . Auth::user()->id,
+                'tanggal'   => date('Y-m-d'),
+                'tarif_lama'  => $tarif_l,
+                'tarif_baru'  => $tarif_b,
+                'daya_lama'  => $daya_l,
+                'daya_baru'  => $daya_b,
+                'lokasi_meter' =>  $lokasi,
+                'status_permohonan' =>  1
+            );
+
+            $result = TambahDaya::create($data);
+
+            if($result){
+                Alert::success('Success', 'Data permohonan berhasil di buat.');
+                return redirect()->route('customer.tambah_daya_listrik.index');
+            } else {
+                Alert::error('Error', 'Data permohonan gagal di buat.');
+                return redirect()->route('customer.tambah_daya_listrik.index');
+            }
+
         }
     }
 

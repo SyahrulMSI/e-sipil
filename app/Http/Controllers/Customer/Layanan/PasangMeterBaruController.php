@@ -56,28 +56,39 @@ class PasangMeterBaruController extends Controller
         $daya = $request->daya;
         $lokasi = $request->lokasi_pemasangan;
 
-        User::where('id', Auth::user()->id)->update([
-            'nama_lengkap'  =>  $request->nama_lengkap
-        ]);
+        $cek = DetailUser::where('id_user', Auth::user()->id)->first();
 
-        $data = array(
-            'id_user'   =>  Auth::user()->id,
-            'nomor_registrasi'  =>  date('Ymdis') . Auth::user()->id,
-            'tanggal'   => date('Y-m-d'),
-            'jenis_pemasangan'  =>  $jenis,
-            'daya'  => $daya,
-            'lokasi_pemasangan' =>  $lokasi,
-            'status_permohonan' =>  1
-        );
+        if(empty($cek)){
 
-        $result = PemasanganBaru::create($data);
+            Alert::info('Info'. 'Silahkan melengkapi biodata sebelum mengajukan permohonan !');
+            return redirect()->route('customer.my_profile.index');
 
-        if($result){
-            Alert::success('Success', 'Data permohonan berhasil di buat.');
-            return redirect()->route('customer.pasang_meter_baru.index');
         } else {
-            Alert::error('Error', 'Data permohonan gagal di buat.');
-            return redirect()->route('customer.pasang_meter_baru.index');
+
+            User::where('id', Auth::user()->id)->update([
+                'nama_lengkap'  =>  $request->nama_lengkap
+            ]);
+
+            $data = array(
+                'id_user'   =>  Auth::user()->id,
+                'nomor_registrasi'  =>  date('Ymdis') . Auth::user()->id,
+                'tanggal'   => date('Y-m-d'),
+                'jenis_pemasangan'  =>  $jenis,
+                'daya'  => $daya,
+                'lokasi_pemasangan' =>  $lokasi,
+                'status_permohonan' =>  1
+            );
+
+            $result = PemasanganBaru::create($data);
+
+            if($result){
+                Alert::success('Success', 'Data permohonan berhasil di buat.');
+                return redirect()->route('customer.pasang_meter_baru.index');
+            } else {
+                Alert::error('Error', 'Data permohonan gagal di buat.');
+                return redirect()->route('customer.pasang_meter_baru.index');
+            }
+
         }
 
     }

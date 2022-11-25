@@ -54,28 +54,39 @@ class InstalasiBangunanBaruController extends Controller
         $alamat = $request->alamat;
         $harga = $request->penetapan_harga_per_titik;
 
-        User::where('id', Auth::user()->id)->update([
-            'nama_lengkap'  =>  $request->nama_lengkap
-        ]);
+        $cek = DetailUser::where('id_user', Auth::user()->id)->first();
 
-        $data = array(
-            'id_user'   =>  Auth::user()->id,
-            'nomor_registrasi'  =>  date('Ymdis') . Auth::user()->id,
-            'tanggal'   => date('Y-m-d'),
-            'alamat'    =>  $alamat,
-            'jenis_instalasi'   => $jenis,
-            'penetapan_harga_per_titik'  =>  $harga,
-            'status_permohonan' => 1,
-        );
+        if(empty($cek)){
 
-        $result = InstalasiBangunan::create($data);
+            Alert::info('Info'. 'Silahkan melengkapi biodata sebelum mengajukan permohonan !');
+            return redirect()->route('customer.my_profile.index');
 
-        if($result){
-            Alert::success('Success', 'Data permohonan berhasil di buat.');
-            return redirect()->route('customer.instalasi_bangunan_baru.index');
         } else {
-            Alert::error('Error', 'Data permohonan gagal di buat.');
-            return redirect()->route('customer.instalasi_bangunan_baru.index');
+
+            User::where('id', Auth::user()->id)->update([
+                'nama_lengkap'  =>  $request->nama_lengkap
+            ]);
+
+            $data = array(
+                'id_user'   =>  Auth::user()->id,
+                'nomor_registrasi'  =>  date('Ymdis') . Auth::user()->id,
+                'tanggal'   => date('Y-m-d'),
+                'alamat'    =>  $alamat,
+                'jenis_instalasi'   => $jenis,
+                'penetapan_harga_per_titik'  =>  $harga,
+                'status_permohonan' => 1,
+            );
+
+            $result = InstalasiBangunan::create($data);
+
+            if($result){
+                Alert::success('Success', 'Data permohonan berhasil di buat.');
+                return redirect()->route('customer.instalasi_bangunan_baru.index');
+            } else {
+                Alert::error('Error', 'Data permohonan gagal di buat.');
+                return redirect()->route('customer.instalasi_bangunan_baru.index');
+            }
+
         }
 
     }

@@ -25,6 +25,8 @@ use App\Http\Controllers\Admin\User\Petugas\PetugasController;
 use App\Http\Controllers\Admin\Profile\ProfileController;
 use App\Http\Controllers\Admin\Profile\DetailProfileController;
 
+use App\Http\Controllers\Admin\Konfirmasi\KonfirmasiPasangMeterController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -61,6 +63,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::resource('my_profile', ProfileController::class);
         Route::resource('detail_profile', DetailProfileController::class);
+
+        Route::resource('list_permohonan.k_pasang_meter', KonfirmasiPasangMeterController::class)->shallow();
+
 
     });
 

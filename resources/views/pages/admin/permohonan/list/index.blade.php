@@ -81,6 +81,14 @@
                                                                         &nbsp;
                                                                         <button class="btn btn-danger btn-sm rounded"><i class="fa fa-trash"></i></button>
                                                                     </div>
+                                                                    <div class="form-group mt-2">
+                                                                        @if ($pb->Transaksi()->exists())
+                                                                        <button class="btn btn-success btn-sm rounded" disabled>Konfimasi</button>
+                                                                        @else
+                                                                        <a href="{{ route('admin.list_permohonan.k_pasang_meter.index', $pb->id) }}" class="btn btn-success btn-sm rounded">Konfirmasi</a>
+                                                                        @endif
+                                                                        &nbsp;
+                                                                    </div>
                                                                 </td>
                                                             </tr>
                                                         @php

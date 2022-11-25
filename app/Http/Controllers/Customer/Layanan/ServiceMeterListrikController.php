@@ -64,7 +64,7 @@ class ServiceMeterListrikController extends Controller
 
         if(empty($cek)){
 
-            Alert::info('Info'. 'Silahkan melengkapi biodata sebelum mengajukan permohonan !');
+            Alert::info('Info', 'Silahkan melengkapi biodata sebelum mengajukan permohonan !');
             return redirect()->route('customer.my_profile.index');
 
         } else {

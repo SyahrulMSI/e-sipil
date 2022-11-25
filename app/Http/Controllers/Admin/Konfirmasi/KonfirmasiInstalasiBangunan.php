@@ -3,14 +3,13 @@
 namespace App\Http\Controllers\Admin\Konfirmasi;
 
 use App\Http\Controllers\Controller;
-use App\Models\PemasanganBaru;
-use App\Models\Transaksi;
-use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\Transaksi;
 use Alert;
-use GrahamCampbell\ResultType\Success;
+use App\Models\InstalasiBangunan;
+use App\Models\User;
 
-class KonfirmasiPasangMeterController extends Controller
+class KonfirmasiInstalasiBangunan extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,17 +18,17 @@ class KonfirmasiPasangMeterController extends Controller
      */
     public function index($id)
     {
-        $pb = PemasanganBaru::where('id', $id)->first();
+        $ib = InstalasiBangunan::where('id', $id)->first();
 
-        $user = User::where('id', $pb->id_user)->first();
+        $user = User::where('id', $ib->id_user)->first();
 
         $data = array(
-            'title' =>  'Konfirmasi Pasang Meter Baru',
-            'pb'    => $pb,
+            'title' =>  'Konfirmasi Instalasi Bangunan',
+            'ib'    => '',
             'u'     =>  $user
         );
 
-        return view('pages.admin.konfirmasi.pasangmeter', $data);
+        return view('pages.admin.konfirmasi.instalasibangunan', $data);
     }
 
     /**
@@ -48,7 +47,7 @@ class KonfirmasiPasangMeterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
         $request->validate([
             'total_bayar'   =>  'required',
@@ -77,7 +76,6 @@ class KonfirmasiPasangMeterController extends Controller
             Alert::error('Error','Tagihan gagal di buat');
             return redirect()->route('admin.list_permohonan.index');
         }
-
     }
 
     /**

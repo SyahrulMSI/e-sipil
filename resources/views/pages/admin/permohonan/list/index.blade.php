@@ -157,6 +157,14 @@
                                                                         &nbsp;
                                                                         <button class="btn btn-danger btn-sm rounded"><i class="fa fa-trash"></i></button>
                                                                     </div>
+                                                                    <div class="form-group mt-2">
+                                                                        @if ($td->Transaksi()->exists())
+                                                                        <button class="btn btn-success btn-sm rounded" disabled>Konfimasi</button>
+                                                                        @else
+                                                                        <a href="{{ route('admin.list_permohonan.k_tambah_daya.index', $td->id) }}" class="btn btn-success btn-sm rounded">Konfirmasi</a>
+                                                                        @endif
+                                                                        &nbsp;
+                                                                    </div>
                                                                 </td>
                                                             </tr>
 
@@ -212,7 +220,13 @@
                                                                 <td>{{ $ib->alamat }}</td>
                                                                 <td>{{ $ib->jenis_instalasi }}</td>
                                                                 <td>{{ $ib->penetapan_harga_per_titik }}</td>
-                                                                <td>{{ $ib->jumlah_titik }} Titik</td>
+                                                                <td>
+                                                                    @if($ib->jumlah_titik != null || $ib->jumlah_titik != "")
+                                                                    {{ $ib->jumlah_titik }} Titik
+                                                                    @else
+                                                                    -
+                                                                    @endif
+                                                                </td>
                                                                 <td>
                                                                     @php
                                                                         $h = $ib->penetapan_harga_per_titik;
@@ -232,6 +246,16 @@
                                                                         &nbsp;
                                                                         <button class="btn btn-danger btn-sm rounded"><i class="fa fa-trash"></i></button>
                                                                     </div>
+                                                                    @if ($ib->jumlah_titik != null || $ib->jumlah_titik != "")
+                                                                        <div class="form-group mt-2">
+                                                                            @if ($ib->Transaksi()->exists())
+                                                                            <button class="btn btn-success btn-sm rounded" disabled>Konfimasi</button>
+                                                                            @else
+                                                                            <a href="{{ route('admin.list_permohonan.k_instalasi_bangunan.index', $td->id) }}" class="btn btn-success btn-sm rounded">Konfirmasi</a>
+                                                                            @endif
+                                                                            &nbsp;
+                                                                        </div>
+                                                                    @endif
                                                                 </td>
                                                             </tr>
                                                         @php
@@ -308,6 +332,14 @@
                                                                         &nbsp;
                                                                         <button class="btn btn-danger btn-sm rounded"><i class="fa fa-trash"></i></button>
                                                                     </div>
+                                                                    <div class="form-group mt-2">
+                                                                        @if ($sm->Transaksi()->exists())
+                                                                        <button class="btn btn-success btn-sm rounded" disabled>Konfimasi</button>
+                                                                        @else
+                                                                        <a href="{{ route('admin.list_permohonan.k_service_meter_listrik.index', $sm->id) }}" class="btn btn-success btn-sm rounded">Konfirmasi</a>
+                                                                        @endif
+                                                                        &nbsp;
+                                                                    </div>
                                                                 </td>
                                                             </tr>
 
@@ -382,6 +414,14 @@
                                                                         <button class="btn btn-warning btn-sm rounded"><i class="fa fa-pencil"></i></button>
                                                                         &nbsp;
                                                                         <button class="btn btn-danger btn-sm rounded"><i class="fa fa-trash"></i></button>
+                                                                    </div>
+                                                                    <div class="form-group mt-2">
+                                                                        @if ($lb->Transaksi()->exists())
+                                                                        <button class="btn btn-success btn-sm rounded" disabled>Konfimasi</button>
+                                                                        @else
+                                                                        <a href="{{ route('admin.list_permohonan.k_service_listrik_bangunan.index', $lb->id) }}" class="btn btn-success btn-sm rounded">Konfirmasi</a>
+                                                                        @endif
+                                                                        &nbsp;
                                                                     </div>
                                                                 </td>
                                                             </tr>

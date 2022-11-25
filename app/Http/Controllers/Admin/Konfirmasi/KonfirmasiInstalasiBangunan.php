@@ -24,7 +24,7 @@ class KonfirmasiInstalasiBangunan extends Controller
 
         $data = array(
             'title' =>  'Konfirmasi Instalasi Bangunan',
-            'ib'    => '',
+            'ib'    =>  $ib,
             'u'     =>  $user
         );
 
@@ -47,22 +47,22 @@ class KonfirmasiInstalasiBangunan extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
         $request->validate([
             'total_bayar'   =>  'required',
             'type_pembayaran'   =>  'required'
         ]);
 
-        PemasanganBaru::where('id', $id)->update([
-            'status_permohonan' =>  1
+        InstalasiBangunan::where('id', $id)->update([
+            'status_permohonan' =>  2
         ]);
 
-        $pb = PemasanganBaru::where('id', $id)->first();
+        $ib = InstalasiBangunan::where('id', $id)->first();
 
         $result = Transaksi::create([
-            'id_user'   =>  $pb->id_user,
-            'id_pemasangan_baru'    => $pb->id,
+            'id_user'   =>  $ib->id_user,
+            'id_instalasi'    => $ib->id,
             'total_bayar'   =>  $request->total_bayar,
             'type_pembayaran'   =>  $request->type_pembayaran,
             'status'    =>  'WAITING',

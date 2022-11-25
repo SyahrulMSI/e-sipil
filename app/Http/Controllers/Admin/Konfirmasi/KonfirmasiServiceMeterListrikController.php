@@ -47,22 +47,22 @@ class KonfirmasiServiceMeterListrikController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
         $request->validate([
             'total_bayar'   =>  'required',
             'type_pembayaran'   =>  'required'
         ]);
 
-        PemasanganBaru::where('id', $id)->update([
-            'status_permohonan' =>  1
+        Service::where('id', $id)->update([
+            'status_permohonan' =>  2
         ]);
 
-        $pb = PemasanganBaru::where('id', $id)->first();
+        $sml = Service::where('id', $id)->first();
 
         $result = Transaksi::create([
-            'id_user'   =>  $pb->id_user,
-            'id_pemasangan_baru'    => $pb->id,
+            'id_user'   =>  $sml->id_user,
+            'id_service'    => $sml->id,
             'total_bayar'   =>  $request->total_bayar,
             'type_pembayaran'   =>  $request->type_pembayaran,
             'status'    =>  'WAITING',

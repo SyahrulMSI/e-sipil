@@ -26,6 +26,10 @@ use App\Http\Controllers\Admin\Profile\ProfileController;
 use App\Http\Controllers\Admin\Profile\DetailProfileController;
 
 use App\Http\Controllers\Admin\Konfirmasi\KonfirmasiPasangMeterController;
+use App\Http\Controllers\Admin\Konfirmasi\KonfirmasiInstalasiBangunan;
+use App\Http\Controllers\Admin\Konfirmasi\KonfirmasiServiceListrikBangunanController;
+use App\Http\Controllers\Admin\Konfirmasi\KonfirmasiTambahDayaController;
+use App\Http\Controllers\Admin\Konfirmasi\KonfirmasiServiceMeterListrikController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,6 +69,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::resource('detail_profile', DetailProfileController::class);
 
         Route::resource('list_permohonan.k_pasang_meter', KonfirmasiPasangMeterController::class)->shallow();
+        Route::resource('list_permohonan.k_instalasi_bangunan', KonfirmasiInstalasiBangunan::class)->shallow();
+        Route::resource('list_permohonan.k_service_listrik_bangunan', KonfirmasiServiceListrikBangunanController::class)->shallow();
+        Route::resource('list_permohonan.k_tambah_daya', KonfirmasiTambahDayaController::class)->shallow();
+        Route::resource('list_permohonan.k_service_meter_listrik', KonfirmasiServiceMeterListrikController::class)->shallow();
 
 
     });

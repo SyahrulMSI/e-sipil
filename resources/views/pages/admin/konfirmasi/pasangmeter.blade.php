@@ -139,7 +139,7 @@
                                     <select name="type_pembayaran" class="form-control shadow {{ $errors->has('type_pembayaran') ? 'is-invalid' : '' }}" id="tp">
                                         <option selected disabled>-- Pilih Type Pembayaran --</option>
                                         <option value="dp">Down Payment (DP)</option>
-                                        <option value="pelunasan">Pelunasan</option>
+                                        {{--  <option value="pelunasan">Pelunasan</option>  --}}
                                     </select>
                                     @error('type_pembayaran')
                                         <small class="text-danger">{{ $message }}</small>

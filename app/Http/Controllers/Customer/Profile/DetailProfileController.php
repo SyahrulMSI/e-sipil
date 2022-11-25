@@ -40,7 +40,7 @@ class DetailProfileController extends Controller
     {
         $request->validate([
             'profile'   =>  'nullable|mimetypes:png,jpg,jpeg,svg',
-            'npwp'      =>  'nullable|max:16',
+            'npwp'      =>  'nullable|max:12',
             'jenis_kelamin' => 'nullable',
             'kelurahan' =>  'required',
             'kecamatan' =>  'required',

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Transaksi;
 use Alert;
-use App\Models\Service;
+use App\Models\TambahDaya;
 use App\Models\User;
 
 class KonfirmasiTambahDayaController extends Controller
@@ -18,9 +18,10 @@ class KonfirmasiTambahDayaController extends Controller
      */
     public function index($id)
     {
-        $td = Service::where('id', $id)->first();
+        $td = TambahDaya::where('id', $id)->first();
 
         $user = User::where('id', $td->id_user)->first();
+
 
         $data = array(
             'title' =>  'Konfirmasi Tambah Daya',
@@ -47,22 +48,22 @@ class KonfirmasiTambahDayaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
         $request->validate([
             'total_bayar'   =>  'required',
             'type_pembayaran'   =>  'required'
         ]);
 
-        PemasanganBaru::where('id', $id)->update([
-            'status_permohonan' =>  1
+        TambahDaya::where('id', $id)->update([
+            'status_permohonan' =>  2
         ]);
 
-        $pb = PemasanganBaru::where('id', $id)->first();
+        $td = TambahDaya::where('id', $id)->first();
 
         $result = Transaksi::create([
-            'id_user'   =>  $pb->id_user,
-            'id_pemasangan_baru'    => $pb->id,
+            'id_user'   =>  $td->id_user,
+            'id_tambah_daya'    => $td->id,
             'total_bayar'   =>  $request->total_bayar,
             'type_pembayaran'   =>  $request->type_pembayaran,
             'status'    =>  'WAITING',

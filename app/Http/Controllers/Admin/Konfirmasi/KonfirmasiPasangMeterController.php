@@ -56,7 +56,7 @@ class KonfirmasiPasangMeterController extends Controller
         ]);
 
         PemasanganBaru::where('id', $id)->update([
-            'status_permohonan' =>  1
+            'status_permohonan' =>  2
         ]);
 
         $pb = PemasanganBaru::where('id', $id)->first();

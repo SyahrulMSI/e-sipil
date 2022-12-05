@@ -114,8 +114,11 @@
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="form-group mb-3">
-                                                    <label for="nl">Jumlh Titik:</label>
-                                                    <input type="text" name="jt" class="form-control shadow" readonly value="{{ $ib->jumlah_titik }}">
+                                                    <label for="nl">Jumlah Titik:</label>
+                                                    <input type="text" name="jumlah_titik" class="form-control shadow" value="{{ $ib->jumlah_titik }}">
+                                                    @error('jumlah_titik')
+                                                        <small class="text-danger">{{ $message }}</small>
+                                                    @enderror
                                                 </div>
                                             </div>
                                         </div>

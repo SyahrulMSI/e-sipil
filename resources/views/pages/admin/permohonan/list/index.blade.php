@@ -73,11 +73,13 @@
                                                                 <td>
                                                                     @if ($pb->status_permohonan == 1)
                                                                         <span class="badge badge-danger">Menuggu Konfirmasi</span>
+                                                                    @elseif($pb->status_permohonan == 2)
+                                                                        <span class="badge badge-success">Terkonfirmasi</span>
                                                                     @endif
                                                                 </td>
                                                                 <td>
                                                                     <div class="btn-group">
-                                                                        <button class="btn btn-warning btn-sm rounded"><i class="fa fa-pencil"></i></button>
+                                                                        <a href="{{ route('admin.pasang.meter', $pb->id) }}" class="btn btn-warning btn-sm rounded"><i class="fa fa-pencil"></i></a>
                                                                         &nbsp;
                                                                         <button class="btn btn-danger btn-sm rounded"><i class="fa fa-trash"></i></button>
                                                                     </div>
@@ -147,13 +149,13 @@
                                                                 <td>
                                                                     @if ($td->status_permohonan == 1)
                                                                         <span class="badge badge-danger">Menunggu Konfirmasi</span>
-                                                                    @else
-
+                                                                    @elseif($td->status_permohonan == 2)
+                                                                        <span class="badge badge-success">Terkonfirmasi</span>
                                                                     @endif
                                                                 </td>
                                                                 <td>
                                                                     <div class="btn-group">
-                                                                        <button class="btn btn-warning btn-sm rounded"><i class="fa fa-pencil"></i></button>
+                                                                        <a href="{{ route('admin.tambah.daya', $td->id) }}" class="btn btn-warning btn-sm rounded"><i class="fa fa-pencil"></i></a>
                                                                         &nbsp;
                                                                         <button class="btn btn-danger btn-sm rounded"><i class="fa fa-trash"></i></button>
                                                                     </div>
@@ -236,26 +238,28 @@
                                                                     Rp. {{ number_format($tot, 0) }}
                                                                 </td>
                                                                 <td>
-                                                                    @if ($ib->status_permohonan = 1)
+                                                                    @if ($ib->status_permohonan == 1)
                                                                         <span class="badge badge-danger">Menunggu Konfirmasi</span>
+                                                                    @elseif($ib->status_permohonan == 2)
+                                                                        <span class="badge badge-success">Terkonfirmasi</span>
                                                                     @endif
                                                                 </td>
                                                                 <td>
                                                                     <div class="btn-group">
-                                                                        <button class="btn btn-warning btn-sm rounded"><i class="fa fa-pencil"></i></button>
+                                                                        <a href="{{ route('admin.instalasi.bangunan', $ib->id) }}" class="btn btn-warning btn-sm rounded"><i class="fa fa-pencil"></i></a>
                                                                         &nbsp;
                                                                         <button class="btn btn-danger btn-sm rounded"><i class="fa fa-trash"></i></button>
                                                                     </div>
-                                                                    @if ($ib->jumlah_titik != null || $ib->jumlah_titik != "")
+                                                                    {{--  @if ($ib->jumlah_titik != null || $ib->jumlah_titik != "")  --}}
                                                                         <div class="form-group mt-2">
                                                                             @if ($ib->Transaksi()->exists())
                                                                             <button class="btn btn-success btn-sm rounded" disabled>Konfimasi</button>
                                                                             @else
-                                                                            <a href="{{ route('admin.list_permohonan.k_instalasi_bangunan.index', $td->id) }}" class="btn btn-success btn-sm rounded">Konfirmasi</a>
+                                                                            <a href="{{ route('admin.list_permohonan.k_instalasi_bangunan.index', $ib->id) }}" class="btn btn-success btn-sm rounded">Konfirmasi</a>
                                                                             @endif
                                                                             &nbsp;
                                                                         </div>
-                                                                    @endif
+                                                                    {{--  @endif  --}}
                                                                 </td>
                                                             </tr>
                                                         @php
@@ -322,8 +326,8 @@
                                                                 <td>
                                                                     @if ($sm->status_permohonan == 1)
                                                                         <span class="badge badge-danger">Menunggu Konfirmasi</span>
-                                                                    @else
-
+                                                                    @elseif($pb->status_permohonan == 2)
+                                                                        <span class="badge badge-success">Terkonfirmasi</span>
                                                                     @endif
                                                                 </td>
                                                                 <td>
@@ -405,8 +409,8 @@
                                                                 <td>
                                                                     @if ($lb->status_permohonan == 1)
                                                                         <span class="badge badge-danger">Menunggu Konfirmasi</span>
-                                                                    @else
-
+                                                                    @elseif($pb->status_permohonan == 2)
+                                                                        <span class="badge badge-success">Terkonfirmasi</span>
                                                                     @endif
                                                                 </td>
                                                                 <td>

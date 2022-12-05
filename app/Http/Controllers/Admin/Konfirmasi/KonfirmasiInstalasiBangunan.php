@@ -50,11 +50,13 @@ class KonfirmasiInstalasiBangunan extends Controller
     public function store(Request $request, $id)
     {
         $request->validate([
+            'jumlah_titik'  =>  'required',
             'total_bayar'   =>  'required',
             'type_pembayaran'   =>  'required'
         ]);
 
         InstalasiBangunan::where('id', $id)->update([
+            'jumlah_titik'   =>  $request->jumlah_titik,
             'status_permohonan' =>  2
         ]);
 

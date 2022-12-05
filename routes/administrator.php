@@ -31,6 +31,8 @@ use App\Http\Controllers\Admin\Konfirmasi\KonfirmasiServiceListrikBangunanContro
 use App\Http\Controllers\Admin\Konfirmasi\KonfirmasiTambahDayaController;
 use App\Http\Controllers\Admin\Konfirmasi\KonfirmasiServiceMeterListrikController;
 
+use App\Http\Controllers\Admin\Permohonan\EditController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -73,6 +75,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::resource('list_permohonan.k_service_listrik_bangunan', KonfirmasiServiceListrikBangunanController::class)->shallow();
         Route::resource('list_permohonan.k_tambah_daya', KonfirmasiTambahDayaController::class)->shallow();
         Route::resource('list_permohonan.k_service_meter_listrik', KonfirmasiServiceMeterListrikController::class)->shallow();
+
+        Route::get('edit_instalasi_baru/{id}', [EditController::class, 'instalasiBangunan'])->name('instalasi.bangunan');
+        Route::put('update_instalasi_baru/{id}', [EditController::class, 'instalasiBangunanUpdate'])->name('instalasi.bangunan.update');
+
+        Route::get('edit_pasang_meter/{id}', [EditController::class, 'pasangMeter'])->name('pasang.meter');
+        Route::put('update_pasang_meter/{id}', [EditController::class, 'pasangMeterUpdate'])->name('pasang.meter.update');
+
+        Route::get('edit_tambah_daya/{id}', [EditController::class, 'tambahDaya'])->name('tambah.daya');
+        Route::put('update_tambah_daya/{id}', [EditController::class, 'tambahDayaUpdate'])->name('tambah.daya.update');
 
 
     });

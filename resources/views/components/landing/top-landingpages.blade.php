@@ -29,30 +29,46 @@
                     <a href="#screenshots">Complain</a>
                 </li>
                 <li class="scrollToLink">
-                    <a href="#news">News</a>
+                    @if(!empty(Auth::user()))
+                    <a href="#news">{{ Auth::user()->nama_lengkap }}</a>
+                    @else
+                    <a href="#news">Masuk / Daftar</a>
+                    @endif
                     <ul class="sub-menu">
-                        <li><a href="news.html">News Page</a></li>
-                        <li><a href="news-details.html">News Details</a></li>
+                        @if (!empty(Auth::user()->role))
+
+                        {{--  <div class="right-side-box">  --}}
+                            @if (Auth::user()->role == 1)
+                            <li>  <a href="{{ route('admin.dashboard.index') }}"><span>Dashboard</span></a></li>
+                            @elseif (Auth::user()->role == 2)
+                             <li> <a href="#"><span>Dashboard</span></a></li>
+                            @elseif(    Auth::user()->role == 3)
+                                <li><a href="{{ route('customer.dashboard.index') }}"><span>Dashboard</span></a></li>
+                            @endif
+                        {{--  </div>  --}}
+                        <!-- /.right-side-box -->
+
+                    @else
+
+                        {{--  <div class="right-side-box">  --}}
+                               <li>
+                                <a href="#"  data-toggle="modal" data-target="#login"><span>Masuk</span></a>
+                               </li>
+                               <li>
+                                <a href="#"  data-toggle="modal" data-target="#daftar"><span>Daftar</span></a>
+                               </li>
+                        {{--  </div>  --}}
+                            <!-- /.right-side-box -->
+
+                    @endif
                     </ul><!-- /.sub-menu -->
                 </li>
+
+
+
             </ul>
         </div><!-- /.navbar-collapse -->
-        @if (!empty(Auth::user()->role))
-        <div class="right-side-box">
-            @if (Auth::user()->role == 1)
-                <a href="{{ route('admin.dashboard.index') }}" class="thm-btn header__cta-btn" type="button"><span>Dashboard</span></a>
-            @elseif (Auth::user()->role == 2)
-            <a href="#" class="thm-btn header__cta-btn" type="button"><span>Dashboard</span></a>
-            @elseif(    Auth::user()->role == 3)
-                <a href="{{ route('customer.dashboard.index') }}" class="thm-btn header__cta-btn" type="button"><span>Dashboard</span></a>
-            @endif
-        </div><!-- /.right-side-box -->
-        @else
-            <div class="right-side-box">
-                <button class="thm-btn header__cta-btn" type="button" data-toggle="modal" data-target="#login"><span>Masuk</span></button>
-                <button class="thm-btn header__cta-btn" type="button" data-toggle="modal" data-target="#daftar"><span>Daftar</span></button>
-            </div><!-- /.right-side-box -->
-        @endif
+
 
     </div>
     <!-- /.container -->

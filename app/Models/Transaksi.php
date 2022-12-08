@@ -54,4 +54,9 @@ class Transaksi extends Model
     {
         return $this->belongsTo(InstalasiBangunan::class, 'id_instalsi', 'id');
     }
+
+    public function Service()
+    {
+        return $this->belongsTo(InstalasiBangunan::class, 'id_instalsi', 'id');
+    }
 }

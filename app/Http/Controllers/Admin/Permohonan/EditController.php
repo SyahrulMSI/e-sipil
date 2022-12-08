@@ -7,7 +7,9 @@ use App\Models\InstalasiBangunan;
 use App\Models\PemasanganBaru;
 use Illuminate\Http\Request;
 use Alert;
+use App\Models\Service;
 use App\Models\TambahDaya;
+use App\Models\JenisKerusakan;
 
 class EditController extends Controller
 {
@@ -128,14 +130,154 @@ class EditController extends Controller
 
     public function Slb(Request $request, $id)
     {
+        $data = array(
+            'title' =>  'Edit Service Listrik Bangunan',
+            'slb'    =>  Service::findOrFail($id)
+        );
 
+        return view('pages.admin.permohonan.edit.slb', $data);
     }
+
+    public function slbUpdate(Request $request, $id)
+    {
+        $request->validate([
+            'kerusakan'     =>  'required',
+            'deskripsi'     =>  'required',
+            'alamat'        =>  'required'
+        ]);
+
+            $alamat = $request->alamat;
+            $kerusakan = $request->kerusakan;
+            $deskripsi = $request->deskripsi;
+
+           //query add data to service table
+           $service = Service::find($id);
+           $service->alamat = $alamat;
+           $service->update();
+
+           //get service id current create
+
+           //add to table jenis kerusakan
+           $jenis_kerusakan = JenisKerusakan::where('id_service', $id)->first();
+        //    $jenis_kerusakan->id_service = $id_service;
+           $jenis_kerusakan->kerusakan = $kerusakan;
+           $jenis_kerusakan->deskripsi = $deskripsi;
+           $jenis_kerusakan->update();
+
+           Alert::success('Success', 'Data Service Listrik Bangunan Berhasil di Update.');
+           return redirect()->route('admin.list_permohonan.index');
+    }
+
 
     public function Sml(Request $request, $id)
     {
+        $data = array(
+            'title' =>  'Edit Service Meter Listrik',
+            'sml'    =>  Service::findOrFail($id)
+        );
 
+        return view('pages.admin.permohonan.edit.sml', $data);
     }
 
+    public function smlUpdate(Request $request, $id)
+    {
+        $request->validate([
+            'kerusakan'     =>  'required',
+            'deskripsi'     =>  'required',
+            'alamat'        =>  'required'
+        ]);
+
+            $alamat = $request->alamat;
+            $kerusakan = $request->kerusakan;
+            $deskripsi = $request->deskripsi;
+
+           //query add data to service table
+           $service = Service::find($id);
+           $service->alamat = $alamat;
+           $service->update();
+
+           //get service id current create
+
+           //add to table jenis kerusakan
+           $jenis_kerusakan = JenisKerusakan::where('id_service', $id)->first();
+        //    $jenis_kerusakan->id_service = $id_service;
+           $jenis_kerusakan->kerusakan = $kerusakan;
+           $jenis_kerusakan->deskripsi = $deskripsi;
+           $jenis_kerusakan->update();
+
+           Alert::success('Success', 'Data Service Meter Listrik Berhasil di Update.');
+           return redirect()->route('admin.list_permohonan.index');
+    }
+
+    public function pasangMeterDelete($id)
+    {
+        $result = PemasanganBaru::destroy($id);
+
+        if($result){
+            Alert::success('Success', 'Data berhasil di hapus.');
+            return redirect()->route('admin.list_permohonan.index');
+        } else {
+            Alert::error('Error', 'Data gagal di hapus.');
+            return redirect()->route('admin.list_permohonan.index');
+        }
+    }
+
+    public function tambahDayaDelete($id)
+    {
+        $result = TambahDaya::destroy($id);
+
+        if($result){
+            Alert::success('Success', 'Data berhasil di hapus.');
+            return redirect()->route('admin.list_permohonan.index');
+        } else {
+            Alert::error('Error', 'Data gagal di hapus.');
+            return redirect()->route('admin.list_permohonan.index');
+        }
+    }
+
+    public function instalasiBaruDelete($id)
+    {
+        $result = InstalasiBangunan::destroy($id);
+
+        if($result){
+            Alert::success('Success', 'Data berhasil di hapus.');
+            return redirect()->route('admin.list_permohonan.index');
+        } else {
+            Alert::error('Error', 'Data gagal di hapus.');
+            return redirect()->route('admin.list_permohonan.index');
+        }
+    }
+
+    public function smlDelete($id)
+    {
+        $result = Service::destroy($id);
+                    $jk = JenisKerusakan::where('id_service',$id)->first();
+                    JenisKerusakan::destroy($jk->id);
+
+        if($result){
+            Alert::success('Success', 'Data berhasil di hapus.');
+            return redirect()->route('admin.list_permohonan.index');
+        } else {
+            Alert::error('Error', 'Data gagal di hapus.');
+            return redirect()->route('admin.list_permohonan.index');
+        }
+    }
+
+    public function slbDelete($id)
+    {
+        $result = Service::destroy($id);
+
+        $jk = JenisKerusakan::where('id_service',$id)->first();
+                    JenisKerusakan::destroy($jk->id);
+
+        if($result){
+            Alert::success('Success', 'Data berhasil di hapus.');
+            return redirect()->route('admin.list_permohonan.index');
+        } else {
+            Alert::error('Error', 'Data gagal di hapus.');
+            return redirect()->route('admin.list_permohonan.index');
+        }
+    }
 
 
 }

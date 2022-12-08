@@ -81,7 +81,38 @@
                                                                     <div class="btn-group">
                                                                         <a href="{{ route('admin.pasang.meter', $pb->id) }}" class="btn btn-warning btn-sm rounded"><i class="fa fa-pencil"></i></a>
                                                                         &nbsp;
-                                                                        <button class="btn btn-danger btn-sm rounded"><i class="fa fa-trash"></i></button>
+                                                                        <button class="btn btn-danger btn-sm rounded" type="button" data-toggle="modal" data-target="#deletepmb{{ $pb->id }}"><i class="fa fa-trash"></i></button>
+
+                                                                        <div class="modal fade" id="deletepmb{{ $pb->id }}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                                            <div class="modal-dialog">
+                                                                              <div class="modal-content">
+                                                                                <div class="modal-header bg-danger font-weight-bold text-white">
+                                                                                  <h5 class="modal-title" id="staticBackdropLabel">Konfirmasi Hapus Data</h5>
+                                                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                    <span aria-hidden="true">&times;</span>
+                                                                                  </button>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                  <div class="row">
+                                                                                    <div class="col-lg-12">
+                                                                                        <div class="alert alert-warning" role="alert">
+                                                                                            <h6>Apakah anda yakin ingin meghapus data ini ?</h6>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                  </div>
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                  <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                                                                                    <form action="{{ route('admin.pmb.delete', $pb->id) }}" method="POST" enctype="multipart/form-data">
+                                                                                        @csrf
+                                                                                        @method('DELETE')
+                                                                                        <button type="submit" class="btn btn-primary btn-sm">Hapus</button>
+                                                                                    </form>
+                                                                                </div>
+                                                                              </div>
+                                                                            </div>
+                                                                          </div>
+
                                                                     </div>
                                                                     <div class="form-group mt-2">
                                                                         @if ($pb->Transaksi()->exists())
@@ -157,7 +188,37 @@
                                                                     <div class="btn-group">
                                                                         <a href="{{ route('admin.tambah.daya', $td->id) }}" class="btn btn-warning btn-sm rounded"><i class="fa fa-pencil"></i></a>
                                                                         &nbsp;
-                                                                        <button class="btn btn-danger btn-sm rounded"><i class="fa fa-trash"></i></button>
+                                                                        <button class="btn btn-danger btn-sm rounded" type="button" data-toggle="modal" data-target="#deletetd{{ $td->id }}"><i class="fa fa-trash"></i></button>
+
+                                                                        <div class="modal fade" id="deletetd{{ $td->id }}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                                            <div class="modal-dialog">
+                                                                              <div class="modal-content">
+                                                                                <div class="modal-header bg-danger font-weight-bold text-white">
+                                                                                  <h5 class="modal-title" id="staticBackdropLabel">Konfirmasi Hapus Data</h5>
+                                                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                    <span aria-hidden="true">&times;</span>
+                                                                                  </button>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                  <div class="row">
+                                                                                    <div class="col-lg-12">
+                                                                                        <div class="alert alert-warning" role="alert">
+                                                                                            <h6>Apakah anda yakin ingin meghapus data ini ?</h6>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                  </div>
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                  <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                                                                                    <form action="{{ route('admin.td.delete', $td->id) }}" method="POST" enctype="multipart/form-data">
+                                                                                        @csrf
+                                                                                        @method('DELETE')
+                                                                                        <button type="submit" class="btn btn-primary btn-sm">Hapus</button>
+                                                                                    </form>
+                                                                                </div>
+                                                                              </div>
+                                                                            </div>
+                                                                          </div>
                                                                     </div>
                                                                     <div class="form-group mt-2">
                                                                         @if ($td->Transaksi()->exists())
@@ -248,7 +309,40 @@
                                                                     <div class="btn-group">
                                                                         <a href="{{ route('admin.instalasi.bangunan', $ib->id) }}" class="btn btn-warning btn-sm rounded"><i class="fa fa-pencil"></i></a>
                                                                         &nbsp;
-                                                                        <button class="btn btn-danger btn-sm rounded"><i class="fa fa-trash"></i></button>
+
+
+                                                                        <button class="btn btn-danger btn-sm rounded" type="button" data-toggle="modal" data-target="#deleteib{{ $ib->id }}"><i class="fa fa-trash"></i></button>
+
+                                                                        <div class="modal fade" id="deleteib{{ $ib->id }}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                                            <div class="modal-dialog">
+                                                                              <div class="modal-content">
+                                                                                <div class="modal-header bg-danger font-weight-bold text-white">
+                                                                                  <h5 class="modal-title" id="staticBackdropLabel">Konfirmasi Hapus Data</h5>
+                                                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                    <span aria-hidden="true">&times;</span>
+                                                                                  </button>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                  <div class="row">
+                                                                                    <div class="col-lg-12">
+                                                                                        <div class="alert alert-warning" role="alert">
+                                                                                            <h6>Apakah anda yakin ingin meghapus data ini ?</h6>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                  </div>
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                  <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                                                                                    <form action="{{ route('admin.ib.delete', $td->id) }}" method="POST" enctype="multipart/form-data">
+                                                                                        @csrf
+                                                                                        @method('DELETE')
+                                                                                        <button type="submit" class="btn btn-primary btn-sm">Hapus</button>
+                                                                                    </form>
+                                                                                </div>
+                                                                              </div>
+                                                                            </div>
+                                                                          </div>
+
                                                                     </div>
                                                                     {{--  @if ($ib->jumlah_titik != null || $ib->jumlah_titik != "")  --}}
                                                                         <div class="form-group mt-2">
@@ -332,9 +426,39 @@
                                                                 </td>
                                                                 <td>
                                                                     <div class="btn-group">
-                                                                        <button class="btn btn-warning btn-sm rounded"><i class="fa fa-pencil"></i></button>
+                                                                        <a href="{{ route('admin.sml', $sm->id) }}" class="btn btn-warning btn-sm rounded"><i class="fa fa-pencil"></i></a>
                                                                         &nbsp;
-                                                                        <button class="btn btn-danger btn-sm rounded"><i class="fa fa-trash"></i></button>
+                                                                        <button class="btn btn-danger btn-sm rounded" type="button" data-toggle="modal" data-target="#deletesml{{ $sm->id }}"><i class="fa fa-trash"></i></button>
+
+                                                                        <div class="modal fade" id="deletesml{{ $sm->id }}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                                            <div class="modal-dialog">
+                                                                              <div class="modal-content">
+                                                                                <div class="modal-header bg-danger font-weight-bold text-white">
+                                                                                  <h5 class="modal-title" id="staticBackdropLabel">Konfirmasi Hapus Data</h5>
+                                                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                    <span aria-hidden="true">&times;</span>
+                                                                                  </button>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                  <div class="row">
+                                                                                    <div class="col-lg-12">
+                                                                                        <div class="alert alert-warning" role="alert">
+                                                                                            <h6>Apakah anda yakin ingin meghapus data ini ?</h6>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                  </div>
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                  <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                                                                                    <form action="{{ route('admin.sml.delete', $sm->id) }}" method="POST" enctype="multipart/form-data">
+                                                                                        @csrf
+                                                                                        @method('DELETE')
+                                                                                        <button type="submit" class="btn btn-primary btn-sm">Hapus</button>
+                                                                                    </form>
+                                                                                </div>
+                                                                              </div>
+                                                                            </div>
+                                                                          </div>
                                                                     </div>
                                                                     <div class="form-group mt-2">
                                                                         @if ($sm->Transaksi()->exists())
@@ -415,9 +539,42 @@
                                                                 </td>
                                                                 <td>
                                                                     <div class="btn-group">
-                                                                        <button class="btn btn-warning btn-sm rounded"><i class="fa fa-pencil"></i></button>
+                                                                        <a href="{{ route('admin.sml', $lb->id) }}" class="btn btn-warning btn-sm rounded"><i class="fa fa-pencil"></i></a>
                                                                         &nbsp;
-                                                                        <button class="btn btn-danger btn-sm rounded"><i class="fa fa-trash"></i></button>
+
+
+                                                                        <button class="btn btn-danger btn-sm rounded" type="button" data-toggle="modal" data-target="#deleteslb{{ $lb->id }}"><i class="fa fa-trash"></i></button>
+
+                                                                        <div class="modal fade" id="deleteslb{{ $lb->id }}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                                            <div class="modal-dialog">
+                                                                              <div class="modal-content">
+                                                                                <div class="modal-header bg-danger font-weight-bold text-white">
+                                                                                  <h5 class="modal-title" id="staticBackdropLabel">Konfirmasi Hapus Data</h5>
+                                                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                    <span aria-hidden="true">&times;</span>
+                                                                                  </button>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                  <div class="row">
+                                                                                    <div class="col-lg-12">
+                                                                                        <div class="alert alert-warning" role="alert">
+                                                                                            <h6>Apakah anda yakin ingin meghapus data ini ?</h6>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                  </div>
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                  <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                                                                                    <form action="{{ route('admin.slb.delete', $lb->id) }}" method="POST" enctype="multipart/form-data">
+                                                                                        @csrf
+                                                                                        @method('DELETE')
+                                                                                        <button type="submit" class="btn btn-primary btn-sm">Hapus</button>
+                                                                                    </form>
+                                                                                </div>
+                                                                              </div>
+                                                                            </div>
+                                                                          </div>
+
                                                                     </div>
                                                                     <div class="form-group mt-2">
                                                                         @if ($lb->Transaksi()->exists())

@@ -78,12 +78,23 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::get('edit_instalasi_baru/{id}', [EditController::class, 'instalasiBangunan'])->name('instalasi.bangunan');
         Route::put('update_instalasi_baru/{id}', [EditController::class, 'instalasiBangunanUpdate'])->name('instalasi.bangunan.update');
+        Route::delete('delete_instalasi_baru/{id}', [EditController::class, 'instalasiBaruDelete'])->name('ib.delete');
 
         Route::get('edit_pasang_meter/{id}', [EditController::class, 'pasangMeter'])->name('pasang.meter');
         Route::put('update_pasang_meter/{id}', [EditController::class, 'pasangMeterUpdate'])->name('pasang.meter.update');
+        Route::delete('delete_pmb/{id}', [EditController::class, 'pasangMeterDelete'])->name('pmb.delete');
 
         Route::get('edit_tambah_daya/{id}', [EditController::class, 'tambahDaya'])->name('tambah.daya');
         Route::put('update_tambah_daya/{id}', [EditController::class, 'tambahDayaUpdate'])->name('tambah.daya.update');
+        Route::delete('delete_td/{id}', [EditController::class, 'tambahDayaDelete'])->name('td.delete');
+
+        Route::get('edit_slb/{id}', [EditController::class, 'Slb'])->name('slb');
+        Route::put('update_slb/{id}', [EditController::class, 'slbUpdate'])->name('slb.update');
+        Route::delete('delete_slb/{id}', [EditController::class, 'slbDelete'])->name('slb.delete');
+
+        Route::get('edit_sml/{id}', [EditController::class, 'Sml'])->name('sml');
+        Route::put('update_sml/{id}', [EditController::class,  'smlUpdate'])->name('sml.update');
+        Route::delete('delete_sml/{id}', [EditController::class,  'smlDelete'])->name('sml.delete');
 
 
     });

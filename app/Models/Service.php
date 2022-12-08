@@ -44,6 +44,6 @@ class Service extends Model
 
     public function Transaksi()
     {
-        return $this->hasMany(Transaksi::class, 'id_instalasi', 'id');
+        return $this->hasMany(Transaksi::class, 'id_service', 'id');
     }
 }

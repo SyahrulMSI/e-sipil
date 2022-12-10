@@ -41,5 +41,24 @@ class Tugas extends Model
         return $this->belongsTo(User::class, 'id_pelanggan', 'id');
     }
 
+    public function TambahDaya()
+    {
+        return $this->belongsTo(TambahDaya::class, 'id_tambah_daya', 'id');
+    }
+
+    public function PemasanganBaru()
+    {
+        return view(PemasanganBaru::class, 'id_pemasangan_baru', 'id');
+    }
+
+    public function Instalasi()
+    {
+        return $this->belongsTo(InstalasiBangunan::class, 'id_instalasi', 'id');
+    }
+
+    public function Service()
+    {
+        return $this->belongsTo(Service::class, 'id_service', 'id');
+    }
 
 }

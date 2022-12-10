@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\PemasanganBaru;
 use App\Models\User;
+use App\Models\Tugas;
+use Alert;
 
 class AddPetugasPmbController extends Controller
 {
@@ -22,7 +24,9 @@ class AddPetugasPmbController extends Controller
         $data = array(
             'title' => 'Tambah Petugas Pemasangan Meter Baru: ' . $pmb->nomor_registrasi,
             'pmb'   =>  $pmb,
-            'petugas'   =>  User::where('role', 2)->whereDoesntHave('PemasanganBaru')->get()
+            'petugas'   =>  User::where('role', 2)->orderBy('id', 'DESC')->get(),
+            'tugas' =>  Tugas::where('id_pemasangan_baru', $id)->get()
+            //status 1 == selesai
         );
 
         return view('pages.admin.permohonan.add_petugas.pmb', $data);
@@ -44,9 +48,31 @@ class AddPetugasPmbController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        $request->validate([
+            'id_petugas'    =>  'required'
+        ]);
+
+        $pmb = PemasanganBaru::where('id', $id)->first();
+
+        $data = array(
+            'id_pelanggan'  => $pmb->id_user,
+            'id_petugas'    =>  $request->id_petugas,
+            'id_pemasangan_baru'    =>  $id,
+            'status'    =>  0
+        );
+
+        $result = Tugas::create($data);
+
+        if($result){
+            Alert::success('Success', 'Data berhasil di simpan');
+            return redirect()->route('admin.list_permohonan.add_petugas_pmb.index', $id);
+        } else {
+            Alert::error('Error', 'Data gagal di simpan');
+            return redirect()->route('admin.list_permohonan.add_petugas_pmb.index', $id);
+        }
+
     }
 
     /**
@@ -91,6 +117,17 @@ class AddPetugasPmbController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pmb = Tugas::where('id', $id)->first();
+
+
+        $result = Tugas::destroy($id);
+
+        if($result){
+            Alert::success('Success', 'Data berhasil di hapus');
+            return redirect()->route('admin.list_permohonan.add_petugas_pmb.index', $pmb->id_pemasangan_baru);
+        } else {
+            Alert::error('Error', 'Data gagal di hapus');
+            return redirect()->route('admin.list_permohonan.add_petugas_pmb.index', $pmb->id_pemasangan_baru);
+        }
     }
 }

@@ -33,6 +33,11 @@ use App\Http\Controllers\Admin\Konfirmasi\KonfirmasiServiceMeterListrikControlle
 
 use App\Http\Controllers\Admin\Permohonan\EditController;
 
+use App\Http\Controllers\Admin\Permohonan\Petugas\AddPetugasPmbController;
+use App\Http\Controllers\Admin\Permohonan\Petugas\AddPetugasTdController;
+use App\Http\Controllers\Admin\Permohonan\Petugas\AddPetugasIbController;
+use App\Http\Controllers\Admin\Permohonan\Petugas\AddPetugasServiceController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -95,6 +100,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get('edit_sml/{id}', [EditController::class, 'Sml'])->name('sml');
         Route::put('update_sml/{id}', [EditController::class,  'smlUpdate'])->name('sml.update');
         Route::delete('delete_sml/{id}', [EditController::class,  'smlDelete'])->name('sml.delete');
+
+        Route::resource('add_petugas_pmb', AddPetugasPmbController::class);
+        Route::resource('add_petugas_td', AddPetugasTdController::class);
+        Route::resource('add_petugas_ib', AddPetugasIbController::class);
+        Route::resource('add_petugas_service', AddPetugasServiceController::class);
 
 
     });

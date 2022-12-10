@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin\Permohonan\Petugas;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\PemasanganBaru;
+use App\Models\User;
 
 class AddPetugasPmbController extends Controller
 {
@@ -12,9 +14,18 @@ class AddPetugasPmbController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+
+        $pmb = PemasanganBaru::where('id', $id)->first();
+
+        $data = array(
+            'title' => 'Tambah Petugas Pemasangan Meter Baru: ' . $pmb->nomor_registrasi,
+            'pmb'   =>  $pmb,
+            'petugas'   =>  User::where('role', 2)->whereDoesntHave('PemasanganBaru')->get()
+        );
+
+        return view('pages.admin.permohonan.add_petugas.pmb', $data);
     }
 
     /**

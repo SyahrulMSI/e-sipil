@@ -30,4 +30,16 @@ class Tugas extends Model
         'created_at',
         'updated_at'
     ];
+
+    public function Petugas()
+    {
+        return $this->belongsTo(User::class, 'id_petugas', 'id');
+    }
+
+    public function Pelanggan()
+    {
+        return $this->belongsTo(User::class, 'id_pelanggan', 'id');
+    }
+
+
 }

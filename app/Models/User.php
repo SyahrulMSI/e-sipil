@@ -74,5 +74,15 @@ class User extends Authenticatable
             return $this->hasMany(DetailUser::class, 'id_user', 'id');
         }
 
+        public function Petugas()
+        {
+        return $this->hasMany(Tugas::class, 'id_petugas', 'id0');
+        }
+
+        public function Pelanggan()
+        {
+            return $this->hasMany(Tugas::class, 'id_pelanggan', 'id');
+        }
+
 
 }

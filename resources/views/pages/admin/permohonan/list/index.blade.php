@@ -116,7 +116,7 @@
                                                                     </div>
                                                                     <div class="form-group mt-2">
                                                                         @if ($pb->Transaksi()->exists())
-                                                                        <a href="#" class="btn btn-primary btn-sm rounded font-weight-bold"><i class="fa fa-plus-circle"></i> Tambah Petugas</a>
+                                                                        <a href="{{ route('admin.list_permohonan.add_petugas_pmb.index', $pb->id) }}" class="btn btn-primary btn-sm rounded font-weight-bold"><i class="fa fa-plus-circle"></i> Tambah Petugas</a>
                                                                         @else
                                                                         <a href="{{ route('admin.list_permohonan.k_pasang_meter.index', $pb->id) }}" class="btn btn-success btn-sm rounded">Konfirmasi</a>
                                                                         @endif

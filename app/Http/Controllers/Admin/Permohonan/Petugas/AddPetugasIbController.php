@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Admin\Permohonan\Petugas;
 
 use App\Http\Controllers\Controller;
+use App\Models\InstalasiBangunan;
+use App\Models\Tugas;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Alert;
 
 class AddPetugasIbController extends Controller
 {
@@ -12,9 +16,19 @@ class AddPetugasIbController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+        $ib = InstalasiBangunan::where('id', $id)->first();
+
+        $data = array(
+            'title' => 'Tambah Petugas Instalasi Bangunan: ' . $ib->nomor_registrasi,
+            'ib'   =>  $ib,
+            'petugas'   =>  User::where('role', 2)->orderBy('id', 'DESC')->get(),
+            'tugas' =>  Tugas::where('id_instalasi', $id)->get()
+            //status 1 == selesai
+        );
+
+        return view('pages.admin.permohonan.add_petugas.ib', $data);
     }
 
     /**
@@ -33,9 +47,30 @@ class AddPetugasIbController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        $request->validate([
+            'id_petugas'    =>  'required'
+        ]);
+
+        $pmb = InstalasiBangunan::where('id', $id)->first();
+
+        $data = array(
+            'id_pelanggan'  => $pmb->id_user,
+            'id_petugas'    =>  $request->id_petugas,
+            'id_instalasi'    =>  $id,
+            'status'    =>  0
+        );
+
+        $result = Tugas::create($data);
+
+        if($result){
+            Alert::success('Success', 'Data berhasil di simpan');
+            return redirect()->route('admin.list_permohonan.add_petugas_ib.index', $id);
+        } else {
+            Alert::error('Error', 'Data gagal di simpan');
+            return redirect()->route('admin.list_permohonan.add_petugas_ib.index', $id);
+        }
     }
 
     /**
@@ -80,6 +115,17 @@ class AddPetugasIbController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $ib = InstalasiBangunan::where('id', $id)->first();
+
+
+        $result = Tugas::destroy($id);
+
+        if($result){
+            Alert::success('Success', 'Data berhasil di hapus');
+            return redirect()->route('admin.list_permohonan.add_petugas_ib.index', $ib->id_instalasi);
+        } else {
+            Alert::error('Error', 'Data gagal di hapus');
+            return redirect()->route('admin.list_permohonan.add_petugas_ib.index', $ib->id_instalasi);
+        }
     }
 }

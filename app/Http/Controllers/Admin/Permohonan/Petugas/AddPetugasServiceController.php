@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Admin\Permohonan\Petugas;
 
 use App\Http\Controllers\Controller;
+use App\Models\Service;
 use Illuminate\Http\Request;
+use Alert;
+use App\Models\Tugas;
+use App\Models\User;
 
 class AddPetugasServiceController extends Controller
 {
@@ -12,9 +16,19 @@ class AddPetugasServiceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+        $service = Service::where('id', $id)->first();
+
+        $data = array(
+            'title' => 'Tambah Petugas Service: ' . $service->nomor_registrasi,
+            'service'   =>  $service,
+            'petugas'   =>  User::where('role', 2)->orderBy('id', 'DESC')->get(),
+            'tugas' =>  Tugas::where('id_service', $id)->get()
+            //status 1 == selesai
+        );
+
+        return view('pages.admin.permohonan.add_petugas.service', $data);
     }
 
     /**
@@ -33,9 +47,30 @@ class AddPetugasServiceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        $request->validate([
+            'id_petugas'    =>  'required'
+        ]);
+
+        $pmb = Service::where('id', $id)->first();
+
+        $data = array(
+            'id_pelanggan'  => $pmb->id_user,
+            'id_petugas'    =>  $request->id_petugas,
+            'id_service'    =>  $id,
+            'status'    =>  0
+        );
+
+        $result = Tugas::create($data);
+
+        if($result){
+            Alert::success('Success', 'Data berhasil di simpan');
+            return redirect()->route('admin.list_permohonan.add_petugas_service.index', $id);
+        } else {
+            Alert::error('Error', 'Data gagal di simpan');
+            return redirect()->route('admin.list_permohonan.add_petugas_service.index', $id);
+        }
     }
 
     /**
@@ -80,6 +115,17 @@ class AddPetugasServiceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $s = Tugas::where('id', $id)->first();
+
+
+        $result = Tugas::destroy($id);
+
+        if($result){
+            Alert::success('Success', 'Data berhasil di hapus');
+            return redirect()->route('admin.list_permohonan.add_petugas_service.index', $s->id_service);
+        } else {
+            Alert::error('Error', 'Data gagal di hapus');
+            return redirect()->route('admin.list_permohonan.add_petugas_service.index', $s->id_service);
+        }
     }
 }

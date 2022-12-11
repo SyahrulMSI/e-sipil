@@ -25,7 +25,7 @@ class AddPetugasPmbController extends Controller
             'title' => 'Tambah Petugas Pemasangan Meter Baru: ' . $pmb->nomor_registrasi,
             'pmb'   =>  $pmb,
             'petugas'   =>  User::where('role', 2)->orderBy('id', 'DESC')->get(),
-            'tugas' =>  Tugas::where('id_pemasangan_baru', $id)->get()
+            'tugas' =>  Tugas::where('id_tambah_daya', $id)->get()
             //status 1 == selesai
         );
 
@@ -59,7 +59,7 @@ class AddPetugasPmbController extends Controller
         $data = array(
             'id_pelanggan'  => $pmb->id_user,
             'id_petugas'    =>  $request->id_petugas,
-            'id_pemasangan_baru'    =>  $id,
+            'id_tambah_daya'    =>  $id,
             'status'    =>  0
         );
 

@@ -10,7 +10,9 @@
                     <div class="card-body">
 
                         <div class="btn-group mb-3">
-                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#add"><i class="fa fa-plus"></i> Tambah Data</button>
+                            <a href="{{ route('admin.list_permohonan.index') }}" class="btn btn-warning btn-sm rounded"><i class="fa fa-arrow-circle-left"></i> Kembali</a>
+                            &nbsp;
+                            <button type="button" class="btn btn-success btn-sm rounded" data-toggle="modal" data-target="#add"><i class="fa fa-plus"></i> Tambah Data</button>
                         </div>
 
                         <div class="row">

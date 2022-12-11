@@ -222,7 +222,7 @@
                                                                     </div>
                                                                     <div class="form-group mt-2">
                                                                         @if ($td->Transaksi()->exists())
-                                                                        <button class="btn btn-success btn-sm rounded" disabled>Konfimasi</button>
+                                                                        <a href="{{ route('admin.list_permohonan.add_petugas_td.index', $td->id) }}" class="btn btn-primary btn-sm rounded font-weight-bold"><i class="fa fa-plus-circle"></i> Tambah Petugas</a>
                                                                         @else
                                                                         <a href="{{ route('admin.list_permohonan.k_tambah_daya.index', $td->id) }}" class="btn btn-success btn-sm rounded">Konfirmasi</a>
                                                                         @endif
@@ -347,7 +347,7 @@
                                                                     {{--  @if ($ib->jumlah_titik != null || $ib->jumlah_titik != "")  --}}
                                                                         <div class="form-group mt-2">
                                                                             @if ($ib->Transaksi()->exists())
-                                                                            <button class="btn btn-success btn-sm rounded" disabled>Konfimasi</button>
+                                                                            <a href="{{ route('admin.list_permohonan.add_petugas_ib.index', $ib->id) }}" class="btn btn-primary btn-sm rounded font-weight-bold"><i class="fa fa-plus-circle"></i> Tambah Petugas</a>
                                                                             @else
                                                                             <a href="{{ route('admin.list_permohonan.k_instalasi_bangunan.index', $ib->id) }}" class="btn btn-success btn-sm rounded">Konfirmasi</a>
                                                                             @endif
@@ -462,7 +462,7 @@
                                                                     </div>
                                                                     <div class="form-group mt-2">
                                                                         @if ($sm->Transaksi()->exists())
-                                                                        <button class="btn btn-success btn-sm rounded" disabled>Konfimasi</button>
+                                                                        <a href="{{ route('admin.list_permohonan.add_petugas_service.index', $sm->id) }}" class="btn btn-primary btn-sm rounded font-weight-bold"><i class="fa fa-plus-circle"></i> Tambah Petugas</a>
                                                                         @else
                                                                         <a href="{{ route('admin.list_permohonan.k_service_meter_listrik.index', $sm->id) }}" class="btn btn-success btn-sm rounded">Konfirmasi</a>
                                                                         @endif
@@ -578,7 +578,7 @@
                                                                     </div>
                                                                     <div class="form-group mt-2">
                                                                         @if ($lb->Transaksi()->exists())
-                                                                        <button class="btn btn-success btn-sm rounded" disabled>Konfimasi</button>
+                                                                        <a href="{{ route('admin.list_permohonan.add_petugas_service.index', $lb->id) }}" class="btn btn-primary btn-sm rounded font-weight-bold"><i class="fa fa-plus-circle"></i> Tambah Petugas</a>
                                                                         @else
                                                                         <a href="{{ route('admin.list_permohonan.k_service_listrik_bangunan.index', $lb->id) }}" class="btn btn-success btn-sm rounded">Konfirmasi</a>
                                                                         @endif

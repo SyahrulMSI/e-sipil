@@ -36,13 +36,13 @@ class Transaksi extends Model
 
     public function User()
     {
-        $this->belongsTo(User::class, 'id_user', 'id');
+        return $this->belongsTo(User::class, 'id_user', 'id');
     }
 
 
     public function TambahDaya()
     {
-        $this->belongsTo(TambahDaya::class, 'id_tambah_daya', 'id');
+        return $this->belongsTo(TambahDaya::class, 'id_tambah_daya', 'id');
     }
 
     public function PemasanganBaru()
@@ -52,11 +52,11 @@ class Transaksi extends Model
 
     public function InstalasiBangunan()
     {
-        return $this->belongsTo(InstalasiBangunan::class, 'id_instalsi', 'id');
+        return $this->belongsTo(InstalasiBangunan::class, 'id_instalasi', 'id');
     }
 
     public function Service()
     {
-        return $this->belongsTo(InstalasiBangunan::class, 'id_instalsi', 'id');
+        return $this->belongsTo(Service::class, 'id_service', 'id');
     }
 }

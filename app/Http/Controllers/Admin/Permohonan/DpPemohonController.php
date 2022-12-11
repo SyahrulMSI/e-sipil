@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Permohonan;
 
 use App\Http\Controllers\Controller;
+use App\Models\Transaksi;
 use Illuminate\Http\Request;
 
 class DpPemohonController extends Controller
@@ -15,7 +16,8 @@ class DpPemohonController extends Controller
     public function index()
     {
         $data = array(
-            'title'     =>  'Data Dp Pemohon'
+            'title'     =>  'Data Dp Pemohon',
+            'down_payment'        =>  Transaksi::where('type_pembayaran', 'dp')->orderBy('id', 'desc')->get()
         );
 
         return view('pages.admin.permohonan.dp.index', $data);

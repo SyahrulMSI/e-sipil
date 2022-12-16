@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Customer\Transaksi;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Transaksi;
+use Illuminate\Support\Facades\Auth;
 
 class DpController extends Controller
 {
@@ -15,7 +17,8 @@ class DpController extends Controller
     public function index()
     {
         $data = array(
-            'title'     =>      'Down Payment'
+            'title'         =>      'Down Payment',
+            'down_payment'     =>      Transaksi::where('id_user', Auth::user()->id)->where('type_pembayaran', 'dp')->orderBy('id', 'DESC')->get()
         );
 
         return view('pages.pelanggan.transaksi.dp.index', $data);

@@ -76,7 +76,7 @@
                                                             @if ($dp->satatu == 'SUCCESS')
                                                                 <a href="#" class="btn btn-info btn-sm"> <i class="fa fa-print"></i>  Invoice</a>
                                                             @else
-                                                                <button class="btn btn-info btn-sm" disabled> <i class="fa fa-print"></i>I  Invoice</button>
+                                                                <button class="btn btn-info btn-sm" disabled> <i class="fa fa-print"></i>  Invoice</button>
                                                             @endif
                                                         </div>
                                                     </td>

@@ -24,7 +24,7 @@ class AddPetugasTdController extends Controller
             'title' => 'Tambah Petugas Tambah Daya: ' . $td->nomor_registrasi,
             'td'   =>  $td,
             'petugas'   =>  User::where('role', 2)->orderBy('id', 'DESC')->get(),
-            'tugas' =>  Tugas::where('id_pemasangan_baru', $id)->get()
+            'tugas' =>  Tugas::where('id_tambah_daya', $id)->get()
             //status 1 == selesai
         );
 
@@ -58,7 +58,7 @@ class AddPetugasTdController extends Controller
         $data = array(
             'id_pelanggan'  => $pmb->id_user,
             'id_petugas'    =>  $request->id_petugas,
-            'id_pemasangan_baru'    =>  $id,
+            'id_tambah_daya'    =>  $id,
             'status'    =>  0
         );
 

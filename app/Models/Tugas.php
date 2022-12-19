@@ -19,6 +19,7 @@ class Tugas extends Model
         'id_pemasangan_baru',
         'id_instalasi',
         'id_service',
+        'status',
         'description',
         'deleted_at',
         'created_at',

@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Petugas;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Tugas;
+use Auth;
+use Alert;
 
 class ListTugasController extends Controller
 {
@@ -14,9 +17,14 @@ class ListTugasController extends Controller
      */
     public function index()
     {
+
+        $tugas = Tugas::where('id_petugas', Auth::user()->id)->orderBy('id', 'DESC')->get();
+
         $data = array(
-            'title'     =>  'List Tugas'
+            'title'     =>  'List Tugas',
+            'tugas'     =>  $tugas
         );
+
 
         return view('pages.petugas.list_tugas.index', $data);
     }
@@ -73,7 +81,16 @@ class ListTugasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $status = $request->status;
+
+        $result = Tugas::where('id', $id)->update([
+            'status'    =>  $status
+        ]);
+
+        if($result){
+            Alert::success('Success', 'Status berhasil di update');
+            return redirect()->route('petugas.list_tugas.index');
+        }
     }
 
     /**

@@ -56,10 +56,10 @@ class AddPetugasIbController extends Controller
         $pmb = InstalasiBangunan::where('id', $id)->first();
 
         $data = array(
-            'id_pelanggan'  => $pmb->id_user,
-            'id_petugas'    =>  $request->id_petugas,
-            'id_instalasi'    =>  $id,
-            'status'    =>  0
+            'id_pelanggan'      => $pmb->id_user,
+            'id_petugas'        =>  $request->id_petugas,
+            'id_instalasi'      =>  $id,
+            'status'            =>  0
         );
 
         $result = Tugas::create($data);

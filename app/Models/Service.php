@@ -46,4 +46,9 @@ class Service extends Model
     {
         return $this->hasMany(Transaksi::class, 'id_service', 'id');
     }
+
+    public function Tugas()
+    {
+        return $this->hasMany(Tugas::class, 'id_service', 'id');
+    }
 }

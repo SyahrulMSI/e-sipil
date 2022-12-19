@@ -41,4 +41,9 @@ class InstalasiBangunan extends Model
     {
         return $this->hasMany(Transaksi::class, 'id_instalasi', 'id');
     }
+
+    public function Tugas()
+    {
+        return $this->hasMany(Tugas::class, 'id_instalasi', 'id');
+    }
 }

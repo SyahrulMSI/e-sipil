@@ -42,4 +42,10 @@ class PemasanganBaru extends Model
     {
         return $this->hasMany(Transaksi::class, 'id_pemasangan_baru', 'id');
     }
+
+    public function Tugas()
+    {
+        return $this->hasMany(Tugas::class, 'id_pemasangan_baru', 'id');
+    }
 }
+

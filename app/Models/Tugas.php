@@ -49,7 +49,7 @@ class Tugas extends Model
 
     public function PemasanganBaru()
     {
-        return view(PemasanganBaru::class, 'id_pemasangan_baru', 'id');
+        return $this->belongsTo(PemasanganBaru::class, 'id_pemasangan_baru', 'id');
     }
 
     public function Instalasi()

@@ -68,11 +68,11 @@
                                             </td>
                                             <td>
                                                 <div class="btn-group">
-                                                    @if ($dp->satatu == 'SUCCESS')
+                                                    @if ($dp->satatus == 'SUCCESS')
                                                         <a href="#" class="btn btn-info btn-sm"> <i class="fa fa-print"></i>  Invoice</a>
                                                     @else
-                                                        <button class="btn btn-success btn-sm"> <i class="fa fa-dollar"></i> Bayar</button>
-                                                    @endif
+                                                        <a href="{{ $dp->url_midtrans }}" class="btn btn-success btn-sm"> <i class="fa fa-dollar"></i> Bayar</a>
+                                                    @endif 
                                                 </div>
                                             </td>
                                         </tr>

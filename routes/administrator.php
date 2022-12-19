@@ -49,6 +49,11 @@ use App\Http\Controllers\Admin\Permohonan\Petugas\AddPetugasServiceController;
 |
 */
 
+Route::get('payment/success', [KonfirmasiInstalasiBangunan::class, 'midtransCallback']);
+Route::post('payment/success', [KonfirmasiInstalasiBangunan::class, 'midtransCallback']);
+
+
+
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
     Route::middleware(['auth', 'verified'])->group(function(){

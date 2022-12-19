@@ -9,9 +9,18 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Alert;
 use GrahamCampbell\ResultType\Success;
+use Midtrans;
 
 class KonfirmasiPasangMeterController extends Controller
 {
+    public function __construct()
+    {
+        Midtrans\Config::$serverKey = env('MIDTRANS_SERVERKEY');
+        Midtrans\Config::$isProduction = env('MIDTRANS_IS_PRODUCTION');
+        Midtrans\Config::$isSanitized = env('MIDTRANS_SANITIZED');
+        Midtrans\Config::$is3ds = env('MIDTRANS_IS_3DS');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -69,6 +78,8 @@ class KonfirmasiPasangMeterController extends Controller
             'status'    =>  'WAITING',
             'tanggal_transaksi' =>  date('Y-m-d')
         ]);
+
+        dd(getSnapRedirect($result));
 
         if($result){
             Alert::success('Success', 'Tagihan berhasil di buat');

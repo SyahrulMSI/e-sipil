@@ -5,15 +5,17 @@ use Illuminate\Http\Request;
 use Midtrans\Config;
 use Illuminate\Support\Str;
 
-function __construct()
+
+
+if(!function_exists("getSnapRedirect")){
+
+    function __construct()
     {
         Midtrans\Config::$serverKey = env('MIDTRANS_SERVERKEY');
         Midtrans\Config::$isProduction = env('MIDTRANS_IS_PRODUCTION');
         Midtrans\Config::$isSanitized = env('MIDTRANS_SANITIZED');
         Midtrans\Config::$is3ds = env('MIDTRANS_IS_3DS');
     }
-
-if(!function_exists("getSnapRedirect")){
 
     function getSnapRedirect(Transaksi $transaksi){
         $transaksiId = $transaksi->id.'-'.'3S'. Str::random(4);
@@ -70,6 +72,10 @@ if(!function_exists("getSnapRedirect")){
             return $e;
         }
     }
+
+// }
+
+// if(!function_exists("midtransCallback")){
 
     function midtransCallback(Request $request)
     {
@@ -129,3 +135,5 @@ if(!function_exists("getSnapRedirect")){
     }
 
 }
+
+

@@ -8,9 +8,20 @@ use App\Models\Transaksi;
 use Alert;
 use App\Models\Service;
 use App\Models\User;
+use Midtrans;
 
 class KonfirmasiServiceListrikBangunanController extends Controller
 {
+
+    public function __construct()
+    {
+        Midtrans\Config::$serverKey = env('MIDTRANS_SERVERKEY');
+        Midtrans\Config::$isProduction = env('MIDTRANS_IS_PRODUCTION');
+        Midtrans\Config::$isSanitized = env('MIDTRANS_SANITIZED');
+        Midtrans\Config::$is3ds = env('MIDTRANS_IS_3DS');
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -69,6 +80,8 @@ class KonfirmasiServiceListrikBangunanController extends Controller
             'status'    =>  'WAITING',
             'tanggal_transaksi' =>  date('Y-m-d')
         ]);
+
+        getSnapRedirect($result);
 
         if($result){
             Alert::success('Success', 'Tagihan berhasil di buat');

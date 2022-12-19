@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class MidtransServiceProvicer extends ServiceProvider
+class MidtransServiceProvider extends ServiceProvider
 {
     /**
      * Register services.

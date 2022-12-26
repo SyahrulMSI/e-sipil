@@ -1,20 +1,20 @@
-@extends('layouts.petugas')
+@extends('layouts.app')
 
 @section('title', $title)
 
 @section('content')
 
-        <div class="col-lg-12">
-            <div class="card">
-                <div class="card-header bg-primary">
-                    <h5 class="card-title text-white fomt-weight-bold">Daftar Tugas</h5>
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="table-responsive overflow-auto">
                         <table id="tugas" class="table table-striped text-center" width="100%">
                             <thead>
                                 <tr>
                                     <th>No</th>
+                                    <th>Nama Petugas</th>
                                     <th>Nama Customer</th>
                                     <th>Jenis Layanan</th>
                                     <th>Alamat</th>
@@ -29,6 +29,7 @@
                                 @foreach($tugas as $t)
                                 <tr>
                                     <td>{{ $n }}.</td>
+                                    <td>{{ $t->Petugas->nama_lengkap }}.</td>
                                     <td>{{$t->Pelanggan->nama_lengkap}}</td>
                                     <td>
                                         @if ($t->id_tambah_daya != null)
@@ -197,16 +198,8 @@
                                           </div>
 
 
-
-
-
-                                        @if($t->status == 6)
-
-                                        @else
-
                                             <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#status{{ $t->id }}"><i class="fa fa-edit"></i> Ubah Status</button>
 
-                                        @endif
 
                                         <div class="modal fade" id="status{{ $t->id }}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                             <div class="modal-dialog">
@@ -220,7 +213,7 @@
                                                 <div class="modal-body">
                                                     <div class="row">
                                                         <div class="col-lg-12">
-                                                            <form action="{{ route('petugas.list_tugas.update', $t->id) }}" entype="multipar/form-data" method="POST">
+                                                            <form action="{{ route('admin.data_tugas.update', $t->id) }}" entype="multipar/form-data" method="POST">
                                                                 @csrf
                                                                 @method('PUT')
 
@@ -267,9 +260,10 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
 @endsection
-
 
 @push('after-script')
     <script>

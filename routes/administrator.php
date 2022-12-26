@@ -37,6 +37,8 @@ use App\Http\Controllers\Admin\Permohonan\Petugas\AddPetugasPmbController;
 use App\Http\Controllers\Admin\Permohonan\Petugas\AddPetugasTdController;
 use App\Http\Controllers\Admin\Permohonan\Petugas\AddPetugasIbController;
 use App\Http\Controllers\Admin\Permohonan\Petugas\AddPetugasServiceController;
+use App\Http\Controllers\Admin\Transaksi\DpController;
+use App\Http\Controllers\Admin\DataTugas\DataController;
 
 /*
 |--------------------------------------------------------------------------
@@ -110,7 +112,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::resource('list_permohonan.add_petugas_td', AddPetugasTdController::class)->shallow();
         Route::resource('list_permohonan.add_petugas_ib', AddPetugasIbController::class)->shallow();
         Route::resource('list_permohonan.add_petugas_service', AddPetugasServiceController::class)->shallow();
-
+        Route::resource('dp', DpController::class);
+        Route::resource('data_tugas', DataController::class);
 
     });
 

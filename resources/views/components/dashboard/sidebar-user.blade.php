@@ -35,6 +35,12 @@
                     <li><a href="{{ route('customer.history.index') }}">History</a></li>
                 </ul>
             </li>
+            <li>
+                <a href="{{ route('customer.progress.index') }}" class="ai-icon" aria-expanded="false">
+                <i class="flaticon-381-settings-2"></i>
+                    <span class="nav-text">Progress Pemasangan</span>
+                </a>
+            </li>
             <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                 <i class="flaticon-381-network"></i>
                 <span class="nav-text">Data Transaksi</span>

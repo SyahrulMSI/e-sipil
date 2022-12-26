@@ -18,7 +18,8 @@ use App\Http\Controllers\Customer\Transaksi\DpController;
 use App\Http\Controllers\Customer\Transaksi\PelunasanController;
 use App\Http\Controllers\Customer\Profile\ProfileController;
 use App\Http\Controllers\Customer\Profile\DetailProfileController;
-
+use App\Http\Controllers\Api\MidtransController;
+use App\Http\Controllers\Customer\Progres\ProgresController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -54,7 +55,25 @@ Route::group(['prefix' => 'customer', 'as' => 'customer.'], function () {
         Route::resource('my_profile', ProfileController::class);
         Route::resource('detail_profile', DetailProfileController::class);
 
+        Route::resource('progress', ProgresController::class);
+
     });
+
+    Route::get('payment/success', [KonfirmasiInstalasiBangunan::class, 'midtransCallback']);
+    Route::post('payment/success', [KonfirmasiInstalasiBangunan::class, 'midtransCallback']);
+
+    Route::get('payment/success', [KonfirmasiPasangMeterController::class, 'midtransCallback']);
+    Route::post('payment/success', [KonfirmasiPasangMeterController::class, 'midtransCallback']);
+
+    Route::get('payment/success', [KonfirmasiServiceListrikBangunanController::class, 'midtransCallback']);
+    Route::post('payment/success', [KonfirmasiServiceListrikBangunanController::class, 'midtransCallback']);
+
+    Route::get('payment/success', [KonfirmasiServiceMeterListrik::class, 'midtransCallback']);
+    Route::post('payment/success', [KonfirmasiServiceMeterListrik::class, 'midtransCallback']);
+
+    Route::get('payment/success', [KonfirmasiTambahDayaController::class, 'midtransCallback']);
+    Route::post('payment/success', [KonfirmasiTambahDayaController::class, 'midtransCallback']);
+
 });
 
 

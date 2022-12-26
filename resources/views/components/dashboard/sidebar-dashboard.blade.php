@@ -21,14 +21,19 @@
             <li><a href="./ecom-invoice.html">Cetak Permohonan</a></li>
         </ul>
     </li>
-        <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+    <li><a href="{{ route('admin.data_tugas.index') }}" class="ai-icon" aria-expanded="false">
+        <i class="flaticon-381-controls-3"></i>
+        <span class="nav-text">Data Tugas</span>
+        </a>
+    </li>
+    {{--  <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
             <i class="flaticon-381-heart"></i>
             <span class="nav-text">Data Petugas</span>
         </a>
         <ul aria-expanded="false">
             <li><a href="./uc-select2.html">List Petugas</a></li>
         </ul>
-    </li>
+    </li>  --}}
     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
             <i class="flaticon-381-notepad"></i>
             <span class="nav-text">Data Survey</span>
@@ -54,7 +59,8 @@
             <span class="nav-text">Data Transaksi</span>
         </a>
         <ul aria-expanded="false">
-            <li><a href="{{ route('admin.pelunasan.index') }}">Pelunasan Transaksi</a></li> <!--****** struk bukti bayar *******-->
+            <li><a href="{{ route('admin.dp.index') }}">Transaksi Dp</a>
+            <li><a href="{{ route('admin.pelunasan.index') }}">Transaksi Pelunasan</a></li> <!--****** struk bukti bayar *******-->
             <li><a href="{{ route('admin.invoice.index') }}">Cetak Invoice</a></li>
         </ul>
     </li>

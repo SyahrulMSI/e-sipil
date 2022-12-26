@@ -13,7 +13,7 @@ class MidtransServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        require base_path('App/Helpers/Midtrans.php');
+        require base_path('app/Helpers/Midtrans.php');
     }
 
     /**

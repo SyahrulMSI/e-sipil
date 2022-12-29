@@ -98,4 +98,14 @@ class DataController extends Controller
     {
         //
     }
+
+    public function buatTagihanPelunasan($id)
+    {
+        $data = array(
+            'title' =>  'Buat Tagihan',
+            't' =>  Tugas::where('id', $id)->first()
+        );
+
+        return view('pages.admin.transaksi.pelunasan.create', $data);
+    }
 }

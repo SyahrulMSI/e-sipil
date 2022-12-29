@@ -15,3 +15,5 @@
     <script src="{{ asset('dashboard/vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('dashboard/js/plugins-init/datatables.init.js') }}"></script>
 
+    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('ckeditor/config.js') }}"></script>

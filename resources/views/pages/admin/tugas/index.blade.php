@@ -198,7 +198,7 @@
                                           </div>
 
 
-                                            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#status{{ $t->id }}"><i class="fa fa-edit"></i> Ubah Status</button>
+                                        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#status{{ $t->id }}"><i class="fa fa-edit"></i> Ubah Status</button>
 
 
                                         <div class="modal fade" id="status{{ $t->id }}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -243,6 +243,14 @@
                                                 </div>
                                               </div>
                                             </div>
+                                          </div>
+
+
+                                          <div class="btn-group">
+                                            @if ($t->status == 6)
+                                            <br>
+                                                <a href="{{ route('admin.buat.tagihan', $t->id) }}" class="btn btn-success btn-sm rounded"><i class="fa fa-plus-circle"></i> Tagihan Pelunasan</a>
+                                            @endif
                                           </div>
 
 

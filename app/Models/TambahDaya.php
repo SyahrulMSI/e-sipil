@@ -44,4 +44,9 @@ class TambahDaya extends Model
         return $this->hasMany(Transaksi::class, 'id_tambah_daya', 'id');
     }
 
+    public function Tugas()
+    {
+        return $this->hasMany(Tugas::class, 'id_tambah_daya', 'id');
+    }
+
 }

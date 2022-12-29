@@ -115,6 +115,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::resource('dp', DpController::class);
         Route::resource('data_tugas', DataController::class);
 
+        Route::get('buat/tagihan/pelunasan/{id}', [DataController::class, 'buatTagihanPelunasan'])->name('buat.tagihan');
+
     });
 
 });

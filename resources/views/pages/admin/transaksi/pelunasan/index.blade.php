@@ -10,7 +10,7 @@
                     <div class="card-body">
 
                         <div class="btn-group mb-3">
-                            <a href="#" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Tambah Data</a>
+                            <a href="{{ route('admin.pelunasan.create') }}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Tambah Data</a>
                         </div>
 
                         <div class="row">

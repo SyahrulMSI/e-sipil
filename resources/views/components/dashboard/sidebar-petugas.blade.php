@@ -11,16 +11,7 @@
                 <i class="flaticon-381-settings-2"></i>
                     <span class="nav-text">Data Permohonan</span>
                 </a>
-            </li>
-            <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                <i class="flaticon-381-network"></i>
-                <span class="nav-text">Data Transaksi</span>
-            </a>
-                <ul aria-expanded="false">
-                    <li><a href="{{ route('customer.transaksi_dp.index') }}">Dp</a></li>
-                    <li><a href="{{ route('customer.transaksi_pelunasan.index') }}">Pelunasan</a></li>
-                </ul>
-            </li>
+            </li>s
         </ul>
         <div class="add-menu-sidebar">
             <img src="{{ asset('dashboard/images/cv.png') }}" alt="" class="mr-2" width="100%" style="box-shadow: 5px 5px 5px #333; border-radius: 10px 10px 10px 10px">

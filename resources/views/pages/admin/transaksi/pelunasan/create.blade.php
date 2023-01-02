@@ -9,31 +9,95 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <form action="{{ route('admin.pelunasan.store') }}" method="POST" enctype="multipart/form-data">
-                                @csrf 
+                                @csrf
                                 @method('POST')
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="table-responsive">
                                             <input type="hidden" name="us" value="{{$t->id_pelanggan}}" readonly>
                                             @if($t->id_tambah_daya != null)
+                                                <input type="hidden" name="id_tambah_daya" value="{{ $t->id_tambah_daya }}" readonly>
                                                 <table class="table table-striped" style="width:100%">
                                                     <tbody>
+                                                        <tr>
+                                                            <td>Pelanggan</td>
+                                                            <td>{{ $t->TambahDaya->User()->first()->nama_lengkap }}</td>
+                                                        </tr>
                                                         <tr>
                                                             <td>Pelayanan</td>
                                                             <td>Tambah Daya</td>
                                                         </tr>
                                                         <tr>
                                                             <td>Nomor Registrasi</td>
-                                                            <td></td>
+                                                            <td>{{ $t->TambahDaya->nomor_registrasi }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Tanggal Permohonan</td>
+                                                            <td>{{ Carbon\Carbon::parse($t->TambahDaya->tanggal)->format('d F Y') }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Tarif Lama</td>
+                                                            <td>{{ $t->TambahDaya->tarif_lama }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Tarif Baru</td>
+                                                            <td>{{ $t->TambahDaya->tarif_baru }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Daya Lama</td>
+                                                            <td>{{ $t->TambahDaya->daya_lama }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Daya Baru</td>
+                                                            <td>{{ $t->TambahDaya->daya_baru }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Alamat</td>
+                                                            <td>{{ $t->TambahDaya->lokasi_meter }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Jumlah DP</td>
+                                                            <td>Rp. {{ $t->TambahDaya->Transaksi()->exists() ? number_format($t->TambahDaya->Transaksi()->where('type_pembayaran', 'dp')->first()->total_bayar, 0) : '' }}</td>
+                                                            <input type="hidden" name="dp" id="dp" value="{{ $t->TambahDaya->Transaksi()->where('type_pembayaran', 'dp')->first()->total_bayar  }}" readonly>
                                                         </tr>
                                                     </tbody>
                                                 </table>
                                             @elseif($t->id_pemasangan_baru != null)
+                                            <input type="hidden" name="id_pemasangan_baru" value="{{ $t->id_pemasangan_baru }}" readonly>
                                                 <table class="table table-striped" style="width:100%">
                                                     <tbody>
                                                         <tr>
+                                                            <td>Pelanggan</td>
+                                                            <td>{{ $t->PemasanganBaru->User()->first()->nama_lengkap }}</td>
+                                                        </tr>
+                                                        <tr>
                                                             <td>Pelayanan</td>
                                                             <td>Pasang Meter Baru</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Nomor Registrasi</td>
+                                                            <td>{{ $t->PemasanganBaru->nomor_registrasi }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Tanggal Permoonan</td>
+                                                            <td>{{ Carbon\Carbon::parse($t->PemasanganBaru->tanggal)->format('d F Y') }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Jenis Pemasangan</td>
+                                                            <td>{{ Str::title($t->PemasanganBaru->jenis_pemasangan) }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Daya</td>
+                                                            <td>{{ $t->PemasanganBaru->daya }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Alamat</td>
+                                                            <td>{{ $t->PemasanganBaru->lokasi_pemasangan }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Jumlah DP</td>
+                                                            <td>Rp. {{ $t->PemasanganBaru->Transaksi()->exists() ? number_format($t->PemasanganBaru->Transaksi()->where('type_pembayaran','dp')->first()->total_bayar, 0) : '' }}</td>
+                                                            <input type="hidden" name="dp" id="dp" value="{{ $t->PemasanganBaru->Transaksi()->where('type_pembayaran','dp')->first()->total_bayar  }}" readonly>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -41,6 +105,10 @@
                                                 <input type="hidden" name="id_instalasi" value="{{ $t->id_instalasi }}" readonly>
                                                 <table class="table table-striped" style="width:100%">
                                                     <tbody>
+                                                        <tr>
+                                                            <td>Pelanggan</td>
+                                                            <td>{{ $t->Instalasi->User()->first()->nama_lengkap }}</td>
+                                                        </tr>
                                                         <tr>
                                                             <td>Pelayanan</td>
                                                             <td>Instalasi Bangunan Baru</td>
@@ -85,11 +153,66 @@
                                                     </tbody>
                                                 </table>
                                             @elseif($t->id_service != null)
+                                            <input type="hidden" name="id_service" value="{{ $t->id_service }}" readonly>
                                                 <table class="table table-striped" style="width:100%">
                                                     <tbody>
                                                         <tr>
+                                                            <td>Pelanggan</td>
+                                                            <td>{{ $t->Service->User()->first()->nama_lengkap }}</td>
+                                                        </tr>
+                                                        <tr>
                                                             <td>Pelayanan</td>
                                                             <td>Service</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Jenis Service</td>
+                                                            <td>
+                                                                @if($t->Service->jenis_service == "meter_listrik")
+                                                                    <span class="badge badge-primary badge-sm">Meter Listrik</span>
+                                                                @elseif($t->Service->jenis_service == "listrik_bangunan")
+                                                                    <span class="badge badge-primary badge-sm">Listrik Bangunan</span>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Nomor Segistrasi</td>
+                                                            <td>{{ $t->Service->nomor_registrasi }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Tanggal Permohonan</td>
+                                                            <td>{{ Carbon\Carbon::parse($t->Service->tanggal)->format('d F Y') }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Alamat</td>
+                                                            <td>{{ $t->Service->alamat }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Kerusakan</td>
+                                                            <td>
+                                                                <table class="table table">
+                                                                    <thead class="text-center">
+                                                                        <tr>
+                                                                            <th>Nama</th>
+                                                                            <th>Deskripsi</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        @forelse ($t->Service->JenisKerusakan as $jk)
+                                                                            <tr>
+                                                                                <td>{{ $jk->kerusakan }}</td>
+                                                                                <td>{{ $jk->deskripsi }}</td>
+                                                                            </tr>
+                                                                        @empty
+
+                                                                        @endforelse
+                                                                    </tbody>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Total DP</td>
+                                                            <td>Rp. {{ number_format($t->Service->Transaksi()->first()->total_bayar, 0) }}</td>
+                                                            <input type="hidden" name="dp" id="dp" value="{{ $t->Service->Transaksi()->where('type_pembayaran', 'dp')->first()->total_bayar  }}" readonly>
                                                         </tr>
                                                     </tbody>
                                                 </table>

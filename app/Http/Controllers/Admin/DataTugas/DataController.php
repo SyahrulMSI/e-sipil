@@ -101,9 +101,12 @@ class DataController extends Controller
 
     public function buatTagihanPelunasan($id)
     {
+
+        $t = Tugas::where('id', $id)->first();
+
         $data = array(
             'title' =>  'Buat Tagihan',
-            't' =>  Tugas::where('id', $id)->first()
+            't' =>  $t
         );
 
         return view('pages.admin.transaksi.pelunasan.create', $data);

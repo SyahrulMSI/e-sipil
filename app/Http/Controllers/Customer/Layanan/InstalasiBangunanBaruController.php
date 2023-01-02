@@ -48,12 +48,14 @@ class InstalasiBangunanBaruController extends Controller
         $request->validate([
             'nama_lengkap'  =>  'required',
             'jenis_instalasi'   => 'required',
-            'alamat'    =>  'required'
+            'alamat'    =>  'required',
+            'jumlah_titik'  =>  'required'
         ]);
 
         $jenis = $request->jenis_instalasi;
         $alamat = $request->alamat;
         $harga = $request->penetapan_harga_per_titik;
+        $jml_titik = $request->jumlah_titik;
 
         $cek = DetailUser::where('id_user', Auth::user()->id)->first();
 
@@ -75,6 +77,7 @@ class InstalasiBangunanBaruController extends Controller
                 'alamat'    =>  $alamat,
                 'jenis_instalasi'   => $jenis,
                 'penetapan_harga_per_titik'  =>  $harga,
+                'jumlah_titik'  => $jml_titik,
                 'status_permohonan' => 1,
             );
 

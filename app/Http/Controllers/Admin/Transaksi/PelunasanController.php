@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Tugas;
 use Midtrans;
-use App\Models\Transaksi;   
+use App\Models\Transaksi;
 use Alert;
 use App\Models\RincianPelunasan;
 
@@ -54,7 +54,7 @@ class PelunasanController extends Controller
     {
 
 
-        if($request->id_instalasi != null){
+        if(isset($request->id_instalasi)){
 
             $data = array(
                 'id_user'   => $request->us,
@@ -78,9 +78,9 @@ class PelunasanController extends Controller
                     'nominal_tagihan'   => $request->nominal,
                     'nominal_dp' =>  $request->dp,
                     'nominal_pelunasan' =>  $request->nominal_tagihan
-                );  
-    
-                
+                );
+
+
                 RincianPelunasan::create($data);
 
                 Alert::success('Success', 'Tagihan berhasil di buat');
@@ -89,6 +89,120 @@ class PelunasanController extends Controller
                 Alert::error('Error','Tagihan gagal di buat');
                 return redirect()->route('admin.pelunasan.index');
             }
+        }else if(isset($request->id_service)){
+
+            $tot_bayar = $request->nominal_tagihan - $request->dp;
+
+            $data = array(
+                'id_user'   => $request->us,
+                'id_service'  =>  $request->id_service,
+                'total_bayar'   =>  $tot_bayar,
+                'type_pembayaran'   =>  'pelunasan',
+                'status'    =>  'WAITING',
+                'tanggal_transaksi' =>  date('Y-m-d')
+            );
+
+            $result = Transaksi::create($data);
+
+            getSnapRedirect($result);
+
+            if($result){
+
+                $data = array(
+                    'id_user'   =>  $request->us,
+                    'id_transaksi'  =>  $result->id,
+                    'rincian'       =>  $request->rincian,
+                    'nominal_tagihan'   => $request->nominal_tagihan,
+                    'nominal_dp' =>  $request->dp,
+                    'nominal_pelunasan' =>  $tot_bayar
+                );
+
+
+                RincianPelunasan::create($data);
+
+                Alert::success('Success', 'Tagihan berhasil di buat');
+                return redirect()->route('admin.pelunasan.index');
+            }  else {
+                Alert::error('Error','Tagihan gagal di buat');
+                return redirect()->route('admin.pelunasan.index');
+            }
+        } else if(isset($request->id_tambah_daya)){
+
+            $tot_bayar = $request->nominal_tagihan - $request->dp;
+
+            $data = array(
+                'id_user'   => $request->us,
+                'id_tambah_daya'  =>  $request->id_tambah_daya,
+                'total_bayar'   =>  $tot_bayar,
+                'type_pembayaran'   =>  'pelunasan',
+                'status'    =>  'WAITING',
+                'tanggal_transaksi' =>  date('Y-m-d')
+            );
+
+            $result = Transaksi::create($data);
+
+            getSnapRedirect($result);
+
+            if($result){
+
+                $data = array(
+                    'id_user'   =>  $request->us,
+                    'id_transaksi'  =>  $result->id,
+                    'rincian'       =>  $request->rincian,
+                    'nominal_tagihan'   => $request->nominal_tagihan,
+                    'nominal_dp' =>  $request->dp,
+                    'nominal_pelunasan' =>  $tot_bayar
+                );
+
+
+                RincianPelunasan::create($data);
+
+                Alert::success('Success', 'Tagihan berhasil di buat');
+                return redirect()->route('admin.pelunasan.index');
+            }  else {
+                Alert::error('Error','Tagihan gagal di buat');
+                return redirect()->route('admin.pelunasan.index');
+            }
+        }else if(isset($request->id_pemasangan_baru)){
+
+            $tot_bayar = $request->nominal_tagihan - $request->dp;
+
+            $data = array(
+                'id_user'   => $request->us,
+                'id_pemasangan_baru'  =>  $request->id_pemasangan_baru,
+                'total_bayar'   =>  $tot_bayar,
+                'type_pembayaran'   =>  'pelunasan',
+                'status'    =>  'WAITING',
+                'tanggal_transaksi' =>  date('Y-m-d')
+            );
+
+            $result = Transaksi::create($data);
+
+            getSnapRedirect($result);
+
+            if($result){
+
+                $data = array(
+                    'id_user'   =>  $request->us,
+                    'id_transaksi'  =>  $result->id,
+                    'rincian'       =>  $request->rincian,
+                    'nominal_tagihan'   => $request->nominal_tagihan,
+                    'nominal_dp' =>  $request->dp,
+                    'nominal_pelunasan' =>  $tot_bayar
+                );
+
+
+                RincianPelunasan::create($data);
+
+                Alert::success('Success', 'Tagihan berhasil di buat');
+                return redirect()->route('admin.pelunasan.index');
+            }  else {
+                Alert::error('Error','Tagihan gagal di buat');
+                return redirect()->route('admin.pelunasan.index');
+            }
+        } else {
+            Alert::error('Error','Something Wrong !');
+            return redirect()->route('admin.data_tugas.index');
         }
     }
 

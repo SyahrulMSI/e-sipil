@@ -49,8 +49,16 @@
                                         </div>
 
                                         <div class="form-group">
+                                            <label for="hp">Jumlah Titik:</label>
+                                            <input type="number" name="jumlah_titik" class="form-control shadow {{ $errors->has('jumlah_titik') ? 'is-invalid' : '' }}">
+                                            @error('jumlah_titik')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                       </div>
+
+                                        <div class="form-group">
                                             <label for="hp">Harga Pertitik:</label>
-                                            <input type="number" name="penetapan_harga_per_titik" class="form-control shadow" value="40000">
+                                            <input type="number" name="penetapan_harga_per_titik" class="form-control shadow" value="40000" readonly>
                                        </div>
                                     </div>
 

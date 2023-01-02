@@ -115,7 +115,7 @@
                                             <div class="col-lg-6">
                                                 <div class="form-group mb-3">
                                                     <label for="nl">Jumlah Titik:</label>
-                                                    <input type="text" name="jumlah_titik" class="form-control shadow" value="{{ $ib->jumlah_titik }}">
+                                                    <input type="text" name="jumlah_titik" class="form-control shadow" value="{{ $ib->jumlah_titik }}" disable>
                                                     @error('jumlah_titik')
                                                         <small class="text-danger">{{ $message }}</small>
                                                     @enderror
@@ -130,9 +130,10 @@
                                     <textarea name="alamat" id="" class="form-control shadow" cols="30" rows="5">{{ $ib->alamat }}</textarea>
                                 </div>
 
+
                                 <div class="form-group mb-3">
                                     <label for="tb">Total Bayar:</label>
-                                    <input type="number" name="total_bayar" class="form-control shadow {{ $errors->has('total_bayar') ? 'is-invalid' : '' }}" value="{{ old('total_bayar') }}">
+                                    <input type="number" name="total_bayar" class="form-control shadow {{ $errors->has('total_bayar') ? 'is-invalid' : '' }}" value="{{ $ib->penetapan_harga_per_titik * $ib->jumlah_titik }}" readonly>
                                     @error('total_bayar')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror

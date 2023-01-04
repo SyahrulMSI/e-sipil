@@ -28,7 +28,8 @@ class PelunasanController extends Controller
     public function index()
     {
         $data = array(
-            'title'     =>  'Pelunasan Transaki Pelanggan'
+            'title'     =>  'Pelunasan Transaki Pelanggan',
+            'transaksi' =>  Transaksi::where('type_pembayaran','pelunasan')->orderBy('id', 'DESC')->get()
         );
 
         return view('pages.admin.transaksi.pelunasan.index', $data);
@@ -248,6 +249,14 @@ class PelunasanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $result = Transaksi::destroy($id);
+
+        if($result){
+            Alert::success('Success', 'Data berhasil di hapus');
+            return redirect()->route('admin.pelunasan.index');
+        } else {
+            Alert::error('Error', 'Data gagal di hapus');
+            return redirect()->route('admin.pelunasan.index');
+        }
     }
 }

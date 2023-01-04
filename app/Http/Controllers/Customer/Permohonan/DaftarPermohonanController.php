@@ -9,6 +9,8 @@ use App\Models\PemasanganBaru;
 use Illuminate\Support\Facades\Auth;
 use App\Models\TambahDaya;
 use App\Models\Service;
+use Alert;
+use App\Models\JenisKerusakan;
 
 class DaftarPermohonanController extends Controller
 {
@@ -98,8 +100,50 @@ class DaftarPermohonanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        if($request->type == 'pmb'){
+            $result = PemasanganBaru::destroy($id);
+
+            if($result){
+                Alert::success('Success', 'Data berhasil di hapus');
+                return redirect()->route('customer.daftar_permohonan.index');
+            } else {
+                Alert::error('Error', 'Data gagal di hapus');
+                return redirect()->route('customer.daftar_permohonan.index');
+            }
+        } else if($request->type == 'td'){
+            $result = TambahDaya::destroy($id);
+            if($result){
+                Alert::success('Success', 'Data berhasil di hapus');
+                return redirect()->route('customer.daftar_permohonan.index');
+            } else {
+                Alert::error('Error', 'Data gagal di hapus');
+                return redirect()->route('customer.daftar_permohonan.index');
+            }
+        } else if($request->type == 'ib'){
+            $result = InstalasiBangunan::destroy($id);
+
+            if($result){
+                Alert::success('Success', 'Data berhasil di hapus');
+                return redirect()->route('customer.daftar_permohonan.index');
+            } else {
+                Alert::error('Error', 'Data gagal di hapus');
+                return redirect()->route('customer.daftar_permohonan.index');
+            }
+        } else if($request->type == 'sm'){
+            $result = Service::destroy($id);
+
+            if($result){
+
+                JenisKerusakan::where('id_service', $id)->delete();
+
+                Alert::success('Success', 'Data berhasil di hapus');
+                return redirect()->route('customer.daftar_permohonan.index');
+            } else {
+                Alert::error('Error', 'Data gagal di hapus');
+                return redirect()->route('customer.daftar_permohonan.index');
+            }
+        }
     }
 }

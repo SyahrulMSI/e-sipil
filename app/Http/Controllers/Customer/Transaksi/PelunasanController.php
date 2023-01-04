@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Customer\Transaksi;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Transaksi;
+use Auth;
 
 class PelunasanController extends Controller
 {
@@ -15,7 +17,8 @@ class PelunasanController extends Controller
     public function index()
     {
         $data = array(
-            'title'     =>      'Pelunasan'
+            'title'     =>      'Pelunasan',
+            'transaksi' =>  Transaksi::where('type_pembayaran','pelunasan')->where('id_user', Auth::user()->id)->orderBy('id', 'DESC')->get()
         );
 
         return view('pages.pelanggan.transaksi.pelunasan.index', $data);

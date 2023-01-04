@@ -81,7 +81,43 @@
                                                                 </td>
                                                                 <td>
                                                                     <div class="form-group">
-                                                                        <a href="#" class="btn btn-warning btn-sm font-weight-bold text-white"><i class="fa fa-edit"></i></a>
+                                                                        @if($pmb->status_permohonan == 1)
+                                                                            <button class="btn btn-danger btn-sm rounded shadow font-weight-bold" data-toggle="modal" data-target="#deletepmb{{ $pmb->id }}">Hapus</button>
+
+                                                                            <div class="modal fade" id="deletepmb{{ $pmb->id }}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                                                <div class="modal-dialog">
+                                                                                  <div class="modal-content">
+                                                                                    <div class="modal-header bg-danger">
+                                                                                      <h5 class="modal-title text-white fomt-weight-bold" id="staticBackdropLabel">Konfirmasi Hapus</h5>
+                                                                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                        <span aria-hidden="true">&times;</span>
+                                                                                      </button>
+                                                                                    </div>
+                                                                                    <div class="modal-body">
+                                                                                      <div class="row">
+                                                                                        <div class="col-lg-12">
+                                                                                            <div class="alert alert-warning" role="alert">
+                                                                                                <p class="font-weight-bold">Apakah anda yakin akan menghapus data ini ?</p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                      </div>
+                                                                                    </div>
+                                                                                    <form action="{{ route('customer.daftar_permohonan.destroy', $pmb->id) }}" method="POST" enctype="multipart/form-data" id="delete">
+                                                                                        @csrf
+                                                                                        @method('DELETE')
+                                                                                        <input type="hidden" name="type" value="pmb" readonly>
+                                                                                    </form>
+                                                                                    <div class="modal-footer">
+                                                                                      <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                                                                                      <button type="button" class="btn btn-danger btn-sm" onclick="event.preventDefault; document.getElementById('delete').submit();">Hapus</button>
+                                                                                    </div>
+                                                                                  </div>
+                                                                                </div>
+                                                                              </div>
+
+                                                                        @else
+                                                                            <span class="badge badge-danger badge-sm">No Action</span>
+                                                                        @endif
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -137,8 +173,44 @@
                                                                     @endif
                                                                 </td>
                                                                 <td>
-                                                                    <div class="form-group">
-                                                                        <a href="#" class="btn btn-warning btn-sm font-weight-bold text-white"><i class="fa fa-edit"></i></a>
+                                                                    <div class="btn-group">
+                                                                        @if($td->status_permohonan == 1)
+                                                                            <button class="btn btn-danger btn-sm rounded shadow font-weight-bold" data-toggle="modal" data-target="#deletetd{{ $td->id }}">Hapus</button>
+
+                                                                            <div class="modal fade" id="deletetd{{ $td->id }}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                                                <div class="modal-dialog">
+                                                                                  <div class="modal-content">
+                                                                                    <div class="modal-header bg-danger">
+                                                                                      <h5 class="modal-title text-white fomt-weight-bold" id="staticBackdropLabel">Konfirmasi Hapus</h5>
+                                                                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                        <span aria-hidden="true">&times;</span>
+                                                                                      </button>
+                                                                                    </div>
+                                                                                    <div class="modal-body">
+                                                                                      <div class="row">
+                                                                                        <div class="col-lg-12">
+                                                                                            <div class="alert alert-warning" role="alert">
+                                                                                                <p class="font-weight-bold">Apakah anda yakin akan menghapus data ini ?</p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                      </div>
+                                                                                    </div>
+                                                                                    <form action="{{ route('customer.daftar_permohonan.destroy', $td->id) }}" method="POST" enctype="multipart/form-data" id="delete">
+                                                                                        @csrf
+                                                                                        @method('DELETE')
+                                                                                        <input type="hidden" name="type" value="td" readonly>
+                                                                                    </form>
+                                                                                    <div class="modal-footer">
+                                                                                      <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                                                                                      <button type="button" class="btn btn-danger btn-sm" onclick="event.preventDefault; document.getElementById('delete').submit();">Hapus</button>
+                                                                                    </div>
+                                                                                  </div>
+                                                                                </div>
+                                                                              </div>
+
+                                                                        @else
+                                                                            <span class="badge badge-danger badge-sm">No Action</span>
+                                                                        @endif
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -204,13 +276,56 @@
                                                             @endif
                                                         </td>
                                                         <td>
-                                                            @if ($ib->status_permohonan == 1)
+                                                                @if ($ib->status_permohonan == 1)
 
-                                                                <span class="badge badge-danger">Menungu Konfirmasi</span>
+                                                                    <span class="badge badge-danger">Menungu Konfirmasi</span>
 
-                                                            @endif
+                                                                @elseif($ib->status_permohonan == 2)
+                                                                    <span class="badge badge-info">Di Konfirmasi</span>
+
+                                                                @endif
                                                         </td>
-                                                        <td></td>
+                                                        <td>
+                                                            <div class="btn-group">
+                                                                @if($ib->status_permohonan == 1)
+                                                                    <button class="btn btn-danger btn-sm rounded shadow font-weight-bold" data-toggle="modal" data-target="#deleteib{{ $ib->id }}">Hapus</button>
+
+                                                                    <div class="modal fade" id="deleteib{{ $ib->id }}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                                        <div class="modal-dialog">
+                                                                          <div class="modal-content">
+                                                                            <div class="modal-header bg-danger">
+                                                                              <h5 class="modal-title text-white fomt-weight-bold" id="staticBackdropLabel">Konfirmasi Hapus</h5>
+                                                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                <span aria-hidden="true">&times;</span>
+                                                                              </button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                              <div class="row">
+                                                                                <div class="col-lg-12">
+                                                                                    <div class="alert alert-warning" role="alert">
+                                                                                        <p class="font-weight-bold">Apakah anda yakin akan menghapus data ini ?</p>
+                                                                                    </div>
+                                                                                </div>
+                                                                              </div>
+                                                                            </div>
+                                                                            <form action="{{ route('customer.daftar_permohonan.destroy', $ib->id) }}" method="POST" enctype="multipart/form-data" id="delete">
+                                                                                @csrf
+                                                                                @method('DELETE')
+                                                                                <input type="hidden" name="type" value="ib" readonly>
+                                                                            </form>
+                                                                            <div class="modal-footer">
+                                                                              <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                                                                              <button type="button" class="btn btn-danger btn-sm" onclick="event.preventDefault; document.getElementById('delete').submit();">Hapus</button>
+                                                                            </div>
+                                                                          </div>
+                                                                        </div>
+                                                                      </div>
+
+                                                                @else
+                                                                    <span class="badge badge-danger badge-sm">No Action</span>
+                                                                @endif
+                                                            </div>
+                                                        </td>
                                                     </tr>
                                                   @php
                                                       $n++;
@@ -274,15 +389,50 @@
                                                                 <td>
                                                                     @if ($sm->status_permohonan == 1)
                                                                         <span class="badge badge-danger">Menunggu Konfirmasi</span>
-                                                                    @else
+                                                                    @elseif($sm->status_permohonan == 2)
+                                                                        <span class="badge badge-info">Di Konfirmasi</span>
 
                                                                     @endif
                                                                 </td>
                                                                 <td>
                                                                     <div class="btn-group">
-                                                                        <button class="btn btn-warning btn-sm rounded"><i class="fa fa-pencil"></i></button>
-                                                                        &nbsp;
-                                                                        <button class="btn btn-danger btn-sm rounded"><i class="fa fa-trash"></i></button>
+                                                                        @if($sm->status_permohonan == 1)
+                                                                            <button class="btn btn-danger btn-sm rounded shadow font-weight-bold" data-toggle="modal" data-target="#deletesm{{ $sm->id }}">Hapus</button>
+
+                                                                            <div class="modal fade" id="deletesm{{ $sm->id }}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                                                <div class="modal-dialog">
+                                                                                  <div class="modal-content">
+                                                                                    <div class="modal-header bg-danger">
+                                                                                      <h5 class="modal-title text-white fomt-weight-bold" id="staticBackdropLabel">Konfirmasi Hapus</h5>
+                                                                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                        <span aria-hidden="true">&times;</span>
+                                                                                      </button>
+                                                                                    </div>
+                                                                                    <div class="modal-body">
+                                                                                      <div class="row">
+                                                                                        <div class="col-lg-12">
+                                                                                            <div class="alert alert-warning" role="alert">
+                                                                                                <p class="font-weight-bold">Apakah anda yakin akan menghapus data ini ?</p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                      </div>
+                                                                                    </div>
+                                                                                    <form action="{{ route('customer.daftar_permohonan.destroy', $sm->id) }}" method="POST" enctype="multipart/form-data" id="delete">
+                                                                                        @csrf
+                                                                                        @method('DELETE')
+                                                                                        <input type="hidden" name="type" value="sm" readonly>
+                                                                                    </form>
+                                                                                    <div class="modal-footer">
+                                                                                      <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                                                                                      <button type="button" class="btn btn-danger btn-sm" onclick="event.preventDefault; document.getElementById('delete').submit();">Hapus</button>
+                                                                                    </div>
+                                                                                  </div>
+                                                                                </div>
+                                                                              </div>
+
+                                                                        @else
+                                                                            <span class="badge badge-danger badge-sm">No Action</span>
+                                                                        @endif
                                                                     </div>
                                                                 </td>
                                                             </tr>

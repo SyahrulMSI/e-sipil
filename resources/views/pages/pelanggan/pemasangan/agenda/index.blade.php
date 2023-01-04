@@ -4,6 +4,16 @@
 
 @section('content')
 
+<div class="row">
+    <div class="col-lg-12">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-6">
+                <img src="{{ asset('img/agenda.jpg') }}" class="img-fluid rounded " alt="" style="width:80%">
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="col-xl-6 col-xxl-6 col-lg-6">
     <div class="card">
         <div class="card-header border-0 pb-0">

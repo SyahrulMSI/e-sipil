@@ -13,6 +13,13 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-12">
+
+                            <div class="row d-flex justify-content-center mb-3">
+                                <div class="col-lg-6">
+                                    <img src="{{ asset('img/payment.jpg') }}" class="img-fluid rounded" alt="" style="width:80%">
+                                </div>
+                            </div>
+
                             <div class="table-responsive">
                                 <table id="dp" class="table table-striped">
                                     <thead>
@@ -72,7 +79,7 @@
                                                         <a href="#" class="btn btn-info btn-sm"> <i class="fa fa-print"></i>  Invoice</a>
                                                     @else
                                                         <a href="{{ $dp->url_midtrans }}" class="btn btn-success btn-sm"> <i class="fa fa-dollar"></i> Bayar</a>
-                                                    @endif 
+                                                    @endif
                                                 </div>
                                             </td>
                                         </tr>

@@ -11,8 +11,6 @@
 
         <div class="col-xl-12">
 
-
-
             <div class="card">
                 <div class="card-header bg-primary">
                     <h3 class="text-white">Layanan Instalasi Bangunan Baru</h3>
@@ -20,6 +18,13 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-12">
+
+                            <div class="row d-flex justify-content-center mb-3">
+                                <div class="col-lg-6">
+                                    <img src="{{ asset('img/layanan.jpg') }}" class="img-fluid rounded" alt="" style="width:80%">
+                                </div>
+                            </div>
+
                             <form action="{{ route('customer.instalasi_bangunan_baru.store') }}" method="POST" enctype="multipart/form-data">
 
                                 @csrf

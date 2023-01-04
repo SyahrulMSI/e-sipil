@@ -19,6 +19,13 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-lg-12">
+
+                    <div class="row d-flex justify-content-center mb-3">
+                        <div class="col-lg-6">
+                            <img src="{{ asset('img/layanan.jpg') }}" class="img-fluid rounded" alt="" style="width:80%">
+                        </div>
+                    </div>
+
                     <form action="{{ route('customer.service_meter_listrik.store') }}" method="POST" enctype="multipart/form-data">
 
                         @csrf

@@ -1,4 +1,4 @@
-<div class="deznav">
+
     <div class="deznav-scroll">
         <ul class="metismenu" id="menu">
             <li><a href="{{ route('customer.dashboard.index') }}" class="ai-icon" aria-expanded="false">
@@ -60,4 +60,4 @@
             <!-- <p>Made with <span class="heart"></span> by DexignZone</p> -->
         </div>
     </div>
-    </div>
+

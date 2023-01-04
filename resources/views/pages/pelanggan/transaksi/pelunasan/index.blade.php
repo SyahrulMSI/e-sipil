@@ -13,6 +13,13 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-12">
+
+                            <div class="row d-flex justify-content-center mb-3">
+                                <div class="col-lg-6">
+                                    <img src="{{ asset('img/payment.jpg') }}" class="img-fluid rounded" alt="" style="width:80%">
+                                </div>
+                            </div>
+
                             <div class="table-responsive">
                                 <table id="pelunasan" class="table table-striped text-center" width="100%">
                                     <thead>

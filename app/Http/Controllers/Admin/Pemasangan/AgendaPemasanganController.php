@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin\Pemasangan;
 
 use App\Http\Controllers\Controller;
+use App\Models\InstalasiBangunan;
+use App\Models\PemasanganBaru;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class AgendaPemasanganController extends Controller
@@ -15,8 +18,12 @@ class AgendaPemasanganController extends Controller
     public function index()
     {
         $data = array(
-            'title'     =>     'Data Agenda Pemasangan'
-        );
+            'title'     =>     'Data Agenda Pemasangan',
+            'pmb'   =>  PemasanganBaru::orderBy('id', 'DESC')->get(),
+            'sm'   =>  Service::where('jenis_service', 'meter_listrik')->orderBy('id', 'DESC')->get(),
+            'slb'   =>  Service::where('jenis_service', 'listrik_bangunan')->orderBy('id', 'DESC')->get(),
+            'ib'    =>  InstalasiBangunan::orderBy('id', 'DESC')->get(),
+        );  
 
         return view('pages.admin.pemasangan.agenda.index', $data);
     }

@@ -22,54 +22,41 @@
         <div class="card-body">
             <div id="DZ_W_TimeLine11" class="widget-timeline dz-scroll style-1 height370">
                 <ul class="timeline">
-                    <li>
-                        <div class="timeline-badge primary"></div>
-                        <a class="timeline-panel text-muted" href="#">
-                            <span>10 minutes ago</span>
-                            <h6 class="mb-0">Youtube, a video-sharing website, goes live <strong class="text-primary">$500</strong>.</h6>
-                        </a>
-                    </li>
+                    @forelse ($pmb as $item)
                     <li>
                         <div class="timeline-badge info">
                         </div>
                         <a class="timeline-panel text-muted" href="#">
-                            <span>20 minutes ago</span>
-                            <h6 class="mb-0">New order placed <strong class="text-info">#XF-2356.</strong></h6>
-                            <p class="mb-0">Quisque a consequat ante Sit amet magna at volutapt...</p>
+                            <span>{{ Carbon\Carbon::parse($item->tanggal)->format('d F Y') }}</span>
+                            <h6 class="mb-0">{{ Str::title($item->jenis_pemasangan) }} <strong class="text-info">#X{{ $item->nomor_registrasi }}.</strong></h6>
+                            <p class="mb-0">
+                               
+                            </p>
+                            @if(empty($item->Tugas()->first()->status))
+                            @else
+                                @if($item->Tugas()->first()->status == 0)
+                                    <span class="badge badge-danger badge-sm">Menunggu Konfirmasi</span>
+                                @elseif($item->Tugas()->first()->status == 1)
+                                    <span class="badge badge-info badge-sm">Di Konfirmasi</span>
+                                @elseif($item->Tugas()->first()->status == 2)
+                                    <span class="badge badge-primary badge-sm">Survei & Prepare</span>
+                                @elseif($item->Tugas()->first()->status == 3)
+                                    <span class="badge badge-success badge-sm">Proses</span>
+                                @elseif($item->Tugas()->first()->status == 4)
+                                    <span class="badge badge-warning badge-sm">Testing</span>
+                                @elseif($item->Tugas()->first()->status == 5)
+                                    <span class="badge badge-primary badge-sm">Finishing</span>
+                                @elseif($item->Tugas()->first()->status == 6)
+                                    <span class="badge badge-success badge-sm">Selesai</span>
+                                @endif
+                            @endif
                         </a>
                     </li>
-                    <li>
-                        <div class="timeline-badge danger">
+                    @empty
+                        <div class="alert alert-warning text-center" role="alert">
+                            <h5 class="font-weight-bold">Maaf, Belum ada agenda untuk saat ini.</h5>
                         </div>
-                        <a class="timeline-panel text-muted" href="#">
-                            <span>30 minutes ago</span>
-                            <h6 class="mb-0">john just buy your product <strong class="text-warning">Sell $250</strong></h6>
-                        </a>
-                    </li>
-                    <li>
-                        <div class="timeline-badge success">
-                        </div>
-                        <a class="timeline-panel text-muted" href="#">
-                            <span>15 minutes ago</span>
-                            <h6 class="mb-0">StumbleUpon is acquired by eBay. </h6>
-                        </a>
-                    </li>
-                    <li>
-                        <div class="timeline-badge warning">
-                        </div>
-                        <a class="timeline-panel text-muted" href="#">
-                            <span>20 minutes ago</span>
-                            <h6 class="mb-0">Mashable, a news website and blog, goes live.</h6>
-                        </a>
-                    </li>
-                    <li>
-                        <div class="timeline-badge dark">
-                        </div>
-                        <a class="timeline-panel text-muted" href="#">
-                            <span>20 minutes ago</span>
-                            <h6 class="mb-0">Mashable, a news website and blog, goes live.</h6>
-                        </a>
-                    </li>
+                    @endforelse
                 </ul>
             </div>
         </div>
@@ -85,54 +72,39 @@
         <div class="card-body">
             <div id="DZ_W_TimeLine11" class="widget-timeline dz-scroll style-1 height370">
                 <ul class="timeline">
-                    <li>
-                        <div class="timeline-badge primary"></div>
-                        <a class="timeline-panel text-muted" href="#">
-                            <span>10 minutes ago</span>
-                            <h6 class="mb-0">Youtube, a video-sharing website, goes live <strong class="text-primary">$500</strong>.</h6>
-                        </a>
-                    </li>
-                    <li>
-                        <div class="timeline-badge info">
+                    @forelse($sm as $item)
+                        <li>
+                            <div class="timeline-badge primary"></div>
+                            <a class="timeline-panel text-muted" href="#">
+                                <span>{{  Carbon\Carbon::parse($item->tanggal)->format('d F Y')  }}</span>
+                                <h6 class="mb-0">Service Meter Listrik <strong class="text-primary">#X{{ $item->nomor_registrasi }}.</strong></h6>
+                                <p class="mb-0">
+                                    @if(empty($item->Tugas()->first()->status))
+                                    @else
+                                        @if($item->Tugas()->first()->status == 0)
+                                            <span class="badge badge-danger badge-sm">Menunggu Konfirmasi</span>
+                                        @elseif($item->Tugas()->first()->status == 1)
+                                            <span class="badge badge-info badge-sm">Di Konfirmasi</span>
+                                        @elseif($item->Tugas()->first()->status == 2)
+                                            <span class="badge badge-primary badge-sm">Survei & Prepare</span>
+                                        @elseif($item->Tugas()->first()->status == 3)
+                                            <span class="badge badge-success badge-sm">Proses</span>
+                                        @elseif($item->Tugas()->first()->status == 4)
+                                            <span class="badge badge-warning badge-sm">Testing</span>
+                                        @elseif($item->Tugas()->first()->status == 5)
+                                            <span class="badge badge-primary badge-sm">Finishing</span>
+                                        @elseif($item->Tugas()->first()->status == 6)
+                                            <span class="badge badge-success badge-sm">Selesai</span>
+                                        @endif
+                                    @endif
+                                </p>
+                            </a>
+                        </li>
+                    @empty
+                        <div class="alert alert-warning text-center" role="alert">
+                            <h5 class="font-weight-bold">Maaf, Belum ada agenda untuk saat ini.</h5>
                         </div>
-                        <a class="timeline-panel text-muted" href="#">
-                            <span>20 minutes ago</span>
-                            <h6 class="mb-0">New order placed <strong class="text-info">#XF-2356.</strong></h6>
-                            <p class="mb-0">Quisque a consequat ante Sit amet magna at volutapt...</p>
-                        </a>
-                    </li>
-                    <li>
-                        <div class="timeline-badge danger">
-                        </div>
-                        <a class="timeline-panel text-muted" href="#">
-                            <span>30 minutes ago</span>
-                            <h6 class="mb-0">john just buy your product <strong class="text-warning">Sell $250</strong></h6>
-                        </a>
-                    </li>
-                    <li>
-                        <div class="timeline-badge success">
-                        </div>
-                        <a class="timeline-panel text-muted" href="#">
-                            <span>15 minutes ago</span>
-                            <h6 class="mb-0">StumbleUpon is acquired by eBay. </h6>
-                        </a>
-                    </li>
-                    <li>
-                        <div class="timeline-badge warning">
-                        </div>
-                        <a class="timeline-panel text-muted" href="#">
-                            <span>20 minutes ago</span>
-                            <h6 class="mb-0">Mashable, a news website and blog, goes live.</h6>
-                        </a>
-                    </li>
-                    <li>
-                        <div class="timeline-badge dark">
-                        </div>
-                        <a class="timeline-panel text-muted" href="#">
-                            <span>20 minutes ago</span>
-                            <h6 class="mb-0">Mashable, a news website and blog, goes live.</h6>
-                        </a>
-                    </li>
+                   @endforelse
                 </ul>
             </div>
         </div>
@@ -148,54 +120,39 @@
         <div class="card-body">
             <div id="DZ_W_TimeLine11" class="widget-timeline dz-scroll style-1 height370">
                 <ul class="timeline">
-                    <li>
-                        <div class="timeline-badge primary"></div>
-                        <a class="timeline-panel text-muted" href="#">
-                            <span>10 minutes ago</span>
-                            <h6 class="mb-0">Youtube, a video-sharing website, goes live <strong class="text-primary">$500</strong>.</h6>
-                        </a>
-                    </li>
-                    <li>
-                        <div class="timeline-badge info">
+                    @forelse ($sm as $item)
+                        <li>
+                            <div class="timeline-badge primary"></div>
+                            <a class="timeline-panel text-muted" href="#">
+                                <span>{{  Carbon\Carbon::parse($item->tanggal)->format('d F Y')  }}</span>
+                                <h6 class="mb-0">Service Meter Listrik <strong class="text-primary">#X{{ $item->nomor_registrasi }}.</strong></h6>
+                                <p class="mb-0">
+                                    @if(empty($item->Tugas()->first()->status))
+                                    @else
+                                        @if($item->Tugas()->first()->status == 0)
+                                            <span class="badge badge-danger badge-sm">Menunggu Konfirmasi</span>
+                                        @elseif($item->Tugas()->first()->status == 1)
+                                            <span class="badge badge-info badge-sm">Di Konfirmasi</span>
+                                        @elseif($item->Tugas()->first()->status == 2)
+                                            <span class="badge badge-primary badge-sm">Survei & Prepare</span>
+                                        @elseif($item->Tugas()->first()->status == 3)
+                                            <span class="badge badge-success badge-sm">Proses</span>
+                                        @elseif($item->Tugas()->first()->status == 4)
+                                            <span class="badge badge-warning badge-sm">Testing</span>
+                                        @elseif($item->Tugas()->first()->status == 5)
+                                            <span class="badge badge-primary badge-sm">Finishing</span>
+                                        @elseif($item->Tugas()->first()->status == 6)
+                                            <span class="badge badge-success badge-sm">Selesai</span>
+                                        @endif
+                                    @endif
+                                </p>
+                            </a>
+                        </li>
+                    @empty
+                        <div class="alert alert-warning text-center" role="alert">
+                            <h5 class="font-weight-bold">Maaf, Belum ada agenda untuk saat ini.</h5>
                         </div>
-                        <a class="timeline-panel text-muted" href="#">
-                            <span>20 minutes ago</span>
-                            <h6 class="mb-0">New order placed <strong class="text-info">#XF-2356.</strong></h6>
-                            <p class="mb-0">Quisque a consequat ante Sit amet magna at volutapt...</p>
-                        </a>
-                    </li>
-                    <li>
-                        <div class="timeline-badge danger">
-                        </div>
-                        <a class="timeline-panel text-muted" href="#">
-                            <span>30 minutes ago</span>
-                            <h6 class="mb-0">john just buy your product <strong class="text-warning">Sell $250</strong></h6>
-                        </a>
-                    </li>
-                    <li>
-                        <div class="timeline-badge success">
-                        </div>
-                        <a class="timeline-panel text-muted" href="#">
-                            <span>15 minutes ago</span>
-                            <h6 class="mb-0">StumbleUpon is acquired by eBay. </h6>
-                        </a>
-                    </li>
-                    <li>
-                        <div class="timeline-badge warning">
-                        </div>
-                        <a class="timeline-panel text-muted" href="#">
-                            <span>20 minutes ago</span>
-                            <h6 class="mb-0">Mashable, a news website and blog, goes live.</h6>
-                        </a>
-                    </li>
-                    <li>
-                        <div class="timeline-badge dark">
-                        </div>
-                        <a class="timeline-panel text-muted" href="#">
-                            <span>20 minutes ago</span>
-                            <h6 class="mb-0">Mashable, a news website and blog, goes live.</h6>
-                        </a>
-                    </li>
+                    @endforelse
                 </ul>
             </div>
         </div>
@@ -211,54 +168,40 @@
         <div class="card-body">
             <div id="DZ_W_TimeLine11" class="widget-timeline dz-scroll style-1 height370">
                 <ul class="timeline">
-                    <li>
-                        <div class="timeline-badge primary"></div>
-                        <a class="timeline-panel text-muted" href="#">
-                            <span>10 minutes ago</span>
-                            <h6 class="mb-0">Youtube, a video-sharing website, goes live <strong class="text-primary">$500</strong>.</h6>
-                        </a>
-                    </li>
-                    <li>
-                        <div class="timeline-badge info">
+                    @forelse ($ib as $item)
+                        <li>
+                            <div class="timeline-badge success">
+                            </div>
+                            <a class="timeline-panel text-muted" href="#">
+                                <span>{{  Carbon\Carbon::parse($item->tanggal)->format('d F Y')  }}</span>
+                                <h6 class="mb-0">{{ Str::title($item->jenis_instalasi )}} <strong class="text-success">#X{{ $item->nomor_registrasi }}.</strong></h6>
+                                <p class="mb-0">
+                                    @if(empty($item->Tugas()->first()->status))
+                                    @else
+                                        @if($item->Tugas()->first()->status == 0)
+                                            <span class="badge badge-danger badge-sm">Menunggu Konfirmasi</span>
+                                        @elseif($item->Tugas()->first()->status == 1)
+                                            <span class="badge badge-info badge-sm">Di Konfirmasi</span>
+                                        @elseif($item->Tugas()->first()->status == 2)
+                                            <span class="badge badge-primary badge-sm">Survei & Prepare</span>
+                                        @elseif($item->Tugas()->first()->status == 3)
+                                            <span class="badge badge-success badge-sm">Proses</span>
+                                        @elseif($item->Tugas()->first()->status == 4)
+                                            <span class="badge badge-warning badge-sm">Testing</span>
+                                        @elseif($item->Tugas()->first()->status == 5)
+                                            <span class="badge badge-primary badge-sm">Finishing</span>
+                                        @elseif($item->Tugas()->first()->status == 6)
+                                            <span class="badge badge-success badge-sm">Selesai</span>
+                                        @endif
+                                    @endif
+                                </p>
+                            </a>
+                        </li>
+                    @empty
+                        <div class="alert alert-warning text-center" role="alert">
+                            <h5 class="font-weight-bold">Maaf, Belum ada agenda untuk saat ini.</h5>
                         </div>
-                        <a class="timeline-panel text-muted" href="#">
-                            <span>20 minutes ago</span>
-                            <h6 class="mb-0">New order placed <strong class="text-info">#XF-2356.</strong></h6>
-                            <p class="mb-0">Quisque a consequat ante Sit amet magna at volutapt...</p>
-                        </a>
-                    </li>
-                    <li>
-                        <div class="timeline-badge danger">
-                        </div>
-                        <a class="timeline-panel text-muted" href="#">
-                            <span>30 minutes ago</span>
-                            <h6 class="mb-0">john just buy your product <strong class="text-warning">Sell $250</strong></h6>
-                        </a>
-                    </li>
-                    <li>
-                        <div class="timeline-badge success">
-                        </div>
-                        <a class="timeline-panel text-muted" href="#">
-                            <span>15 minutes ago</span>
-                            <h6 class="mb-0">StumbleUpon is acquired by eBay. </h6>
-                        </a>
-                    </li>
-                    <li>
-                        <div class="timeline-badge warning">
-                        </div>
-                        <a class="timeline-panel text-muted" href="#">
-                            <span>20 minutes ago</span>
-                            <h6 class="mb-0">Mashable, a news website and blog, goes live.</h6>
-                        </a>
-                    </li>
-                    <li>
-                        <div class="timeline-badge dark">
-                        </div>
-                        <a class="timeline-panel text-muted" href="#">
-                            <span>20 minutes ago</span>
-                            <h6 class="mb-0">Mashable, a news website and blog, goes live.</h6>
-                        </a>
-                    </li>
+                   @endforelse
                 </ul>
             </div>
         </div>

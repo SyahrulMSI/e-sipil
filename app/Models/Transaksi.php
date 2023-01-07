@@ -59,4 +59,9 @@ class Transaksi extends Model
     {
         return $this->belongsTo(Service::class, 'id_service', 'id');
     }
+
+    public function RincianPelunasan()
+    {
+        return $this->hasMany(RincianPelunasan::class, 'id_transaksi', 'id');
+    }
 }

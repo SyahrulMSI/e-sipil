@@ -20,16 +20,18 @@ use App\Http\Controllers\Customer\Profile\ProfileController;
 use App\Http\Controllers\Customer\Profile\DetailProfileController;
 use App\Http\Controllers\Api\MidtransController;
 use App\Http\Controllers\Customer\Progres\ProgresController;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Controllers\Invoice\InvoiceController;
+
+
+// |--------------------------------------------------------------------------
+// | Web Routes
+// |--------------------------------------------------------------------------
+// |
+// | Here is where you can register web routes for your application. These
+// | routes are loaded by the RouteServiceProvider within a group which
+// | contains the "web" middleware group. Now create something great!
+// |
+
 
 Route::resource('/', LandingController::class);
 
@@ -74,6 +76,10 @@ Route::group(['prefix' => 'customer', 'as' => 'customer.'], function () {
     Route::get('payment/success', [KonfirmasiTambahDayaController::class, 'midtransCallback']);
     Route::post('payment/success', [KonfirmasiTambahDayaController::class, 'midtransCallback']);
 
+});
+
+Route::middleware(['auth', 'verified'])->group(function(){
+    Route::resource('invoice', InvoiceController::class);
 });
 
 

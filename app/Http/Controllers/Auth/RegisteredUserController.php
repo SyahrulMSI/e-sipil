@@ -56,7 +56,7 @@ class RegisteredUserController extends Controller
         if($result){
         Auth::login($user);
         Alert::success('Success', 'Selamat, Pendaftaran anda berhasil. Silahkan Login !');
-        return redirect()->route('customer.dashbaord.index');
+        return redirect()->route('customer.dashboard.index');
         return redirect('customer.dashboard.index');
         } else {
             Alert::error('Error', 'Selamat, Pendaftaran anda berhasil. Silahkan Ulangi Kembali !');

@@ -61,7 +61,7 @@
         <ul aria-expanded="false">
             <li><a href="{{ route('admin.dp.index') }}">Transaksi Dp</a>
             <li><a href="{{ route('admin.pelunasan.index') }}">Transaksi Pelunasan</a></li> <!--****** struk bukti bayar *******-->
-            <li><a href="{{ route('admin.invoice.index') }}">Cetak Invoice</a></li>
+            {{--  <li><a href="{{ route('admin.invoice.index') }}">Cetak Invoice</a></li>  --}}
         </ul>
     </li>
     <li><a href="widget-basic.html" class="ai-icon" aria-expanded="false">

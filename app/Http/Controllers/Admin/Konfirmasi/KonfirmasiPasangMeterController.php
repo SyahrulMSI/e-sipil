@@ -79,7 +79,7 @@ class KonfirmasiPasangMeterController extends Controller
             'tanggal_transaksi' =>  date('Y-m-d')
         ]);
 
-        dd(getSnapRedirect($result));
+        getSnapRedirect($result);
 
         if($result){
             Alert::success('Success', 'Tagihan berhasil di buat');

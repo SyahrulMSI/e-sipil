@@ -55,6 +55,10 @@
                                             <td>
                                                 <div class="btn-group">
                                                     <button class="btn btn-danger btn-sm rounded" type="button" data-toggle="modal" data-target="#delete{{ $dp->id }}"><i class="fa fa-trash"></i></button>
+                                                    @if($dp->status == 'SUCCESS')
+                                                    &nbsp;
+                                                    <a href="{{ route('invoice.show', $dp->midtrans_booking_code) }}" target="_blank" class="btn btn-primary btn-sm rounded shadow"><i class="fa fa-print"></i>  Invoice</a>
+                                                    @endif
                                                 </div>
 
                                                 <div class="modal fade" id="delete{{ $dp->id }}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

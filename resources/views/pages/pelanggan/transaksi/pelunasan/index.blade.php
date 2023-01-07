@@ -62,7 +62,7 @@
                                                 <td>
                                                     <div class="btn-group">
                                                         @if($t->status == "SUCCESS" || $t->status == "Success" || $t->status == 'success')
-                                                            <a href="#" class="btn btn-primary btn-sm rounded shadow">Invoice</a>
+                                                            <a href="{{ route('invoice.show', $t->midtrans_booking_code) }}" target="_blank" class="btn btn-primary btn-sm rounded shadow"><i class="fa fa-print"></i> Invoice</a>
                                                         @else
                                                             &nbsp;
                                                             <a href="{{ $t->url_midtrans }}" class="btn btn-success btn-sm rounded shadow" target="_blank">Bayar</a>

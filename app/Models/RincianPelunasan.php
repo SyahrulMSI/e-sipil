@@ -23,4 +23,15 @@ class RincianPelunasan extends Model
         'created_at',
         'updateda_at'
     ];
+
+    protected $dates = [
+        'deleted_at',
+        'created_at',
+        'updateda_at'
+    ];
+
+    public function Transaksi()
+    {
+        return $this->belongsTo(Transaksi::class, 'id_trasaksi', 'id');
+    }
 }

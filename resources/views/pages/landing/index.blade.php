@@ -21,7 +21,7 @@
             <div class="col-xl-6 col-lg-8">
                 <div class="banner-one__content">
 
-                    <h3 class="banner-one__title">Selamat Datang Di <br> <span>PT.</span> SUMBER <br> SAE SATU</h3><!-- /.banner-one__title -->
+                    <h3 class="banner-one__title">Selamat Datang Di <br> <span>E</span>-SIPIL <br>PT. SUMBER SAE SATU</h3><!-- /.banner-one__title -->
                     <p class="banner-one__text">Selamat Menikmati Pelayanan Kami <br> Utamakan keselamatan dan jamin <br> kualitas kelistrikan anda.</p>
                     <!-- /.banner-one__text -->
                     <a href="#" class="banner-one__btn thm-btn "><span>Mulai</span></a><!-- /.thm-btn -->
@@ -79,7 +79,7 @@
         </div><!-- /.row -->
     </div><!-- /.container -->
 </section><!-- /.service-one -->
-<section class="cta-one">
+<section class="cta-one" id="Benefit">
     <img src="{{ asset('landing/assets/images/background/cta-one-bg.png') }}" class="cta-one__bg" alt="Awesome Image" />
     <div class="container">
         <img src="{{ asset('landing/assets/images/mocs/cta-moc-1-1.png') }}" class="cta-one__moc" alt="Awesome Image" />
@@ -104,7 +104,7 @@
         </div><!-- /.row -->
     </div><!-- /.container -->
 </section><!-- /.cta-one -->
-<section class="testimonials-one">
+<section class="testimonials-one" id="testimonials">
     <div class="container">
         <div class="block-title text-center">
             <h2 class="block-title__title">Ulasan <span>Tokoh</span> serta <br> Masyarakat sekitar.</h2><!-- /.block-title__title -->
@@ -114,30 +114,30 @@
                 <div class="item">
                     <div class="testimonials-one__single">
                         <div class="testimonials-one__inner">
-                            <p>This is due to their excellent service, competitive pricing and <br> customer support. It’s throughly refresing to get such a personal <br> touch. Duis aute irure dolor in reprehenderit.</p>
-                            <h3>Shirley Smith</h3>
-                            <span>Our Customers</span>
-                            <img src="assets/images/resources/testi-1-1.png" alt="Awesome Image" />
+                            <p>Kami dengan senang hati melayani segala kebutuhan <br> dan masalah kelistrikan yang anda miliki. bukan hanya itu,  <br> kami juga siap melayani anda dalam kondisi darurat.</p>
+                            <h3>Dedhi Nooriyanto</h3>
+                            <span>Direktur PT. SUMBER SAE SATU</span>
+                            <img src="{{ asset('landing/assets/images/resources/testi-1-1.png') }}" alt="Awesome Image" />
                         </div><!-- /.testimonials-one__inner -->
                     </div><!-- /.testimonials-one__single -->
                 </div><!-- /.item -->
                 <div class="item">
                     <div class="testimonials-one__single">
                         <div class="testimonials-one__inner">
-                            <p>This is due to their excellent service, competitive pricing and <br> customer support. It’s throughly refresing to get such a personal <br> touch. Duis aute irure dolor in reprehenderit.</p>
-                            <h3>Shirley Smith</h3>
-                            <span>Our Customers</span>
-                            <img src="assets/images/resources/testi-1-1.png" alt="Awesome Image" />
+                            <p>Pemasangan meter listrik yang rapi dan  <br> merupakan hasil dari ketelitian dan kesungguhan <br> dalam melakukan sebuah pekerjaan maupun kegiatan.</p>
+                            <h3>Ahmad Nanto</h3>
+                            <span>Pelanggan Pasang Baru</span>
+                            <img src="{{ asset('landing/assets/images/resources/testi-1-3.png') }}" alt="Awesome Image" />
                         </div><!-- /.testimonials-one__inner -->
                     </div><!-- /.testimonials-one__single -->
                 </div><!-- /.item -->
                 <div class="item">
                     <div class="testimonials-one__single">
                         <div class="testimonials-one__inner">
-                            <p>This is due to their excellent service, competitive pricing and <br> customer support. It’s throughly refresing to get such a personal <br> touch. Duis aute irure dolor in reprehenderit.</p>
-                            <h3>Shirley Smith</h3>
-                            <span>Our Customers</span>
-                            <img src="assets/images/resources/testi-1-1.png" alt="Awesome Image" />
+                            <p>Suatu kemewahan rumah memang sangat penting bagi saya <br> kemewahan paling utama ada pada kualitas elektronik pada rumah<br> saya senang atas kualitas material <br>yang digunakan pada PT. SUMBER SAE SATU ini.</p>
+                            <h3>Sunandar</h3>
+                            <span>Pelanggan Instalasi Listrik - Perumahan</span>
+                            <img src="{{ asset('landing/assets/images/resources/testi-1-2.png') }}" alt="Awesome Image" />
                         </div><!-- /.testimonials-one__inner -->
                     </div><!-- /.testimonials-one__single -->
                 </div><!-- /.item -->
@@ -154,58 +154,67 @@
 <section class="fact-one">
     <div class="container">
         <div class="block-title text-center">
-            <h2 class="block-title__title">Over 2200 <span>Projects</span> <br> Completed.</h2><!-- /.block-title__title -->
+            <h2 class="block-title__title">Rekap <span>Pelayanan</span> <br> dan jumlah Teknisi.</h2><!-- /.block-title__title -->
         </div><!-- /.block-title -->
         <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-12 wow fadeInUp" data-wow-duration="1000ms">
                 <div class="fact-one__single">
                     <div class="fact-one__inner">
-                        <h3 class="fact-one__count counter">4789</h3><!-- /.fact-one__count counter -->
-                        <p class="fact-one__text">projects</p><!-- /.fact-one__text -->
+                        <h3 class="fact-one__count counter">176</h3><!-- /.fact-one__count counter -->
+                        <p class="fact-one__text">Instalasi Baru</p><!-- /.fact-one__text -->
                     </div><!-- /.fact-one__inner -->
                 </div><!-- /.fact-one__single -->
             </div><!-- /.col-lg-3 col-md-6 col-sm-12 -->
             <div class="col-lg-3 col-md-6 col-sm-12 wow fadeInUp" data-wow-duration="1500ms">
                 <div class="fact-one__single">
                     <div class="fact-one__inner">
-                        <h3 class="fact-one__count counter">6400</h3><!-- /.fact-one__count counter -->
-                        <p class="fact-one__text">customers</p><!-- /.fact-one__text -->
+                        <h3 class="fact-one__count counter">237</h3><!-- /.fact-one__count counter -->
+                        <p class="fact-one__text">Servis Instalasi</p><!-- /.fact-one__text -->
                     </div><!-- /.fact-one__inner -->
                 </div><!-- /.fact-one__single -->
             </div><!-- /.col-lg-3 col-md-6 col-sm-12 -->
             <div class="col-lg-3 col-md-6 col-sm-12 wow fadeInUp" data-wow-duration="1500ms">
                 <div class="fact-one__single">
                     <div class="fact-one__inner">
-                        <h3 class="fact-one__count counter">960</h3><!-- /.fact-one__count counter -->
-                        <p class="fact-one__text">success</p><!-- /.fact-one__text -->
+                        <h3 class="fact-one__count counter">54</h3><!-- /.fact-one__count counter -->
+                        <p class="fact-one__text">Pasang Meter</p><!-- /.fact-one__text -->
                     </div><!-- /.fact-one__inner -->
                 </div><!-- /.fact-one__single -->
             </div><!-- /.col-lg-3 col-md-6 col-sm-12 -->
             <div class="col-lg-3 col-md-6 col-sm-12 wow fadeInUp" data-wow-duration="1500ms">
                 <div class="fact-one__single">
                     <div class="fact-one__inner">
-                        <h3 class="fact-one__count counter">378</h3><!-- /.fact-one__count counter -->
-                        <p class="fact-one__text">awards</p><!-- /.fact-one__text -->
+                        <h3 class="fact-one__count counter">32</h3><!-- /.fact-one__count counter -->
+                        <p class="fact-one__text">Servis Meter</p><!-- /.fact-one__text -->
                     </div><!-- /.fact-one__inner -->
                 </div><!-- /.fact-one__single -->
             </div><!-- /.col-lg-3 col-md-6 col-sm-12 -->
         </div><!-- /.row -->
     </div><!-- /.container -->
 </section><!-- /.fact-one -->
-<section class="mailchimp-one" style="margin-top: 100px;">
+<section class="mailchimp-one" style="margin-top: 100px;" id=complain>
     <div class="container">
         <div class="block-title text-center">
-            <h2 class="block-title__title">Subscribe Our <span>Newsletter</span> <br> to Get New Updates.</h2><!-- /.block-title__title -->
+            <h2 class="block-title__title">Ikuti Kami <br> Agar dapat melihat informasi terbaru.</h2><!-- /.block-title__title -->
         </div><!-- /.block-title -->
-        <form action="#" class="mailchimp-one__mc-form mc-form" data-url="https://xyz.us18.list-manage.com/subscribe/post?u=20e91746ef818cd941998c598&amp;id=cc0ee8140e">
-            <input type="email" id="mc-email" class="formInput" placeholder="Email address">
+
+            <form action="#" method="POST" enctype="multipart/form-data">
+                <div class="form-group d-flex justify-content-center">
+                    <textarea name="komplain" class="form-control col-6" id="" cols="30" rows="5"></textarea>
+                </div>
+                <div class="form-group d-flex justify-content-center">
+                    <button type="button" class="thm-btn header__cta-btn fw-bold"><span>Kirim</span></button>
+                </div>
+            </form>
+
+        <!-- <form action="#" class="mailchimp-one__mc-form mc-form" data-url="{{ url('https://xyz.us18.list-manage.com/subscribe/post?u=20e91746ef818cd941998c598&amp;id=cc0ee8140') }}e">
+            <input type="text" class="form-control" placeholder="Silahkan komplain di sini !" style="min-height: 6rem; border: none;">
             <button type="submit"><i class="dimon-icon-right-arrow"></i>
-                <!-- /.fa fa-paper-plane --></button>
-        </form><!-- /.mailchimp-one__mc-form -->
+            </button>
+        </form> -->
         <div class="mc-form__response"></div><!-- /.mc-form__response -->
     </div><!-- /.container -->
-</section><!-- /.mailchimp-one -->
-
+</section ><!-- /.mailchimp-one -->
 <div class="modal fade" id="login" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content" style="rounded">

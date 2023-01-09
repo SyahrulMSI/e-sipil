@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin\DataTugas;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Tugas;
+use App\Models\User;
 use Alert;
+use GuzzleHttp\Client;
 
 class DataController extends Controller
 {
@@ -76,13 +78,64 @@ class DataController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $data = Tugas::where('id', $id)->first();
+
+        $user = User::where('id',$data->id_pelanggan)->first();
+
         $status = $request->status;
 
         $result = Tugas::where('id', $id)->update([
             'status'    =>  $status
         ]);
 
+        $st = $status;
+
+        if($st == 1){
+            $data = [
+                'phone' => $user->no_telp,
+                'message' => 'Status pengerjaan kamu sekarang adalah Di Konfirmasi',
+            ];
+        } elseif($st == 2){
+            $data = [
+                'phone' => $user->no_telp,
+                'message' => 'Status pengerjaan kamu sekarang adalah Survei & Prepare',
+            ];
+        } elseif($st == 3){
+            $data = [
+                'phone' => $user->no_telp,
+                'message' => 'Status pengerjaan kamu sekarang adalah Proses',
+            ];
+        }elseif($st == 4){
+            $data = [
+                'phone' => $user->no_telp,
+                'message' => 'Status pengerjaan kamu sekarang adalah Testing',
+            ];
+        }elseif($st == 5){
+            $data = [
+                'phone' => $user->no_telp,
+                'message' => 'Status pengerjaan kamu sekarang adalah Finishing',
+            ];
+        }elseif($st == 6){
+            $data = [
+                'phone' => $user->no_telp,
+                'message' => 'Status pengerjaan kamu sekarang adalah Selesai',
+            ];
+        }
+
         if($result){
+
+        $token = 'TX8FsvpO64vCOVwK8ysBm70uQp9dSB24RlTeQmf4sKofEyeiW6JxbrFW9ZNaA1Qp';
+
+        $client = new Client();
+
+        $client->post('https://jogja.wablas.com/api/send-message', [
+            'headers'   =>  [
+                'Authorization' =>  $token
+            ],
+            'form_params'  =>  $data
+        ]);
+
             Alert::success('Success', 'Status berhasil di update');
             return redirect()->route('admin.data_tugas.index');
         }
@@ -110,5 +163,25 @@ class DataController extends Controller
         );
 
         return view('pages.admin.transaksi.pelunasan.create', $data);
+    }
+
+    public function waNotif($data)
+    {
+        $token = 'TX8FsvpO64vCOVwK8ysBm70uQp9dSB24RlTeQmf4sKofEyeiW6JxbrFW9ZNaA1Qp';
+
+        $client = new Client();
+
+        $data = [
+            'phone' => '085641739560',
+            'message' => 'hello there',
+            ];
+
+        $response = $client->post('https://jogja.wablas.com/api/send-message', [
+            'headers'  =>  [
+                'Authorization' =>  $token
+            ],
+            'form_params'  =>  $data
+        ]);
+
     }
 }

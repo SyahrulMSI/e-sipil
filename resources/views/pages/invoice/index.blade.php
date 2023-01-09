@@ -86,6 +86,7 @@
                                     <p class="tm_m0 tm_f16 tm_primary_color">Tambah Daya</p>
                                     Tarif {{ $inv->TambahDaya->tarif_lama }} to {{ $inv->TambahDaya->tarif_baru }} <br>
                                     Daya {{ $inv->TambahDaya->daya_lama }} to {{ $inv->TambahDaya->daya_baru }} <br>
+                                    ID Meter {{ $inv->TambahDaya->ID_meter }} <br>
                                     {!! $inv->RincianPelunasan()->first()->rincian !!}
                                 @elseif($inv->id_pemasangan_baru != null)
                                     <p class="tm_m0 tm_f16 tm_primary_color">Pemasangan Meter Baru {{ Str::title($inv->PemasanganBaru->jenis_pemasangan) }}</p>
@@ -97,7 +98,7 @@
                                 @elseif($inv->id_service != null)
                                     <p class="tm_m0 tm_f16 tm_primary_color">Service {{ $inv->Service->jenis_service == 'meter_listrik' ? 'Meter Listrik' : 'Listrik Bangunan' }}</p>
                                     {{ $inv->Service->JenisKerusakan()->first()->kerusakan }} <br>
-                                    {{ $inv->Service->JenisKerusakan()->first()->deskripsi }} 
+                                    {{ $inv->Service->JenisKerusakan()->first()->deskripsi }}
                                     <hr>
                                     {!! $inv->RincianPelunasan()->first()->rincian !!}
                                 @endif
@@ -112,7 +113,8 @@
                                 @if($inv->id_tambah_daya != null)
                                     <p class="tm_m0 tm_f16 tm_primary_color">Tambah Daya</p>
                                     Tarif {{ $inv->TambahDaya->tarif_lama }} to {{ $inv->TambahDaya->tarif_baru }} <br>
-                                    Daya {{ $inv->TambahDaya->daya_lama }} to {{ $inv->TambahDaya->daya_baru }}
+                                    Daya {{ $inv->TambahDaya->daya_lama }} to {{ $inv->TambahDaya->daya_baru }} <br>
+                                    ID Meter {{ $inv->TambahDaya->ID_meter }}
                                 @elseif($inv->id_pemasangan_baru != null)
                                     <p class="tm_m0 tm_f16 tm_primary_color">Pemasangan Meter Baru {{ Str::title($inv->PemasanganBaru->jenis_pemasangan) }}</p>
                                     Daya {{ $inv->PemasanganBaru->daya }} <br>

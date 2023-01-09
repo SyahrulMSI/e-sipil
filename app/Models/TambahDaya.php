@@ -16,6 +16,7 @@ class TambahDaya extends Model
         'id_user',
         'nomor_registrasi',
         'tanggal',
+        'ID_meter',
         'tarif_lama',
         'tarif_baru',
         'daya_lama',

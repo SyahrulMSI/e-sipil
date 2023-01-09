@@ -142,6 +142,7 @@
                                                             <th>No</th>
                                                             <th>Nomor Registrasi</th>
                                                             <th>Tanggal Permohonan</th>
+                                                            <th>ID Meter</th>
                                                             <th>Tarif Lama</th>
                                                             <th>Tarif Baru</th>
                                                             <th>Daya Lama</th>
@@ -159,6 +160,7 @@
                                                             <tr>
                                                                 <td>{{ $n }}.</td>
                                                                 <td class="font-weight-bold">{{ $td->nomor_registrasi }}</td>
+                                                                <td>{{ $td->ID_meter }}</td>
                                                                 <td>{{ $td->tanggal->format('d. M Y') }}</td>
                                                                 <td>{{ $td->tarif_lama }}</td>
                                                                 <td>{{ $td->tarif_baru }}</td>

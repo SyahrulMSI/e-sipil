@@ -98,11 +98,26 @@
 
                             </div>
                             <div class="col-lg-6">
-                                <div class="form-group mb-3">
-                                    <label for="nl">Nomor Registrasi:</label>
-                                    <input type="text" name="nr" class="form-control shadow" readonly value="{{ $td->nomor_registrasi }}">
-                                </div>
 
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group mb-3">
+                                                    <label for="nl">Nomor Registrasi:</label>
+                                                    <input type="text" name="nr" class="form-control shadow" readonly value="{{ $td->nomor_registrasi }}">
+                                                </div>
+
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label for="id_meter">No ID Meter:</label>
+                                                    <input type="number" name="id_meter" class="form-control shadow" readonly value="{{ $td->ID_meter }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="row">

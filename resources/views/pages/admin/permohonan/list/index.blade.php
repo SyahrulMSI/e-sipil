@@ -151,6 +151,7 @@
                                                             <th>No</th>
                                                             <th>Nama Pelanggan</th>
                                                             <th>Nomor Registrasi</th>
+                                                            <th>ID Meter</th></th>
                                                             <th>Tanggal</th>
                                                             <th>Tarif Lama</th>
                                                             <th>tarif Baru</th>
@@ -171,6 +172,7 @@
                                                                 <td>{{ $n }}.</td>
                                                                 <td>{{ $td->User->nama_lengkap }}</td>
                                                                 <td class="font-weight-bold">{{ $td->nomor_registrasi }}</td>
+                                                                <td>{{ $td->ID_meter }}</td>
                                                                 <td>{{ $td->tanggal->format('d, M Y') }}</td>
                                                                 <td>{{ $td->tarif_lama }}</td>
                                                                 <td>{{ $td->tarif_baru }}</td>
@@ -482,8 +484,6 @@
                                     </div>
 
                                 </div>
-
-
 
 
                                 <div class="tab-pane fade" id="lb" role="tabpanel" aria-labelledby="lb-tab">

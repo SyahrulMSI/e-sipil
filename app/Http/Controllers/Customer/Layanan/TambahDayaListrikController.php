@@ -46,6 +46,7 @@ class TambahDayaListrikController extends Controller
     {
         $request->validate([
             'nama_lengkap'  =>  'required',
+            'ID_meter'  =>  'required|digits_between:12,15',
             'tarif_lama'  =>  'required',
             'tarif_baru'  =>  'required',
             'daya_lama'  =>  'required',
@@ -53,7 +54,7 @@ class TambahDayaListrikController extends Controller
             'lokasi_meter' =>  'required|min:5|max:50'
         ]);
 
-
+        $id_meter = $request->ID_meter;
         $tarif_l = $request->tarif_lama;
         $tarif_b = $request->tarif_baru;
         $daya_l = $request->daya_lama;
@@ -77,6 +78,7 @@ class TambahDayaListrikController extends Controller
                 'id_user'   =>  Auth::user()->id,
                 'nomor_registrasi'  =>  date('Ymdis') . Auth::user()->id,
                 'tanggal'   => date('Y-m-d'),
+                'ID_meter'  =>  $id_meter,
                 'tarif_lama'  => $tarif_l,
                 'tarif_baru'  => $tarif_b,
                 'daya_lama'  => $daya_l,

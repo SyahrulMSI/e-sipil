@@ -71,7 +71,15 @@
                                             </td>
                                             <td>Rp. {{ number_format($dp->total_bayar, 0) }}</td>
                                             <td>
-                                                <span class="badge badge-primary">{{ $dp->status }}</span>
+                                                @if($dp->status == 'SUCCESS')
+                                                            <span class="badge badge-primary badge-sm">BERHASIL</span>
+                                                        @elseif($dp->status == 'WAITING')
+                                                            <span class="badge badge-primary badge-sm">MENUNGGU</span>
+                                                        @elseif($dp->status == 'FAILED')
+                                                                <span class="badge badge-primary badge-sm">GAGAL</span>
+                                                        @elseif($dp->status == 'PENDING')
+                                                            <span class="badge badge-primary badge-sm">DITUNDA</span>
+                                                        @endif
                                             </td>
                                             <td>
                                                 <div class="btn-group">

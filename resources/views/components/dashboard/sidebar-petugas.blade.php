@@ -3,7 +3,7 @@
         <ul class="metismenu" id="menu">
             <li><a href="{{ route('petugas.dashboard.index') }}" class="ai-icon" aria-expanded="false">
                 <i class="flaticon-381-networking"></i>
-                <span class="nav-text">Dashboard</span>
+                <span class="nav-text">Beranda</span>
                 </a>
             </li>
             <li>

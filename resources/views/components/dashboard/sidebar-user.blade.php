@@ -3,7 +3,7 @@
         <ul class="metismenu" id="menu">
             <li><a href="{{ route('customer.dashboard.index') }}" class="ai-icon" aria-expanded="false">
                 <i class="flaticon-381-networking"></i>
-                <span class="nav-text">Dashboard</span>
+                <span class="nav-text">Beranda</span>
                 </a>
             </li>
             <li>
@@ -46,8 +46,8 @@
                 <span class="nav-text">Data Transaksi</span>
             </a>
                 <ul aria-expanded="false">
-                    <li><a href="{{ route('customer.transaksi_dp.index') }}">Dp</a></li>
-                    <li><a href="{{ route('customer.transaksi_pelunasan.index') }}">Pelunasan</a></li>
+                    <li><a href="{{ route('customer.transaksi_uang_muka.index') }}">Transaksi Uang Muka</a></li>
+                    <li><a href="{{ route('customer.transaksi_pelunasan.index') }}">Transaksi Pelunasan</a></li>
                 </ul>
             </li>
         </ul>

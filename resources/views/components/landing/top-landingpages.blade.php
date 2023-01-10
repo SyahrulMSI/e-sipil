@@ -13,20 +13,19 @@
         <div class="main-navigation">
             <ul class=" one-page-scroll-menu navigation-box">
                 <li class="current scrollToLink">
-                    <a href="/">Home</a>
+                    <a href="/">Beranda</a>
                 </li>
                 <li class="scrollToLink">
-                    <a href="#features">Features</a>
+                    <a href="#features">Fitur</a>
                 </li>
                 <li class="scrollToLink">
-                    <a href="#video">Documentation</a>
-
+                    <a href="#Benefit">Keuntungan</a>
                 </li>
                 <li class="scrollToLink">
-                    <a href="#pricing">Technician</a>
+                    <a href="#testimonials">Dokumentasi</a>
                 </li>
                 <li class="scrollToLink">
-                    <a href="#screenshots">Complain</a>
+                    <a href="#complain">Pengaduan</a>
                 </li>
                 <li class="scrollToLink">
                     @if(!empty(Auth::user()))

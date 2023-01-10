@@ -14,7 +14,7 @@ class LandingController extends Controller
     public function index()
     {
         $data = array(
-            'title'     =>      'Home Pages'
+            'title'     =>      'Beranda'
         );
 
         return view('pages.landing.index', $data);

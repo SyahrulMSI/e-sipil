@@ -21,8 +21,8 @@
             <div class="col-xl-6 col-lg-8">
                 <div class="banner-one__content">
 
-                    <h3 class="banner-one__title">Selamat Datang Di <br> <span>E</span>-SIPIL <br>PT. SUMBER SAE SATU</h3><!-- /.banner-one__title -->
-                    <p class="banner-one__text">Selamat Menikmati Pelayanan Kami <br> Utamakan keselamatan dan jamin <br> kualitas kelistrikan anda.</p>
+                    <h3 class="banner-one__title">Selamat Datang Di <br> <span>E</span>-BTL <br>PT. SUMBER SAE SATU</h3><!-- /.banner-one__title -->
+                    <p class="banner-one__text">Selamat Menikmati Pelayanan Kami <br> <span class="font-weight-bold">Elektronik - Biro Teknik Listrik</span><br> Mengutamakan keselamatan dan menjamin <br> kualitas kelistrikan anda.</p>
                     <!-- /.banner-one__text -->
                     <a href="#" class="banner-one__btn thm-btn "><span>Mulai</span></a><!-- /.thm-btn -->
                 </div><!-- /.banner-one__content -->
@@ -127,7 +127,7 @@
                             <p>Pemasangan meter listrik yang rapi dan  <br> merupakan hasil dari ketelitian dan kesungguhan <br> dalam melakukan sebuah pekerjaan maupun kegiatan.</p>
                             <h3>Ahmad Nanto</h3>
                             <span>Pelanggan Pasang Baru</span>
-                            <img src="{{ asset('landing/assets/images/resources/testi-1-3.png') }}" alt="Awesome Image" />
+                            <img src="{{ asset('landing/assets/images/resources/testi-1-1.png') }}" alt="Awesome Image" />
                         </div><!-- /.testimonials-one__inner -->
                     </div><!-- /.testimonials-one__single -->
                 </div><!-- /.item -->
@@ -137,7 +137,7 @@
                             <p>Suatu kemewahan rumah memang sangat penting bagi saya <br> kemewahan paling utama ada pada kualitas elektronik pada rumah<br> saya senang atas kualitas material <br>yang digunakan pada PT. SUMBER SAE SATU ini.</p>
                             <h3>Sunandar</h3>
                             <span>Pelanggan Instalasi Listrik - Perumahan</span>
-                            <img src="{{ asset('landing/assets/images/resources/testi-1-2.png') }}" alt="Awesome Image" />
+                            <img src="{{ asset('landing/assets/images/resources/testi-1-1.png') }}" alt="Awesome Image" />
                         </div><!-- /.testimonials-one__inner -->
                     </div><!-- /.testimonials-one__single -->
                 </div><!-- /.item -->
@@ -219,7 +219,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content" style="rounded">
             <div class="modal-header bg-primary">
-            <h5 class="modal-title text-white" id="staticBackdropLabel">Silahkan Login</h5>
+            <h5 class="modal-title text-white" id="staticBackdropLabel">Silahkan Masuk</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -235,12 +235,12 @@
                                 <input type="email" name="email" class="form-control" value="{{ old('email') }}">
                             </div>
                             <div class="form-group">
-                                <label for="pasw">Password :</label>
+                                <label for="pasw">Kata Sandi :</label>
                                 <input type="password" name="password" class="form-control" value="{{ old('password') }}">
                             </div>
                             <a href="#">Lupa password ?</a>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-success">Login</button>
+                                <button type="submit" class="btn btn-success">Masuk</button>
                             </div>
                         </form>
                     </div>
@@ -294,7 +294,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label for="psw">Password</label>
+                                        <label for="psw">Kata Sandi</label>
                                         <input type="password" name="password" class="form-control">
                                         @error('password')
                                             <small class="text-danger">{{ $message }}</small>

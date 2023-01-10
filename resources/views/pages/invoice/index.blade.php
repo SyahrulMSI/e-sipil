@@ -32,7 +32,7 @@
           </div>
           <div class="tm_invoice_info tm_mb10">
             <div class="tm_invoice_info_left">
-              <p class="tm_mb2"><b>Invoice To:</b></p>
+              <p class="tm_mb2"><b>Tagihan Kepada:</b></p>
               <p>
                 <b class="tm_f16 tm_primary_color">{{ $inv->User->nama_lengkap }}</b> <br>
                 {{ $inv->User->DetailUser()->first()->kelurahan }},  {{ $inv->User->DetailUser()->first()->kecamatan }},
@@ -45,22 +45,22 @@
             </div>
             <div class="tm_invoice_info_right">
             @if($inv->type_pembayaran == 'dp')
-                <div class="tm_f40 tm_text_uppercase tm_text_center tm_invoice_title tm_mb15 tm_ternary_color tm_mobile_hide">Invoice Down Payment</div>
+                <div class="tm_f40 tm_text_uppercase tm_text_center tm_invoice_title tm_mb15 tm_ternary_color tm_mobile_hide">Tagihan Uang Muka</div>
             @elseif($inv->type_pembayaran == 'pelunasan')
-                <div class="tm_f40 tm_text_uppercase tm_text_center tm_invoice_title tm_mb15 tm_ternary_color tm_mobile_hide">Invoice Pelunasan</div>
+                <div class="tm_f40 tm_text_uppercase tm_text_center tm_invoice_title tm_mb15 tm_ternary_color tm_mobile_hide">Tagihan Pelunasan</div>
             @endif
 
               <div class="tm_grid_row tm_col_3 tm_invoice_info_in tm_round_border tm_gray_bg">
                 <div>
-                  <span>Invoice No:</span> <br>
+                  <span>No Tagihan:</span> <br>
                   <b class="tm_f12 tm_accent_color">{{ $inv->midtrans_booking_code }}</b>
                 </div>
                 <div>
-                  <span>Invoice Date:</span> <br>
+                  <span>Tanggal Tagihan:</span> <br>
                   <b class="tm_f12 tm_accent_color">{{ Carbon\Carbon::parse($inv->tanggal_transaksi)->format('d F Y') }}</b>
                 </div>
                 <div>
-                  <span>Grand Total:</span> <br>
+                  <span>Total Keseluruhan:</span> <br>
                   <b class="tm_f16 tm_accent_color">Rp. {{ number_format($inv->total_bayar) }}</b>
                 </div>
               </div>
@@ -72,9 +72,9 @@
                 <table>
                   <thead>
                     <tr>
-                      <th class="tm_width_7 tm_semi_bold tm_primary_color">Item</th>
-                      <th class="tm_width_2 tm_semi_bold tm_primary_color">Price</th>
-                      <th class="tm_width_1 tm_semi_bold tm_primary_color">Qty</th>
+                      <th class="tm_width_7 tm_semi_bold tm_primary_color">Barang</th>
+                      <th class="tm_width_2 tm_semi_bold tm_primary_color">Harga</th>
+                      <th class="tm_width_1 tm_semi_bold tm_primary_color">Jumlah</th>
                       <th class="tm_width_2 tm_semi_bold tm_primary_color tm_text_right">Total</th>
                     </tr>
                   </thead>
@@ -146,7 +146,7 @@
                   invoma@gmail.com
                 </p>  --}}
                 <p class="tm_mb0">
-                  <b class="tm_primary_color">Payment Method:</b> <br>
+                  <b class="tm_primary_color">Metode Pembayaran:</b> <br>
                   Midtrans
                 </p>
               </div>
@@ -159,11 +159,11 @@
                                 <td class="tm_width_3 tm_primary_color tm_text_right tm_border_none tm_bold">Rp. {{ number_format($inv->RincianPelunasan()->first()->nominal_tagihan, 0) }}</td>
                             </tr>
                             <tr>
-                                <td class="tm_width_3 tm_danger_color tm_border_none tm_pt0">Down Payment</td>
+                                <td class="tm_width_3 tm_danger_color tm_border_none tm_pt0">Uang Muka</td>
                                 <td class="tm_width_3 tm_danger_color tm_text_right tm_border_none tm_pt0">- Rp. {{ number_format($inv->RincianPelunasan()->first()->nominal_dp,0) }}</td>
                             </tr>
                             <tr>
-                                <td class="tm_width_3 tm_border_top_0 tm_bold tm_f18 tm_white_color tm_accent_bg tm_radius_6_0_0_6">Grand Total	</td>
+                                <td class="tm_width_3 tm_border_top_0 tm_bold tm_f18 tm_white_color tm_accent_bg tm_radius_6_0_0_6">Total Keseluruhan</td>
                                 <td class="tm_width_3 tm_border_top_0 tm_bold tm_f18 tm_primary_color tm_text_right tm_white_color tm_accent_bg tm_radius_0_6_6_0">Rp. {{ number_format($inv->total_bayar, 0) }}</td>
                             </tr>
                         </tbody>
@@ -176,7 +176,7 @@
                                 <td class="tm_width_3 tm_primary_color tm_text_right tm_border_none tm_bold">Rp. {{ number_format($inv->total_bayar, 0) }}</td>
                             </tr>
                             <tr>
-                                <td class="tm_width_3 tm_border_top_0 tm_bold tm_f18 tm_white_color tm_accent_bg tm_radius_6_0_0_6">Grand Total	</td>
+                                <td class="tm_width_3 tm_border_top_0 tm_bold tm_f18 tm_white_color tm_accent_bg tm_radius_6_0_0_6">Total Keseluruhan	</td>
                                 <td class="tm_width_3 tm_border_top_0 tm_bold tm_f18 tm_primary_color tm_text_right tm_white_color tm_accent_bg tm_radius_0_6_6_0">Rp. {{ number_format($inv->total_bayar, 0) }}</td>
                             </tr>
                         </tbody>
@@ -197,12 +197,12 @@
           </div>
           <div class="tm_bottom_invoice">
             <div class="tm_bottom_invoice_left">
-              <p class="tm_m0 tm_f18 tm_accent_color tm_mb5">Thank you for your business.</p>
+              <p class="tm_m0 tm_f18 tm_accent_color tm_mb5">Terimakasih atas kerja samanya.</p>
               <p class="tm_primary_color tm_f12 tm_m0 tm_bold">Terms & Condition</p>
               <p class="tm_m0 tm_f12">IInvoice was created on a computer and is valid without the signature and seal.</p>
             </div>
             <div class="tm_bottom_invoice_right tm_mobile_hide">
-              <div class="tm_logo"><img src="assets/img/logo.svg" alt="Logo"></div>
+                <div class="tm_logo"><img src="{{ asset('logo/logo.png') }}" alt="Logo"></div>
             </div>
           </div>
         </div>

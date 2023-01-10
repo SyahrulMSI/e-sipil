@@ -70,7 +70,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::resource('list_permohonan', ListPermohonanController::class);
         Route::resource('cetak_permohonan', CetakPermohonanController::class);
-        Route::resource('dp_pemohon', DpPemohonController::class);
+        Route::resource('uang_muka_pemohon', DpPemohonController::class);
 
         Route::resource('invoice', CetakinvoiceController::class);
         Route::resource('pelunasan', PelunasanController::class);
@@ -112,7 +112,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::resource('list_permohonan.add_petugas_td', AddPetugasTdController::class)->shallow();
         Route::resource('list_permohonan.add_petugas_ib', AddPetugasIbController::class)->shallow();
         Route::resource('list_permohonan.add_petugas_service', AddPetugasServiceController::class)->shallow();
-        Route::resource('dp', DpController::class);
+        Route::resource('uang_muka', DpController::class);
         Route::resource('data_tugas', DataController::class);
 
         Route::get('buat/tagihan/pelunasan/{id}', [DataController::class, 'buatTagihanPelunasan'])->name('buat.tagihan');

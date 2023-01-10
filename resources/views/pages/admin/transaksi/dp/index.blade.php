@@ -49,7 +49,15 @@
                                             <td>Rp. {{ number_format($dp->total_bayar, 0) }}</td>
                                             <td>{{ $dp->midtrans_booking_code }}</td>
                                             <td>
-                                                <span class="badge badge-primary badge-sm">{{ $dp->status }}</span>
+                                                        @if($dp->status == 'SUCCESS')
+                                                            <span class="badge badge-primary badge-sm">BERHASIL</span>
+                                                        @elseif($dp->status == 'WAITING')
+                                                            <span class="badge badge-primary badge-sm">MENUNGGU</span>
+                                                        @elseif($dp->status == 'FAILED')
+                                                                <span class="badge badge-primary badge-sm">GAGAL</span>
+                                                        @elseif($dp->status == 'PENDING')
+                                                            <span class="badge badge-primary badge-sm">DITUNDA</span>
+                                                        @endif
                                             </td>
                                             <td>{{ Carbon\Carbon::parse($dp->tanggal_transaksi)->format('d F Y') }}</td>
                                             <td>
@@ -81,7 +89,7 @@
                                                         </div>
                                                         <div class="modal-footer">
                                                           <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
-                                                            <form action="{{ route('admin.dp.destroy', $dp->id) }}" method="POST" enctype="multipart/form-data">
+                                                            <form action="{{ route('admin.uang_muka.destroy', $dp->id) }}" method="POST" enctype="multipart/form-data">
                                                                     @csrf
                                                                     @method('DELETE')
                                                                 <button type="submit" class="btn btn-primary btn-sm">Hapus</button>

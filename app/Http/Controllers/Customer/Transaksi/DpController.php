@@ -17,7 +17,7 @@ class DpController extends Controller
     public function index()
     {
         $data = array(
-            'title'         =>      'Down Payment',
+            'title'         =>      'Uang Muka',
             'down_payment'     =>      Transaksi::where('id_user', Auth::user()->id)->where('type_pembayaran', 'dp')->orderBy('id', 'DESC')->get()
         );
 

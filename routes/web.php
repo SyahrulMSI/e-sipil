@@ -51,7 +51,7 @@ Route::group(['prefix' => 'customer', 'as' => 'customer.'], function () {
         Route::resource('agenda_pemasangan', AgendaController::class);
         Route::resource('history', HistoryController::class);
 
-        Route::resource('transaksi_dp', DpController::class);
+        Route::resource('transaksi_uang_muka', DpController::class);
         Route::resource('transaksi_pelunasan', PelunasanController::class);
 
         Route::resource('my_profile', ProfileController::class);

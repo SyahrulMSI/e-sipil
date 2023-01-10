@@ -217,7 +217,7 @@ class KonfirmasiInstalasiBangunan extends Controller
             }
             else if ($fraud == 'accept') {
             // TODO Set payment status in merchant's database to 'success'
-            $transaksi->status = 'PAID';
+                $transaksi->status = 'SUCCESS';
             }
         }
         else if ($transaction_status == 'cancel') {
@@ -236,7 +236,7 @@ class KonfirmasiInstalasiBangunan extends Controller
         }
         else if ($transaction_status == 'settlement') {
             // TODO set payment status in merchant's database to 'Settlement'
-            $transaksi->status = 'PAID';
+            $transaksi->status = 'SUCCESS';
         }
         else if ($transaction_status == 'pending') {
             // TODO set payment status in merchant's database to 'Pending'

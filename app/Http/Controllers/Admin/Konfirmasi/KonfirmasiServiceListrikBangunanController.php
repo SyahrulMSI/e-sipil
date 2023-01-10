@@ -157,7 +157,7 @@ class KonfirmasiServiceListrikBangunanController extends Controller
             }
             else if ($fraud == 'accept') {
             // TODO Set payment status in merchant's database to 'success'
-            $transaksi->status = 'PAID';
+            $transaksi->status = 'SUCCESS';
             }
         }
         else if ($transaction_status == 'cancel') {
@@ -180,7 +180,7 @@ class KonfirmasiServiceListrikBangunanController extends Controller
         }
         else if ($transaction_status == 'pending') {
             // TODO set payment status in merchant's database to 'Pending'
-            $transaksi->status = 'PENDING';
+            $transaksi->status = 'SUCCESS';
         }
         else if ($transaction_status == 'expire') {
             // TODO set payment status in merchant's database to 'expire'

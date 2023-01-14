@@ -84,7 +84,7 @@
                                             <td>
                                                 <div class="btn-group">
                                                     @if ($dp->status == 'SUCCESS')
-                                                        <a href="{{ route('invoice.show', $dp->midtrans_booking_code) }}" target="_blank" class="btn btn-primary btn-sm rounded shadow"><i class="fa fa-print"></i>  Invoice</a>
+                                                        <a href="{{ route('invoice.show', $dp->midtrans_booking_code) }}" target="_blank" class="btn btn-primary btn-sm rounded shadow"><i class="fa fa-print"></i>  Cetak</a>
                                                     @else
                                                         <a href="{{ $dp->url_midtrans }}" class="btn btn-success btn-sm"> <i class="fa fa-dollar"></i> Bayar</a>
                                                     @endif

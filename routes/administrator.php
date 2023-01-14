@@ -39,6 +39,7 @@ use App\Http\Controllers\Admin\Permohonan\Petugas\AddPetugasIbController;
 use App\Http\Controllers\Admin\Permohonan\Petugas\AddPetugasServiceController;
 use App\Http\Controllers\Admin\Transaksi\DpController;
 use App\Http\Controllers\Admin\DataTugas\DataController;
+use App\Http\Controllers\Admin\Laporan\LaporanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -116,6 +117,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::resource('data_tugas', DataController::class);
 
         Route::get('buat/tagihan/pelunasan/{id}', [DataController::class, 'buatTagihanPelunasan'])->name('buat.tagihan');
+
+        Route::resource('laporan', LaporanController::class);
 
     });
 

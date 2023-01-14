@@ -153,7 +153,7 @@
             <div class="card shadow">
                 <div class="card-body">
                     <div class="table-responsive overflow-auto">
-                        <table id="t_today" class="table table-striped">
+                        <table id="t_today" class="table table-striped" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -188,7 +188,7 @@
                                                         @endif
                                         </td>
                                         <td>
-                                            @if($t->type_pembayaran) == 'dp')
+                                            @if($t->type_pembayaran == 'dp')
                                                 <span class="badge badge-danger">Uang Muka</span>
                                             @elseif($t->type_pembayaran == 'pelunasan')
                                                 <span class="badge badge-success">Pelunasa</span>

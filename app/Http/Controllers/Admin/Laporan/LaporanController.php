@@ -1,16 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Customer;
+namespace App\Http\Controllers\Admin\Laporan;
 
 use App\Http\Controllers\Controller;
-use App\Models\InstalasiBangunan;
-use App\Models\PemasanganBaru;
-use App\Models\Service;
-use App\Models\TambahDaya;
+use App\Models\Transaksi;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class DashboardController extends Controller
+class LaporanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,15 +17,10 @@ class DashboardController extends Controller
     public function index()
     {
         $data = array(
-            'title'     =>      'Dashboard',
-            'pm'    =>  PemasanganBaru::where('id_user', Auth::user()->id)->count(),
-            'ib'    =>  InstalasiBangunan::where('id_user', Auth::user()->id)->count(),
-            'td'    =>  TambahDaya::where('id_user', Auth::user()->id)->count(),
-            'sm'    =>  Service::where('id_user', Auth::user()->id)->where('jenis_service', 'meter_listrik')->count(),
-            'sl'    =>  Service::where('id_user', Auth::user()->id)->where('jenis_service', 'listrik_bangunan')->count(),
+            'title' =>  'Laporan Transaksi'
         );
 
-        return view('pages.pelanggan.dashboard', $data);
+        return view('pages.admin.laporan.index', $data);
     }
 
     /**
@@ -36,9 +28,28 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $request->validate(
+            [
+                'tgl_awal'  =>  'required',
+                'tgl_akhir' =>  'required'
+            ]
+        );
+
+        // $startDate = Carbon::createFromFormat('Y-m-d', '2021-06-01');
+        // $endDate = Carbon::createFromFormat('Y-m-d', '2021-06-30');
+
+        $data = array(
+            'title' =>  'Laporan Transaksi',
+            'tgl_awal' =>  $request->tgl_awal,
+            'tgl_akhir' =>  $request->tgl_akhir,
+            'transaksi' =>  Transaksi::whereBetween('tanggal_transaksi', [$request->tgl_awal, $request->tgl_akhir])->get()
+        );
+
+        return view('pages.admin.laporan.cetak', $data);
+
+
     }
 
     /**

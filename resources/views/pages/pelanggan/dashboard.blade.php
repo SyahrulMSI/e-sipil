@@ -22,13 +22,13 @@
                             </svg>
                         </span>
                         <div class="media-body">
-                            <p class="fs-14 mb-2">Weekly Progress</p>
-                            <span class="title text-black font-w600">42%</span>
+                            <p class="fs-14 mb-2">Jumlah Pasang Mater</p>
+                            <span class="title text-black font-w600">{{ $pm }}</span>
                         </div>
                     </div>
                     <div class="progress" style="height:5px;">
-                        <div class="progress-bar bg-success" style="width: 42%; height:5px;" role="progressbar">
-                            <span class="sr-only">42% Complete</span>
+                        <div class="progress-bar bg-success" style="width: height:5px;" role="progressbar">
+                            <span class="sr-only">/span>
                         </div>
                     </div>
                 </div>
@@ -47,13 +47,13 @@
                             </svg>
                         </span>
                         <div class="media-body">
-                            <p class="fs-14 mb-2">Weekly Progress</p>
-                            <span class="title text-black font-w600">42km</span>
+                            <p class="fs-14 mb-2">Jumlah Instalasi Baru</p>
+                            <span class="title text-black font-w600">{{ $ib }}</span>
                         </div>
                     </div>
                     <div class="progress" style="height:5px;">
-                        <div class="progress-bar bg-secondary" style="width: 82%; height:5px;" role="progressbar">
-                            <span class="sr-only">42% Complete</span>
+                        <div class="progress-bar bg-secondary" style="width:height:5px;" role="progressbar">
+                            <span class="sr-only"></span>
                         </div>
                     </div>
                 </div>
@@ -73,13 +73,13 @@
                             </svg>
                         </span>
                         <div class="media-body">
-                            <p class="fs-14 mb-2">Daily Cycling</p>
-                            <span class="title text-black font-w600">230 Km</span>
+                            <p class="fs-14 mb-2">Jumlah Tambah Daya</p>
+                            <span class="title text-black font-w600">{{ $td }}</span>
                         </div>
                     </div>
                     <div class="progress" style="height:5px;">
-                        <div class="progress-bar bg-danger" style="width: 90%; height:5px;" role="progressbar">
-                            <span class="sr-only">42% Complete</span>
+                        <div class="progress-bar bg-danger" style="width: height:5px;" role="progressbar">
+                            <span class="sr-only"></span>
                         </div>
                     </div>
                 </div>
@@ -100,13 +100,40 @@
                             </svg>
                         </span>
                         <div class="media-body">
-                            <p class="fs-14 mb-2">Morning Yoga</p>
-                            <span class="title text-black font-w600">18:34:21”</span>
+                            <p class="fs-14 mb-2">Jumlah Service Mater</p>
+                            <span class="title text-black font-w600">{{ $sm }}</span>
                         </div>
                     </div>
                     <div class="progress" style="height:5px;">
-                        <div class="progress-bar bg-warning" style="width: 42%; height:5px;" role="progressbar">
-                            <span class="sr-only">42% Complete</span>
+                        <div class="progress-bar bg-warning" style="width: height:5px;" role="progressbar">
+                            <span class="sr-only"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="effect bg-warning"></div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card avtivity-card">
+                <div class="card-body">
+                    <div class="media align-items-center">
+                        <span class="activity-icon bgl-warning  mr-md-4 mr-3">
+                            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19.9996 10.0001C22.7611 10.0001 24.9997 7.76148 24.9997 5.00004C24.9997 2.23859 22.7611 0 19.9996 0C17.2382 0 14.9996 2.23859 14.9996 5.00004C14.9996 7.76148 17.2382 10.0001 19.9996 10.0001Z" fill="#FFBC11"/>
+                                <path d="M29.7178 36.3838L23.5603 38.6931L26.6224 39.8414C27.9402 40.3307 29.3621 39.6527 29.8413 38.3778C30.0964 37.6976 30.021 36.9851 29.7178 36.3838Z" fill="#FFBC11"/>
+                                <path d="M8.37771 27.6588C7.08745 27.1803 5.64452 27.8298 5.15873 29.1224C4.67411 30.4151 5.32967 31.8555 6.62228 32.3413L9.31945 33.3527L16.4402 30.6821L8.37771 27.6588Z" fill="#FFBC11"/>
+                                <path d="M34.8413 29.1225C34.3554 27.8297 32.9126 27.1803 31.6223 27.6589L11.6223 35.1589C10.3295 35.6448 9.67401 37.0852 10.1586 38.3779C10.6378 39.6524 12.0594 40.3309 13.3776 39.8415L33.3777 32.3414C34.6705 31.8556 35.326 30.4152 34.8413 29.1225Z" fill="#FFBC11"/>
+                                <path d="M37.5001 20.0001H31.5455L27.2364 11.3819C26.7886 10.4871 25.8776 9.97737 24.9388 10.0001L19.9996 10.0001L15.061 10.0001C14.1223 9.97737 13.2125 10.4872 12.7637 11.3819L8.45457 20.0001H2.49998C1.1194 20.0001 0 21.1195 0 22.5001C0 23.8807 1.1194 25.0001 2.49998 25.0001H10C10.9473 25.0001 11.8128 24.4654 12.2363 23.6183L15 18.0909V27.4724L19.9998 29.3472L25 27.4719V18.0909L27.7637 23.6183C28.1873 24.4655 29.0528 25.0001 30 25.0001H37.5C38.8806 25.0001 40 23.8807 40 22.5001C40 21.1195 38.8807 20.0001 37.5001 20.0001Z" fill="#FFBC11"/>
+                            </svg>
+                        </span>
+                        <div class="media-body">
+                            <p class="fs-14 mb-2">Jumlah Service Instalasi</p>
+                            <span class="title text-black font-w600">{{ $sl }}</span>
+                        </div>
+                    </div>
+                    <div class="progress" style="height:5px;">
+                        <div class="progress-bar bg-warning" style="width: height:5px;" role="progressbar">
+                            <span class="sr-only"></span>
                         </div>
                     </div>
                 </div>
@@ -124,172 +151,19 @@
         </div>
     </div>
 </div>
-<div class="col-xl-9 col-xxl-8">
-    <div class="row">
-        <div class="col-xl-12">
-            <div class="card">
-                <div class="card-header d-sm-flex d-block pb-0 border-0">
-                    <div class="mr-auto pr-3">
-                        <h4 class="text-black font-w600 fs-20">Recomended Trainer for You</h4>
-                        <p class="fs-13 mb-0 text-black">Lorem ipsum dolor sit amet, consectetur</p>
-                    </div>
-                    <a href="food-menu.html" class="btn btn-primary rounded d-none d-md-block">View More</a>
-                </div>
-                <div class="card-body pt-2">
-                    <div class="testimonial-one owl-carousel">
-                        <div class="items">
-                            <div class="card text-center">
-                                <div class="card-body">
-                                    <img src="images/testimonial/1.jpg" alt="">
-                                    <h5 class="fs-16 font-w500 mb-1"><a href="app-profile.html" class="text-black">Roberto Carloz</a></h5>
-                                    <p class="fs-14">Body Building Trainer</p>
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M5.09569 20C4.80437 19.9988 4.51677 19.9344 4.25273 19.8113C3.98868 19.6881 3.75447 19.5091 3.56624 19.2866C3.37801 19.0641 3.24024 18.8034 3.16243 18.5225C3.08462 18.2415 3.06862 17.9471 3.11554 17.6593L3.88905 12.8902L0.569441 9.45986C0.312024 9.19466 0.132451 8.86374 0.0503661 8.50328C-0.0317185 8.14282 -0.0131526 7.76671 0.104033 7.4161C0.221219 7.06549 0.43251 6.75388 0.714792 6.51537C0.997074 6.27685 1.33947 6.12062 1.70453 6.06376L6.20048 5.37325L8.18158 1.13817C8.34755 0.796915 8.60606 0.509234 8.92762 0.307978C9.24917 0.106721 9.6208 0 10.0001 0C10.3793 0 10.751 0.106721 11.0725 0.307978C11.3941 0.509234 11.6526 0.796915 11.8186 1.13817L13.7931 5.36719L18.2955 6.06376C18.6606 6.12062 19.003 6.27685 19.2852 6.51537C19.5675 6.75388 19.7788 7.06549 19.896 7.4161C20.0132 7.76671 20.0318 8.14282 19.9497 8.50328C19.8676 8.86374 19.688 9.19466 19.4306 9.45986L16.1144 12.8765L16.885 17.66C16.9463 18.0327 16.9014 18.4152 16.7556 18.7635C16.6097 19.1119 16.3687 19.4121 16.0602 19.6297C15.7517 19.8473 15.3882 19.9735 15.0113 19.994C14.6344 20.0144 14.2593 19.9281 13.9292 19.7451L10.0026 17.5635L6.07117 19.7451C5.77302 19.9118 5.43724 19.9996 5.09569 20Z" fill="#FFAA29"/>
-                                        </svg>
-                                        <span class="fs-14 d-block ml-2 pr-2 mr-2 border-right text-black font-w500">4.4</span>
-                                        <a href="app-profile.html" class="btn-link fs-14">Send Request</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="items">
-                            <div class="card text-center">
-                                <div class="card-body">
-                                    <img src="images/testimonial/2.jpg" alt="">
-                                    <h5 class="fs-16 font-w500 mb-1"><a href="app-profile.html" class="text-black">Cindy Moss</a></h5>
-                                    <p class="fs-14">Fat Belly Trainer</p>
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M5.09569 20C4.80437 19.9988 4.51677 19.9344 4.25273 19.8113C3.98868 19.6881 3.75447 19.5091 3.56624 19.2866C3.37801 19.0641 3.24024 18.8034 3.16243 18.5225C3.08462 18.2415 3.06862 17.9471 3.11554 17.6593L3.88905 12.8902L0.569441 9.45986C0.312024 9.19466 0.132451 8.86374 0.0503661 8.50328C-0.0317185 8.14282 -0.0131526 7.76671 0.104033 7.4161C0.221219 7.06549 0.43251 6.75388 0.714792 6.51537C0.997074 6.27685 1.33947 6.12062 1.70453 6.06376L6.20048 5.37325L8.18158 1.13817C8.34755 0.796915 8.60606 0.509234 8.92762 0.307978C9.24917 0.106721 9.6208 0 10.0001 0C10.3793 0 10.751 0.106721 11.0725 0.307978C11.3941 0.509234 11.6526 0.796915 11.8186 1.13817L13.7931 5.36719L18.2955 6.06376C18.6606 6.12062 19.003 6.27685 19.2852 6.51537C19.5675 6.75388 19.7788 7.06549 19.896 7.4161C20.0132 7.76671 20.0318 8.14282 19.9497 8.50328C19.8676 8.86374 19.688 9.19466 19.4306 9.45986L16.1144 12.8765L16.885 17.66C16.9463 18.0327 16.9014 18.4152 16.7556 18.7635C16.6097 19.1119 16.3687 19.4121 16.0602 19.6297C15.7517 19.8473 15.3882 19.9735 15.0113 19.994C14.6344 20.0144 14.2593 19.9281 13.9292 19.7451L10.0026 17.5635L6.07117 19.7451C5.77302 19.9118 5.43724 19.9996 5.09569 20Z" fill="#FFAA29"/>
-                                        </svg>
-                                        <span class="fs-14 d-block ml-2 pr-2 mr-2 border-right text-black font-w500">4.4</span>
-                                        <a href="app-profile.html" class="btn-link fs-14">Send Request</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="items">
-                            <div class="card text-center">
-                                <div class="card-body">
-                                    <img src="images/testimonial/3.jpg" alt="">
-                                    <h5 class="fs-16 font-w500 mb-1"><a href="app-profile.html" class="text-black">Ivankov Smurz</a></h5>
-                                    <p class="fs-14">Sixpack Builder</p>
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M5.09569 20C4.80437 19.9988 4.51677 19.9344 4.25273 19.8113C3.98868 19.6881 3.75447 19.5091 3.56624 19.2866C3.37801 19.0641 3.24024 18.8034 3.16243 18.5225C3.08462 18.2415 3.06862 17.9471 3.11554 17.6593L3.88905 12.8902L0.569441 9.45986C0.312024 9.19466 0.132451 8.86374 0.0503661 8.50328C-0.0317185 8.14282 -0.0131526 7.76671 0.104033 7.4161C0.221219 7.06549 0.43251 6.75388 0.714792 6.51537C0.997074 6.27685 1.33947 6.12062 1.70453 6.06376L6.20048 5.37325L8.18158 1.13817C8.34755 0.796915 8.60606 0.509234 8.92762 0.307978C9.24917 0.106721 9.6208 0 10.0001 0C10.3793 0 10.751 0.106721 11.0725 0.307978C11.3941 0.509234 11.6526 0.796915 11.8186 1.13817L13.7931 5.36719L18.2955 6.06376C18.6606 6.12062 19.003 6.27685 19.2852 6.51537C19.5675 6.75388 19.7788 7.06549 19.896 7.4161C20.0132 7.76671 20.0318 8.14282 19.9497 8.50328C19.8676 8.86374 19.688 9.19466 19.4306 9.45986L16.1144 12.8765L16.885 17.66C16.9463 18.0327 16.9014 18.4152 16.7556 18.7635C16.6097 19.1119 16.3687 19.4121 16.0602 19.6297C15.7517 19.8473 15.3882 19.9735 15.0113 19.994C14.6344 20.0144 14.2593 19.9281 13.9292 19.7451L10.0026 17.5635L6.07117 19.7451C5.77302 19.9118 5.43724 19.9996 5.09569 20Z" fill="#FFAA29"/>
-                                        </svg>
-                                        <span class="fs-14 d-block ml-2 pr-2 mr-2 border-right text-black font-w500">4.4</span>
-                                        <a href="javascript:void(0)" class="btn-link fs-14">Send Request</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="items">
-                            <div class="card text-center">
-                                <div class="card-body">
-                                    <img src="images/testimonial/4.jpg" alt="">
-                                    <h5 class="fs-16 font-w500 mb-1"><a href="app-profile.html" class="text-black">Louis Simatupang</a></h5>
-                                    <p class="fs-14">Body Building Trainer</p>
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M5.09569 20C4.80437 19.9988 4.51677 19.9344 4.25273 19.8113C3.98868 19.6881 3.75447 19.5091 3.56624 19.2866C3.37801 19.0641 3.24024 18.8034 3.16243 18.5225C3.08462 18.2415 3.06862 17.9471 3.11554 17.6593L3.88905 12.8902L0.569441 9.45986C0.312024 9.19466 0.132451 8.86374 0.0503661 8.50328C-0.0317185 8.14282 -0.0131526 7.76671 0.104033 7.4161C0.221219 7.06549 0.43251 6.75388 0.714792 6.51537C0.997074 6.27685 1.33947 6.12062 1.70453 6.06376L6.20048 5.37325L8.18158 1.13817C8.34755 0.796915 8.60606 0.509234 8.92762 0.307978C9.24917 0.106721 9.6208 0 10.0001 0C10.3793 0 10.751 0.106721 11.0725 0.307978C11.3941 0.509234 11.6526 0.796915 11.8186 1.13817L13.7931 5.36719L18.2955 6.06376C18.6606 6.12062 19.003 6.27685 19.2852 6.51537C19.5675 6.75388 19.7788 7.06549 19.896 7.4161C20.0132 7.76671 20.0318 8.14282 19.9497 8.50328C19.8676 8.86374 19.688 9.19466 19.4306 9.45986L16.1144 12.8765L16.885 17.66C16.9463 18.0327 16.9014 18.4152 16.7556 18.7635C16.6097 19.1119 16.3687 19.4121 16.0602 19.6297C15.7517 19.8473 15.3882 19.9735 15.0113 19.994C14.6344 20.0144 14.2593 19.9281 13.9292 19.7451L10.0026 17.5635L6.07117 19.7451C5.77302 19.9118 5.43724 19.9996 5.09569 20Z" fill="#FFAA29"/>
-                                        </svg>
-                                        <span class="fs-14 d-block ml-2 pr-2 mr-2 border-right text-black font-w500">4.4</span>
-                                        <a href="app-profile.html" class="btn-link fs-14">Send Request</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+
+    <div class="col-lg-12">
+        <div class="card shadow">
+            <div class="card-header bg-info">
+                <h3 class="text-white text-weigh-bold">Alur Pengajuan</h3>
             </div>
-        </div>
-        <div class="col-xl-12">
-            <div class="card">
-                <div class="card-header d-sm-flex d-block pb-0 border-0">
-                    <div class="mr-auto pr-3">
-                        <h4 class="text-black fs-20 font-w600">Calories Chart</h4>
-                        <p class="fs-13 mb-0 text-black">Lorem ipsum dolor sit amet, consectetur</p>
-                    </div>
-                    <div class="dropdown mt-sm-0 mt-3">
-                        <button type="button" class="btn rounded btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                            Weekly
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="javascript:void(0);">Link 1</a>
-                            <a class="dropdown-item" href="javascript:void(0);">Link 2</a>
-                            <a class="dropdown-item" href="javascript:void(0);">Link 3</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div id="chartTimeline"></div>
-                </div>
+            <div class="card-body">
+
             </div>
         </div>
     </div>
-</div>
-<div class="col-xl-3 col-xxl-4">
-    <div class="row">
-        <div class="col-xl-12">
-            <div class="card featuredMenu">
-                <div class="card-header border-0">
-                    <h4 class="text-black font-w600 fs-20 mb-0">Featured Diet Menu</h4>
-                </div>
-                <div class="card-body loadmore-content height750 dz-scroll pt-0" id="FeaturedMenusContent">
-                    <div class="media mb-4">
-                        <img src="images/menus/1.png" width="85" alt="" class="rounded mr-3">
-                        <div class="media-body">
-                            <h5><a href="food-menu.html" class="text-black fs-16">Chinese Orange Fruit With Avocado Salad</a></h5>
-                            <span class="fs-14 text-primary font-w500">Kevin Ignis</span>
-                        </div>
-                    </div>
-                    <ul class="d-flex flex-wrap pb-2 border-bottom mb-3 justify-content-between">
-                        <li class="mr-3 mb-2"><i class="las la-clock scale5 mr-3"></i><span class="fs-14 text-black">4-6 mins </span></li>
-                        <li class="mb-2"><i class="fa fa-star-o mr-3 scale5 text-warning" aria-hidden="true"></i><span class="fs-14 text-black font-w500">176 Reviews</span></li>
-                    </ul>
-                    <div class="media mb-4">
-                        <img src="images/menus/2.png" width="85" alt="" class="rounded mr-3">
-                        <div class="media-body">
-                            <h5><a href="food-menu.html" class="text-black fs-16">Fresh or Frozen (No Sugar Added) Fruits</a></h5>
-                            <span class="fs-14 text-primary font-w500">Olivia Johanson</span>
-                        </div>
-                    </div>
-                    <ul class="d-flex flex-wrap pb-2 border-bottom mb-3 justify-content-between">
-                        <li class="mr-3 mb-2"><i class="las la-clock scale5 mr-3"></i><span class="fs-14 text-black">4-6 mins </span></li>
-                        <li class="mb-2"><i class="fa fa-star-o mr-3 scale5 text-warning" aria-hidden="true"></i><span class="fs-14 text-black font-w500">176 Reviews</span></li>
-                    </ul>
-                    <div class="media mb-4">
-                        <img src="images/menus/3.png" width="85" alt="" class="rounded mr-3">
-                        <div class="media-body">
-                            <h5><a href="food-menu.html" class="text-black fs-16">Fresh or Frozen (No Sugar Added) Fruits</a></h5>
-                            <span class="fs-14 text-primary font-w500">Stefanny Raharjo</span>
-                        </div>
-                    </div>
-                    <ul class="d-flex flex-wrap pb-2 border-bottom mb-3 justify-content-between">
-                        <li class="mr-3 mb-2"><i class="las la-clock scale5 mr-3"></i><span class="fs-14 text-black">4-6 mins </span></li>
-                        <li class="mb-2"><i class="fa fa-star-o mr-3 scale5 text-warning" aria-hidden="true"></i><span class="fs-14 text-black font-w500">176 Reviews</span></li>
-                    </ul>
-                    <div class="media mb-4">
-                        <img src="images/menus/4.png" width="85" alt="" class="rounded mr-3">
-                        <div class="media-body">
-                            <h5><a href="food-menu.html" class="text-black fs-16">Original Boiled Egg with Himalaya Salt</a></h5>
-                            <span class="fs-14 text-primary font-w500">Peter Parkur</span>
-                        </div>
-                    </div>
-                    <ul class="d-flex flex-wrap pb-2 border-bottom mb-3 justify-content-between">
-                        <li class="mr-3 mb-2"><i class="las la-clock scale5 mr-3"></i><span class="fs-14 text-black">4-6 mins </span></li>
-                        <li class="mb-2"><i class="fa fa-star-o mr-3 scale5 text-warning" aria-hidden="true"></i><span class="fs-14 text-black font-w500">176 Reviews</span></li>
-                    </ul>
-                </div>
-                <div class="card-footer style-1 text-center border-0 pt-0 pb-4">
-                    <a class="text-primary dz-load-more fa fa-chevron-down" id="FeaturedMenus" href="javascript:void(0);" rel="ajax/featured-menu-list.html">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
+
 
 @endsection

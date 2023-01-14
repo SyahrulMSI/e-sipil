@@ -19,8 +19,8 @@ class DashboardController extends Controller
     {
         $data = array(
             'title'     =>  'Dashboard',
-            'tugas'    => Tugas::where('id_petugas', Auth::user()->id)->whereNot('status', 4)->count(),
-            't_selesai'    => Tugas::where('id_petugas', Auth::user()->id)->where('status', 4)->count()
+            'tugas'    => Tugas::where('id_petugas', Auth::user()->id)->whereNot('status', '6')->count(),
+            't_selesai'    => Tugas::where('id_petugas', Auth::user()->id)->where('status', '6')->count()
         );
 
         return view('pages.petugas.dashboard', $data);

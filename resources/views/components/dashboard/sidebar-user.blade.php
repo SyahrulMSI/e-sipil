@@ -26,6 +26,12 @@
                 </a>
             </li>
             <li>
+                <a href="{{ route('customer.agenda_pemasangan.index') }}" class="ai-icon" aria-expanded="false">
+                    <i class="flaticon-381-television"></i>
+                    <span class="nav-text">Data Agenda Pemasangan</span>
+                </a>
+            </li>
+            {{--  <li>
                 <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                 <i class="flaticon-381-television"></i>
                 <span class="nav-text">Data Pemasangan</span>
@@ -34,7 +40,7 @@
                     <li><a href="{{ route('customer.agenda_pemasangan.index') }}">Agenda Pemasangan</a></li>
                     <li><a href="{{ route('customer.history.index') }}">History</a></li>
                 </ul>
-            </li>
+            </li>  --}}
             <li>
                 <a href="{{ route('customer.progress.index') }}" class="ai-icon" aria-expanded="false">
                 <i class="flaticon-381-settings-2"></i>

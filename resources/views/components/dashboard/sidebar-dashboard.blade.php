@@ -50,9 +50,9 @@
             {{--  <li><a href="{{ route('admin.invoice.index') }}">Cetak Invoice</a></li>  --}}
         </ul>
     </li>
-    <li><a href="widget-basic.html" class="ai-icon" aria-expanded="false">
+    <li><a href="{{ route('admin.laporan.index') }}" class="ai-icon" aria-expanded="false">
         <i class="flaticon-381-settings-2"></i>
-            <span class="nav-text">Cetak Laporan Pelayanan</span> <!--****** bulanan dan tahunan *******-->
+            <span class="nav-text">Cetak Laporan Transaksi</span> <!--****** bulanan dan tahunan *******-->
         </a>
     </li>
     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">

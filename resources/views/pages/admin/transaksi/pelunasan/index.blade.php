@@ -70,7 +70,7 @@
                                                             <button class="btn btn-danger btn-sm rounded shadow" type="button" data-toggle="modal" data-target="#delete"><i class="fa fa-trash"></i></button>
                                                             &nbsp;
                                                             @if($t->status == "SUCCESS" || $t->status == "Success" || $t->status == 'success')
-                                                                <a href="{{ route('invoice.show', $t->midtrans_booking_code) }}" target="_blank" class="btn btn-primary btn-sm rounded shadow"><i class="fa fa-print"></i>  Invoice</a>
+                                                                <a href="{{ route('invoice.show', $t->midtrans_booking_code) }}" target="_blank" class="btn btn-primary btn-sm rounded shadow"><i class="fa fa-print"></i>  Cetak</a>
                                                             @endif
 
                                                             <div class="modal fade" id="delete" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

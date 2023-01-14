@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title> @yield('title') | CV Sae Satu Jaya</title>
+    <title> @yield('title') | PT. SUMBER SAE SATU</title>
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('landing/assets/images/favicons/apple-touch-icon.png') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('landing/assets/images/favicons/favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('landing/assets/images/favicons/favicon-16x16.png') }}">

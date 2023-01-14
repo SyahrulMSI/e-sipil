@@ -127,7 +127,7 @@
                             <p>Pemasangan meter listrik yang rapi dan  <br> merupakan hasil dari ketelitian dan kesungguhan <br> dalam melakukan sebuah pekerjaan maupun kegiatan.</p>
                             <h3>Ahmad Nanto</h3>
                             <span>Pelanggan Pasang Baru</span>
-                            <img src="{{ asset('landing/assets/images/resources/testi-1-1.png') }}" alt="Awesome Image" />
+                            <img src="{{ asset('landing/assets/images/resources/testi-1-2.png') }}" alt="Awesome Image" />
                         </div><!-- /.testimonials-one__inner -->
                     </div><!-- /.testimonials-one__single -->
                 </div><!-- /.item -->
@@ -137,7 +137,7 @@
                             <p>Suatu kemewahan rumah memang sangat penting bagi saya <br> kemewahan paling utama ada pada kualitas elektronik pada rumah<br> saya senang atas kualitas material <br>yang digunakan pada PT. SUMBER SAE SATU ini.</p>
                             <h3>Sunandar</h3>
                             <span>Pelanggan Instalasi Listrik - Perumahan</span>
-                            <img src="{{ asset('landing/assets/images/resources/testi-1-1.png') }}" alt="Awesome Image" />
+                            <img src="{{ asset('landing/assets/images/resources/testi-1-3.png') }}" alt="Awesome Image" />
                         </div><!-- /.testimonials-one__inner -->
                     </div><!-- /.testimonials-one__single -->
                 </div><!-- /.item -->

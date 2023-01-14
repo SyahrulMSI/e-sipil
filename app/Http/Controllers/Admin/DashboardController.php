@@ -3,6 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\InstalasiBangunan;
+use App\Models\PemasanganBaru;
+use App\Models\Service;
+use App\Models\TambahDaya;
+use App\Models\Transaksi;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -16,7 +21,13 @@ class DashboardController extends Controller
     {
 
         $data = array(
-            'title' =>  'Dashboard'
+            'title' =>  'Dashboard',
+            'pm'    =>  PemasanganBaru::count(),
+            'ib'    =>  InstalasiBangunan::count(),
+            'td'    =>  TambahDaya::count(),
+            'sm'    =>  Service::where('jenis_service', 'meter_listrik')->count(),
+            'sl'    =>  Service::where('jenis_service', 'listrik_bangunan')->count(),
+            'transaksi' =>  Transaksi::where('tanggal_transaksi', date('Y-m-d'))->orderBy('id', 'DESC')->get()
         );
 
         return view('pages.admin.dashboard', $data);

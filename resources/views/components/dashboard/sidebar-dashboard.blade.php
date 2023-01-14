@@ -12,8 +12,8 @@
         </a>
         <ul aria-expanded="false">
             <li><a href="{{ route('admin.list_permohonan.index') }}">List Permohonan</a></li>
-            <li><a href="{{ route('admin.uang_muka_pemohon.index') }}">Uang Muka Pemohon</a></li>
-            <li><a href="./ecom-invoice.html">Cetak Permohonan</a></li>
+            {{--  <li><a href="{{ route('admin.uang_muka_pemohon.index') }}">Uang Muka Pemohon</a></li>  --}}
+            {{--  <li><a href="./ecom-invoice.html">Cetak Permohonan</a></li>  --}}
         </ul>
     </li>
     <li><a href="{{ route('admin.data_tugas.index') }}" class="ai-icon" aria-expanded="false">
@@ -30,23 +30,14 @@
         </ul>
     </li>  --}}
     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-            <i class="flaticon-381-notepad"></i>
-            <span class="nav-text">Data Peninjauan</span>
-        </a>
-        <ul aria-expanded="false">
-            <li><a href="./form-element.html">List Lokasi Pemasangan</a></li> <!--****** berisi kondisi lokasi *******-->
-            <li><a href="./form-wizard.html">List Waktu Pemasangan</a></li>
-        </ul>
-    </li>
-    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
         <i class="flaticon-381-internet"></i>
         <span class="nav-text">Data Pemasangan</span>
     </a>
     <ul aria-expanded="false">
         <li><a href="{{ route('admin.agenda_pemasangan.index') }}">Agenda Pemasangan</a></li>
         {{--  <li><a href="{{ route('admin.lokasi_pemasangan.index') }}">Lokasi Pemasangan</a></li>  --}}
-        <li><a href="{{ route('admin.list_proyek.index') }}">List Proyek</a></li>
-        <li><a href="{{ route('admin.acc_proyek.index') }}">Persetujuan Proyek</a></li>
+        {{--  <li><a href="{{ route('admin.list_proyek.index') }}">List Proyek</a></li>
+        <li><a href="{{ route('admin.acc_proyek.index') }}">Persetujuan Proyek</a></li>  --}}
     </ul>
     </li>
     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">

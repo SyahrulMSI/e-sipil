@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Alert;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {

@@ -251,6 +251,12 @@ class KonfirmasiInstalasiBangunan extends Controller
 
         return $transaksi;
 
-        return redirect('/');
+        // return redirect('/');
+
+        return redirect()->route('customer.success.index');
+
     }
+
+
+
 }

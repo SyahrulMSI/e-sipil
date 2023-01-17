@@ -21,6 +21,7 @@ use App\Http\Controllers\Customer\Profile\DetailProfileController;
 use App\Http\Controllers\Api\MidtransController;
 use App\Http\Controllers\Customer\Progres\ProgresController;
 use App\Http\Controllers\Invoice\InvoiceController;
+use App\Http\Controllers\Pages\SuccessController;
 
 
 // |--------------------------------------------------------------------------
@@ -58,6 +59,8 @@ Route::group(['prefix' => 'customer', 'as' => 'customer.'], function () {
         Route::resource('detail_profile', DetailProfileController::class);
 
         Route::resource('progress', ProgresController::class);
+
+        Route::resource('success', SuccessController::class);
 
     });
 

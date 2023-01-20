@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Alert;
 use App\Models\DetailUser;
+use ImageKit\ImageKit;
 
 
 class DetailProfileController extends Controller
@@ -40,7 +41,7 @@ class DetailProfileController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'profile'   =>  'nullable|mimetypes:png,jpg,jpeg,svg',
+            'profile'   =>  'nullable|mimes:png,jpg,jpeg,svg',
             'npwp'      =>  'nullable|max:12',
             'jenis_kelamin' => 'nullable',
             'kelurahan' =>  'required',

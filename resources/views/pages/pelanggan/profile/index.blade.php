@@ -94,7 +94,7 @@
                                     <label for="profile">Profile:</label>
                                     @if (Auth::user()->DetailUser != null)
                                         <br>
-                                        <img src="{{ Auth::user()->DetailUser()->exists() ? Storage::url(Auth::user()->DetailUser->first()->profile) : '' }}" class="img-fluid rounded mb-3" alt="" width="50%">
+                                        <img src="{{ Auth::user()->DetailUser()->exists() ? Auth::user()->DetailUser->first()->profile : '' }}" class="img-fluid rounded mb-3" alt="" width="50%">
                                     @endif
                                     <input type="file" name="profile" class="form-control {{ $errors->has('profile') ? 'is-invalid' : '' }} shadow">
                                     @error('profile')

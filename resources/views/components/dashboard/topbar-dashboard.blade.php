@@ -9,7 +9,7 @@
             <li class="nav-item dropdown header-profile">
                 <a class="nav-link" href="javascript:void(0)" role="button" data-toggle="dropdown">
                     @if (Auth::user()->DetailUser()->exists())
-                    <img src="{{ Auth::user()->DetailUser()->exists() ? Storage::url(Auth::user()->DetailUser()->first()->profile) : '' }}" width="20" alt=""/>
+                    <img src="{{ Auth::user()->DetailUser()->exists() ? Auth::user()->DetailUser()->first()->profile : '' }}" width="20" alt=""/>
                     @else
                     <img src="{{ asset('dashboard/images/profile/17.jpg') }}" width="20" alt=""/>
                     @endif

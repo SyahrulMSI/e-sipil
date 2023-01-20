@@ -63,11 +63,27 @@ class DetailProfileController extends Controller
         if($request->has('profile'))
         {
 
-            $path = $profile->store('public/profiles');
+            // $path = $profile->store('public/profiles');
+
+            $imageKit = new ImageKit(
+                env('IMAGEKIT_PUBLIC_KEY'),
+                env('IMAGEKIT_PRIVAT_KEY'),
+                env('IMAGEKIT_URL')
+            );
+
+
+            $image = file_get_contents($profile);
+            $image_base = base64_encode($image);
+            $uploadFile = $imageKit->uploadFile([
+                'file'  =>  $image_base,
+                'fileName'  =>  'profile'
+            ]);
+
+            $urlFile = $uploadFile->result;
 
             $data = array(
                 'id_user'   =>  Auth::user()->id,
-                'profile'   =>  $path,
+                'profile'   =>  $urlFile->url,
                 'npwp'  =>  $npwp,
                 'jenis_kelamin' => $jk,
                 'kelurahan' =>  $kelurahan,
@@ -171,11 +187,29 @@ class DetailProfileController extends Controller
         if($request->has('profile'))
         {
 
-            $path = $profile->store('public/profiles');
+            // $path = $profile->store('public/profiles');
+
+            $imageKit = new ImageKit(
+                env('IMAGEKIT_PUBLIC_KEY'),
+                env('IMAGEKIT_PRIVAT_KEY'),
+                env('IMAGEKIT_URL')
+            );
+
+
+            $image = file_get_contents($profile);
+            $image_base = base64_encode($image);
+            $uploadFile = $imageKit->uploadFile([
+                'file'  =>  $image_base,
+                'fileName'  =>  'profile'
+            ]);
+
+            $urlFile = $uploadFile->result;
+
+
 
             $data = array(
                 'id_user'   =>  Auth::user()->id,
-                'profile'   =>  $path,
+                'profile'   =>  $urlFile->url,
                 'npwp'  =>  $npwp,
                 'jenis_kelamin' => $jk,
                 'kelurahan' =>  $kelurahan,

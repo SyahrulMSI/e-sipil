@@ -189,7 +189,7 @@ class KonfirmasiServiceListrikBangunanController extends Controller
 
         $transaksi->save();
 
-        return $transaksi;
+        // return $transaksi;
 
         // return redirect('/');
 

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\DetailUser;
 use Alert;
+use ImageKit\ImageKit;
 
 class DetailProfileController extends Controller
 {
@@ -60,14 +61,30 @@ class DetailProfileController extends Controller
         $ji = $request->jenis_identitas;
         $ni  = $request->no_identitas;
 
+
         if($request->has('profile'))
         {
+            $imageKit = new ImageKit(
+                env('IMAGEKIT_PUBLIC_KEY'),
+                env('IMAGEKIT_PRIVAT_KEY'),
+                env('IMAGEKIT_URL')
+            );
 
-            $path = $profile->store('public/profiles');
+
+            $image = file_get_contents($profile);
+            $image_base = base64_encode($image);
+            $uploadFile = $imageKit->uploadFile([
+                'file'  =>  $image_base,
+                'fileName'  =>  'profile'
+            ]);
+
+            $urlFile = $uploadFile->result;
+
+            // $path = $profile->store('public/profiles');
 
             $data = array(
                 'id_user'   =>  Auth::user()->id,
-                'profile'   =>  $path,
+                'profile'   =>  $urlFile->url,
                 'npwp'  =>  $npwp,
                 'jenis_kelamin' => $jk,
                 'kelurahan' =>  $kelurahan,
@@ -168,14 +185,29 @@ class DetailProfileController extends Controller
         $ji = $request->jenis_identitas;
         $ni  = $request->no_identitas;
 
+        $imageKit = new ImageKit(
+            env('IMAGEKIT_PUBLIC_KEY'),
+            env('IMAGEKIT_PRIVAT_KEY'),
+            env('IMAGEKIT_URL')
+        );
+
         if($request->has('profile'))
         {
 
-            $path = $profile->store('public/profiles');
+            // $path = $profile->store('public/profiles');
+
+            $image = file_get_contents($profile);
+            $image_base = base64_encode($image);
+            $uploadFile = $imageKit->uploadFile([
+                'file'  =>  $image_base,
+                'fileName'  =>  'profile'
+            ]);
+
+            $urlFile = $uploadFile->result;
 
             $data = array(
                 'id_user'   =>  Auth::user()->id,
-                'profile'   =>  $path,
+                'profile'   =>  $urlFile->url,
                 'npwp'  =>  $npwp,
                 'jenis_kelamin' => $jk,
                 'kelurahan' =>  $kelurahan,

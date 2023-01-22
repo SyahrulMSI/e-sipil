@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Alert;
 use App\Models\DetailUser;
-use ImageKit\ImageKit;
+use ImageKit\ImageKit;s
 
 
 class DetailProfileController extends Controller

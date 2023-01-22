@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Lupa Password | PT. Sumber Sae Satu</title>
+    <title>Reset Password | PT. Sumber Sae Satu</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -30,24 +30,48 @@
 					<img src="{{ asset('logo/logo.png') }}" alt="IMG" width="50%">
 				</div>
 
-
-
-				<form route="{{ route('password.email') }}" method="POST" enctype="multipart/form-data" class="login100-form validate-form">
+				<form action="{{ route('password.update') }}" method="POST" enctype="multipart/form-data" class="login100-form validate-form">
                     @csrf
                     @method('POST')
+
+                    <input type="hidden" name="token" value="{{ $request->route('token') }}">
+
 					<span class="login100-form-title">
-						Lupa Password
-                        <p>Masukkan email anda yang terdafatr untuk melakukan pengaturan ulang password anda.</p>
+						Reset Password
+                        <p>Silahkan atur ulang password anda !</p>
 					</span>
 
 
+
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="email" placeholder="Email" value="{{ old('email') }}">
+						<input class="input100" type="text" name="email" value="{{ old('email', $request->email) }}">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
 						</span>
                         @error('email')
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror
+					</div>
+
+                    <div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<input class="input100" type="password" name="password" placeholder="Password">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+                            @error('password')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<input class="input100" type="password" name="password_confirmation" placeholder="Konfirmasi Password">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+                        @error('password_confirmation')
                             <small class="text-danger">{{ $message }}</small>
                         @enderror
 					</div>
@@ -62,8 +86,8 @@
                         <span class="txt1">
 							Kembali
 						</span>
-						<a class="txt2" href="{{ route('login') }}">
-							Login
+						<a class="txt2" href="/">
+							Beranda
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 						</a>
 					</div>

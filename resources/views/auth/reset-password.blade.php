@@ -47,5 +47,8 @@
                 </x-primary-button>
             </div>
         </form>
+        <div class="btn-group">
+            <a href="/">Kembali ke Beranda</a>
+        </div>
     </x-auth-card>
 </x-guest-layout>

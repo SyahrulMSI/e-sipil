@@ -15,7 +15,7 @@
                     <li><a href="{{ route('customer.pasang_meter_baru.index') }}">Pasang Meter Baru</a></li>
                     <li><a href="{{ route('customer.service_meter_listrik.index') }}">Servis Meter Listrik</a></li>
                     <li><a href="{{ route('customer.tambah_daya_listrik.index') }}">Tambah Daya Listrik</a></li>
-                    <li><a href="{{ route('customer.instalasi_bangunan_baru.index') }}">Instalasi Banguna Baru</a></li>
+                    <li><a href="{{ route('customer.instalasi_bangunan_baru.index') }}">Instalasi Bangunan Baru</a></li>
                     <li><a href="{{ route('customer.service_listrik_bangunan.index') }}">Servis Listrik Bangunan</a></a></li>
                 </ul>
             </li>

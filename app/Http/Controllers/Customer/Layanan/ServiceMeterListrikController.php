@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Alert;
 use App\Models\User;
 use App\Models\DetailUser;
-
+use GuzzleHttp\Client;
 
 class ServiceMeterListrikController extends Controller
 {
@@ -97,6 +97,10 @@ class ServiceMeterListrikController extends Controller
             $jenis_kerusakan->deskripsi = $deskripsi;
             $jenis_kerusakan->save();
 
+            $user = User::where('id', Auth::user()->id)->first();
+
+            $this->sendNotification($user);
+
             Alert::success('Berhasil', 'Permohonan berhasil dibuat.');
             return redirect()->route('customer.service_meter_listrik.index');
 
@@ -147,5 +151,27 @@ class ServiceMeterListrikController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function sendNotification($user)
+    {
+
+        $url = env('WA_BLAS_URL');
+        $token = env('WA_BLAS_KEY');
+
+        $client = new Client();
+
+        $data = [
+            'phone' => $user->no_telp,
+            'message' => 'Salam, Kami Pihak PT SUMBER SAE SATU menyampaikan bahwa permohonan pelayanan Service Meter Listrik akan segera kami konfirmasi. Harap bersabar, Hubungi kami jika belum ada konfirmasi selama lebih dari 5 hari. Terima Kasih',
+        ];
+
+        $client->post($url, [
+            'headers'   =>  [
+                "Authorization" => $token
+            ],
+            'form_params'  => $data
+        ]);
+
     }
 }

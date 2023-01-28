@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Alert;
 use App\Models\User;
 use App\Models\DetailUser;
+use GuzzleHttp\Client;
+
 
 class PasangMeterBaruController extends Controller
 {
@@ -83,6 +85,12 @@ class PasangMeterBaruController extends Controller
             $result = PemasanganBaru::create($data);
 
             if($result){
+
+
+                $user = User::where('id', Auth::user()->id)->first();
+
+                $this->sendNotification($user);
+
                 Alert::success('Berhasil', 'Data permohonan berhasil di buat.');
                 return redirect()->route('customer.pasang_meter_baru.index');
             } else {
@@ -137,5 +145,27 @@ class PasangMeterBaruController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function sendNotification($user)
+    {
+
+        $url = env('WA_BLAS_URL');
+        $token = env('WA_BLAS_KEY');
+
+        $client = new Client();
+
+        $data = [
+            'phone' => $user->no_telp,
+            'message' => 'Salam, Kami Pihak PT SUMBER SAE SATU menyampaikan bahwa permohonan pelayanan Pasang Meter Baru akan segera kami konfirmasi. Harap bersabar, Hubungi kami jika belum ada konfirmasi selama lebih dari 5 hari. Terima Kasih',
+        ];
+
+        $client->post($url, [
+            'headers'   =>  [
+                "Authorization" => $token
+            ],
+            'form_params'  => $data
+        ]);
+
     }
 }

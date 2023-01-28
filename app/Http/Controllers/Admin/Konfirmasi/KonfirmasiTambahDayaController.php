@@ -10,6 +10,9 @@ use App\Models\TambahDaya;
 use App\Models\User;
 use Midtrans;
 
+use Illuminate\Support\Facades\Auth;
+use GuzzleHttp\Client;
+
 class KonfirmasiTambahDayaController extends Controller
 {
     public function __construct()
@@ -79,9 +82,16 @@ class KonfirmasiTambahDayaController extends Controller
             'tanggal_transaksi' =>  date('Y-m-d')
         ]);
 
+        $nominal = $request->total_bayar;
+
         getSnapRedirect($result);
 
         if($result){
+
+            $user = User::where('id', $td->id_user)->first();
+
+            $this->sendNotification($user, $nominal);
+
             Alert::success('Berhasil', 'Tagihan berhasil di buat');
             return redirect()->route('admin.list_permohonan.index');
         }  else {
@@ -133,6 +143,29 @@ class KonfirmasiTambahDayaController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function sendNotification($user, $nominal)
+    {
+
+        $url = env('WA_BLAS_URL');
+        $token = env('WA_BLAS_KEY');
+
+        $client = new Client();
+
+        $data = [
+            'phone' => $user->no_telp,
+            'message' => 'Salam, Kami Pihak PT. SUMBER SAE SATU menyampaikan bahwa Uang Muka yang harus anda bayarkan pada pelayanan Tambah Daya Listrik sebesar Rp. ' . number_format($nominal, 0),
+        ];
+
+        $client->post($url, [
+            'headers'   =>  [
+                "Authorization" => $token
+            ],
+            'form_params'  => $data
+        ]);
+
     }
 
     public function midtransCallback(Request $request)

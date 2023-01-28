@@ -125,17 +125,19 @@ class DataController extends Controller
 
         if($result){
 
-        $token = env('WA_BLAS_URL');
-        $url = env('WA_BLAS_URL');
+        // $token = env('WA_BLAS_URL');
+        // $url = env('WA_BLAS_URL');
 
-        $client = new Client();
+        // $client = new Client();
 
-        $client->post($url, [
-            'headers'   =>  [
-                'Authorization' =>  $token
-            ],
-            'form_params'  =>  $data
-        ]);
+        // $client->post($url, [
+        //     'headers'   =>  [
+        //         'Authorization' =>  $token
+        //     ],
+        //     'form_params'  =>  $data
+        // ]);
+
+        $this->waNotif($data);
 
             Alert::success('Berhasil', 'Status berhasil di update');
             return redirect()->route('admin.data_tugas.index');
@@ -168,18 +170,14 @@ class DataController extends Controller
 
     public function waNotif($data)
     {
-        $token = 'TX8FsvpO64vCOVwK8ysBm70uQp9dSB24RlTeQmf4sKofEyeiW6JxbrFW9ZNaA1Qp';
+        $url = env('WA_BLAS_URL');
+        $token = env('WA_BLAS_KEY');
 
         $client = new Client();
 
-        $data = [
-            'phone' => '085641739560',
-            'message' => 'hello there',
-            ];
-
-        $response = $client->post('https://jogja.wablas.com/api/send-message', [
-            'headers'  =>  [
-                'Authorization' =>  $token
+        $client->post($url, [
+            'headers'   =>  [
+                "Authorization" => $token
             ],
             'form_params'  =>  $data
         ]);

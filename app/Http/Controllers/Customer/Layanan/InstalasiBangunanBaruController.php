@@ -88,7 +88,9 @@ class InstalasiBangunanBaruController extends Controller
 
             if($result){
 
-                // $this->sendNotification();
+                $user = User::where('id', Auth::user()->id)->first();
+
+                $this->sendNotification($user);
 
                 Alert::success('Berhasil', 'Data permohonan berhasil di buat.');
                 return redirect()->route('customer.instalasi_bangunan_baru.index');
@@ -146,57 +148,25 @@ class InstalasiBangunanBaruController extends Controller
         //
     }
 
-    public function sendNotification()
+    public function sendNotification($user)
     {
-    //     $client = new Client();
-    //     $headers = [
-    //         'headers' => [
-    //             'Authorization' => 'DlmqqynWcHBemsW40dOMsh7qLPfrsJaD7u6SRFMwLN2HIvaaqP7cmWDxLkUFfcQi'
-    //             ]
-    //         ];
 
-        $options = [
-            'multipart' => [
-              [
-                'name' => 'phone',
-                'contents' => '6285641739560'
-              ],
-              [
-                'name' => 'message',
-                'contents' => 'hello'
-              ]
-          ]];
+        $url = env('WA_BLAS_URL');
+        $token = env('WA_BLAS_KEY');
 
-        //   $request = new Request('POST', 'https://jogja.wablas.com/api/send-message', $headers);
+        $client = new Client();
 
-        // $client->request('POST', 'https://jogja.wablas.com/api/send-message', [
-        //     $headers,
-        //     $options
-        // ]);
+        $data = [
+            'phone' => $user->no_telp,
+            'message' => 'Salam, Kami Pihak PT SUMBER SAE SATU menyampaikan bahwa permohonan pelayanan Instalasi Bangunan Baru akan segera kami konfirmasi. Harap bersabar, Hubungi kami jika belum ada konfirmasi selama lebih dari 5 hari. Terima Kasih',
+        ];
 
-        // $response = Http::withToken('DlmqqynWcHBemsW40dOMsh7qLPfrsJaD7u6SRFMwLN2HIvaaqP7cmWDxLkUFfcQi')->post('https://jogja.wablas.com/api/send-message',   [
-        //     'name' => 'phone',
-        //     'contents' => '6285641739560'
-        //   ]);
-
-          $response = Http::withHeaders([
-            'Authorization' => 'DlmqqynWcHBemsW40dOMsh7qLPfrsJaD7u6SRFMwLN2HIvaaqP7cmWDxLkUFfcQi'
-        ])->post('https://jogja.wablas.com/api/send-message', [
-            'multipart' => [
-                [
-                  'name' => 'phone',
-                  'contents' => '6285641739560'
-                ],
-                [
-                  'name' => 'message',
-                  'contents' => 'hello'
-                ]
-            ]
+        $client->post($url, [
+            'headers'   =>  [
+                "Authorization" => $token
+            ],
+            'form_params'  => $data
         ]);
 
-        dd($response);
-
-
-
-        }
+    }
 }

@@ -12,6 +12,9 @@ use Exception;
 use Str;
 use Midtrans;
 
+use Illuminate\Support\Facades\Auth;
+use GuzzleHttp\Client;
+
 class KonfirmasiInstalasiBangunan extends Controller
 {
 
@@ -83,10 +86,17 @@ class KonfirmasiInstalasiBangunan extends Controller
             'tanggal_transaksi' =>  date('Y-m-d')
         ]);
 
+        $nominal = $request->total_bayar;
+
         // $this->getSnapRedirect($result);
         getSnapRedirect($result);
 
         if($result){
+
+            $user = User::where('id', $ib->id_user)->first();
+
+            $this->sendNotification($user, $nominal);
+
             Alert::success('Berhasil', 'Tagihan berhasil di buat');
             return redirect()->route('admin.list_permohonan.index');
         }  else {
@@ -138,6 +148,28 @@ class KonfirmasiInstalasiBangunan extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function sendNotification($user, $nominal)
+    {
+
+        $url = env('WA_BLAS_URL');
+        $token = env('WA_BLAS_KEY');
+
+        $client = new Client();
+
+        $data = [
+            'phone' => $user->no_telp,
+            'message' => 'Salam, Kami Pihak PT. SUMBER SAE SATU menyampaikan bahwa Uang Muka yang harus anda bayarkan pada pelayanan Instalasi Bangunan Baru sebesar Rp. ' . number_format($nominal, 0),
+        ];
+
+        $client->post($url, [
+            'headers'   =>  [
+                "Authorization" => $token
+            ],
+            'form_params'  => $data
+        ]);
+
     }
 
     // public function getSnapRedirect(Transaksi $transaksi){
@@ -256,6 +288,7 @@ class KonfirmasiInstalasiBangunan extends Controller
         return redirect()->route('customer.success.index');
 
     }
+
 
 
 

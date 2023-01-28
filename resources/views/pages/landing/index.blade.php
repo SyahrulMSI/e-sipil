@@ -238,7 +238,7 @@
                                 <label for="pasw">Kata Sandi :</label>
                                 <input type="password" name="password" class="form-control" value="{{ old('password') }}">
                             </div>
-                            <a href="{{ route('password.request') }}">Lupa password ?</a>
+                            <a href="{{ route('password.request') }}">Lupa Kata Sandi ?</a>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-success">Masuk</button>
                             </div>

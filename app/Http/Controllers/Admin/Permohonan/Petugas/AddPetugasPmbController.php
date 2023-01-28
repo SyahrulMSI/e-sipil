@@ -63,6 +63,15 @@ class AddPetugasPmbController extends Controller
             'status'            =>  '0'
         );
 
+        $tran = $pmb->Transaksi()->first();
+
+        if($tran->type_pembayaran == 'dp'){
+            if($tran->status == 'WAITING'){
+                Alert::info('Informasi', 'Anda tidak dapat menambahkan petugas sebelum Pelanggan melunasi Uang Muka terlebih dahulu !');
+                return redirect()->back();
+            }
+        }
+
         $result = Tugas::create($data);
 
         if($result){

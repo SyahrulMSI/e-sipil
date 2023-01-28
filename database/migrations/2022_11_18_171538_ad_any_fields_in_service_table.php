@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::table('service', function (Blueprint $table) {
             $table->string('nomor_registrasi', 20)->after('id_user');
-            $table->date('tanggal')->after('nomor_registrasi');
+            $table->string('ID_meter', 30)->nullable()->after('nomor_registrasi');
+            $table->date('tanggal')->after('ID_meter');
             $table->string('alamat')->after('tanggal');
             $table->string('status_permohonan', 4)->after('jenis_service');
         });

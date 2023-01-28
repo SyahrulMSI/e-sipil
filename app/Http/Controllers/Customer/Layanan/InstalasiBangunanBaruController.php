@@ -9,6 +9,9 @@ use App\Models\InstalasiBangunan;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\DetailUser;
+use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Http;
+
 
 
 class InstalasiBangunanBaruController extends Controller
@@ -84,6 +87,9 @@ class InstalasiBangunanBaruController extends Controller
             $result = InstalasiBangunan::create($data);
 
             if($result){
+
+                // $this->sendNotification();
+
                 Alert::success('Success', 'Data permohonan berhasil di buat.');
                 return redirect()->route('customer.instalasi_bangunan_baru.index');
             } else {
@@ -139,4 +145,58 @@ class InstalasiBangunanBaruController extends Controller
     {
         //
     }
+
+    public function sendNotification()
+    {
+    //     $client = new Client();
+    //     $headers = [
+    //         'headers' => [
+    //             'Authorization' => 'DlmqqynWcHBemsW40dOMsh7qLPfrsJaD7u6SRFMwLN2HIvaaqP7cmWDxLkUFfcQi'
+    //             ]
+    //         ];
+
+        $options = [
+            'multipart' => [
+              [
+                'name' => 'phone',
+                'contents' => '6285641739560'
+              ],
+              [
+                'name' => 'message',
+                'contents' => 'hello'
+              ]
+          ]];
+
+        //   $request = new Request('POST', 'https://jogja.wablas.com/api/send-message', $headers);
+
+        // $client->request('POST', 'https://jogja.wablas.com/api/send-message', [
+        //     $headers,
+        //     $options
+        // ]);
+
+        // $response = Http::withToken('DlmqqynWcHBemsW40dOMsh7qLPfrsJaD7u6SRFMwLN2HIvaaqP7cmWDxLkUFfcQi')->post('https://jogja.wablas.com/api/send-message',   [
+        //     'name' => 'phone',
+        //     'contents' => '6285641739560'
+        //   ]);
+
+          $response = Http::withHeaders([
+            'Authorization' => 'DlmqqynWcHBemsW40dOMsh7qLPfrsJaD7u6SRFMwLN2HIvaaqP7cmWDxLkUFfcQi'
+        ])->post('https://jogja.wablas.com/api/send-message', [
+            'multipart' => [
+                [
+                  'name' => 'phone',
+                  'contents' => '6285641739560'
+                ],
+                [
+                  'name' => 'message',
+                  'contents' => 'hello'
+                ]
+            ]
+        ]);
+
+        dd($response);
+
+
+
+        }
 }

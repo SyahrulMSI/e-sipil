@@ -125,11 +125,12 @@ class DataController extends Controller
 
         if($result){
 
-        $token = 'TX8FsvpO64vCOVwK8ysBm70uQp9dSB24RlTeQmf4sKofEyeiW6JxbrFW9ZNaA1Qp';
+        $token = env('WA_BLAS_URL');
+        $url = env('WA_BLAS_URL');
 
         $client = new Client();
 
-        $client->post('https://jogja.wablas.com/api/send-message', [
+        $client->post($url, [
             'headers'   =>  [
                 'Authorization' =>  $token
             ],

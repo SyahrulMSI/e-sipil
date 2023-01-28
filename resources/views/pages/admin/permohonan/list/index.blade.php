@@ -389,6 +389,7 @@
                                                             <th>No</th>
                                                             <th>Nama Pelanggan</th>
                                                             <th>Nomor Registrasi</th>
+                                                            <th>ID Meter</th>
                                                             <th>Tanggal</th>
                                                             <th>Alamat</th>
                                                             <th>Jenis Kerusakan</th>
@@ -407,6 +408,7 @@
                                                                 <td>{{ $n }}</td>
                                                                 <td>{{ $sm->User->nama_lengkap }}</td>
                                                                 <td>{{ $sm->nomor_registrasi }}</td>
+                                                                <td>{{ $sm->ID_meter }}</td>
                                                                 <td>{{ $sm->tanggal->format('d, M Y') }}</td>
                                                                 <td>{{ $sm->alamat }}</td>
                                                                 <td>

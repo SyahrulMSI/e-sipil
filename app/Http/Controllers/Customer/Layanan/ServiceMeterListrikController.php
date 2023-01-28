@@ -48,13 +48,15 @@ class ServiceMeterListrikController extends Controller
     {
         $request->validate([
             'nama_lengkap'  =>  'required',
-            'kerusakan' =>  'required',
-            'deskripsi' =>  'required',
-            'alamat'    =>  'required'
+            'ID_meter'      =>  'required',
+            'kerusakan'     =>  'required',
+            'deskripsi'     =>  'required',
+            'alamat'        =>  'required'
         ]);
 
         $id = Auth::user()->id;
         $jenis_service = 'meter_listrik';
+        $id_meter   = $request->ID_meter;
         $alamat = $request->alamat;
 
         $kerusakan = $request->kerusakan;
@@ -78,6 +80,7 @@ class ServiceMeterListrikController extends Controller
             $service = new Service();
             $service->id_user = $id;
             $service->nomor_registrasi = date('Ymdis') . Auth::user()->id;
+            $service->ID_meter  = $id_meter;
             $service->tanggal = date('Y-m-d');
             $service->alamat = $alamat;
             $service->jenis_service = $jenis_service;

@@ -350,6 +350,7 @@
                                                             <th>No</th>
                                                             <th>Jenis Service</th>
                                                             <th>Nomor Registrasi</th>
+                                                            <th>ID Meter</th>
                                                             <th>Tanggal</th>
                                                             <th>Alamat</th>
                                                             <th>Jenis Kerusakan</th>
@@ -376,6 +377,13 @@
                                                                     @endif
                                                                 </td>
                                                                 <td>{{ $sm->nomor_registrasi }}</td>
+                                                                <td>
+                                                                    @if($sm->jenis_service == 'meter_listrik')
+                                                                        {{ $sm->ID_meter }}
+                                                                    @else
+                                                                        <p class="text-center"> --- </p>
+                                                                    @endif
+                                                                </td>
                                                                 <td>{{ $sm->tanggal->format('d, M Y') }}</td>
                                                                 <td>{{ $sm->alamat }}</td>
                                                                 <td>

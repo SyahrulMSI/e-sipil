@@ -53,17 +53,25 @@ class AddPetugasServiceController extends Controller
             'id_petugas'    =>  'required'
         ]);
 
-        $pmb = Service::where('id', $id)->first();
+        $service = Service::where('id', $id)->first();
 
         $data = array(
-            'id_pelanggan'  => $pmb->id_user,
+            'id_pelanggan'  => $service->id_user,
             'id_petugas'    =>  $request->id_petugas,
             'id_service'    =>  $id,
             'status'    =>  0
         );
 
-        $result = Tugas::create($data);
+        $tran = $service->Transaksi()->first();
 
+        if($tran->type_pembayaran == 'dp'){
+            if($tran->status == 'WAITING'){
+                Alert::info('Informasi', 'Anda tidak dapat menambahkan petugas sebelum Pelanggan melunasi Uang Muka terlebih dahulu !');
+                return redirect()->back();
+            }
+        }
+
+        $result = Tugas::create($data);
         if($result){
             Alert::success('Success', 'Data berhasil di simpan');
             return redirect()->route('admin.list_permohonan.add_petugas_service.index', $id);

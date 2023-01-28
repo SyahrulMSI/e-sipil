@@ -161,6 +161,10 @@
                                                                     <td>Jenis Instalasi</td>
                                                                     <td>{{ Str::title($t->Service->jenis_service) }}</td>
                                                                 </tr>
+                                                                <tr>
+                                                                    <td>No Meter</td>
+                                                                    <td>{{ Str::title($t->Service->ID_meter) }}</td>
+                                                                </tr>
                                                                     @if($t->Service->JenisKerusakan()->exists())
 
                                                                         @foreach($t->service->JenisKerusakan as $jk)

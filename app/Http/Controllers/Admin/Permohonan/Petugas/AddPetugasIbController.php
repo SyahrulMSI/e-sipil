@@ -53,16 +53,27 @@ class AddPetugasIbController extends Controller
             'id_petugas'    =>  'required'
         ]);
 
-        $pmb = InstalasiBangunan::where('id', $id)->first();
+        $ib = InstalasiBangunan::where('id', $id)->first();
 
         $data = array(
-            'id_pelanggan'      => $pmb->id_user,
+            'id_pelanggan'      => $ib->id_user,
             'id_petugas'        =>  $request->id_petugas,
             'id_instalasi'      =>  $id,
             'status'            =>  0
         );
 
+        $tran = $ib->Transaksi()->first();
+
+        if($tran->type_pembayaran == 'dp'){
+            if($tran->status == 'WAITING'){
+                Alert::info('Informasi', 'Anda tidak dapat menambahkan petugas sebelum Pelanggan melunasi Uang Muka terlebih dahulu !');
+                return redirect()->back();
+            }
+        }
+
+
         $result = Tugas::create($data);
+
 
         if($result){
             Alert::success('Success', 'Data berhasil di simpan');

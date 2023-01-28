@@ -53,14 +53,23 @@ class AddPetugasTdController extends Controller
             'id_petugas'    =>  'required'
         ]);
 
-        $pmb = TambahDaya::where('id', $id)->first();
+        $td = TambahDaya::where('id', $id)->first();
 
         $data = array(
-            'id_pelanggan'  => $pmb->id_user,
+            'id_pelanggan'  => $td->id_user,
             'id_petugas'    =>  $request->id_petugas,
             'id_tambah_daya'    =>  $id,
             'status'    =>  0
         );
+
+        $tran = $td->Transaksi()->first();
+
+        if($tran->type_pembayaran == 'dp'){
+            if($tran->status == 'WAITING'){
+                Alert::info('Informasi', 'Anda tidak dapat menambahkan petugas sebelum Pelanggan melunasi Uang Muka terlebih dahulu !');
+                return redirect()->back();
+            }
+        }
 
         $result = Tugas::create($data);
 

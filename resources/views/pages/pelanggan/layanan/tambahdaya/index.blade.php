@@ -52,7 +52,7 @@
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label for="ID_meter">Nomor ID Meter:</label>
-                                                    <input type="number" name="ID_meter" class="form-control {{ $errors->has('ID_meter') ? 'is-invalid' : '' }}" value="{{ old('ID_meter') }}">
+                                                    <input type="number" name="ID_meter" class="form-control shadow {{ $errors->has('ID_meter') ? 'is-invalid' : '' }}" value="{{ old('ID_meter') }}">
                                                     @error('ID_meter')
                                                         <small class="text-danger">{{ $message }}</small>
                                                     @enderror

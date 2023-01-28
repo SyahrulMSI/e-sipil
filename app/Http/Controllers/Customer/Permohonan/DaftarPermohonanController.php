@@ -29,7 +29,7 @@ class DaftarPermohonanController extends Controller
 
 
         $data = array(
-            'title'     =>  'Dafar Permohonan Layanan',
+            'title'     =>  'Daftar Permohonan Layanan',
             'pemasangan_baru'   =>  $pasang_meter,
             'tambah_daya'   =>  $tambah_daya,
             'instalasi_bangunan'    =>     $instalasi,

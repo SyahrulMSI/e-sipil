@@ -34,13 +34,36 @@
                         <div class="row">
 
                             <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label for="nama">Nama Lengkap:</label>
-                                    <input type="text" name="nama_lengkap" class="form-control shadow {{ $errors->has('nama_lengkap') ? 'is-invalid' : '' }}" value="{{ Auth::user()->nama_lengkap }}">
-                                    @error('nama_lengkap')
-                                        <small class="text-danger">{{ $message }}</small>
-                                    @enderror
+
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+
+                                                <div class="form-group">
+                                                    <label for="nama">Nama Lengkap:</label>
+                                                    <input type="text" name="nama_lengkap" class="form-control shadow {{ $errors->has('nama_lengkap') ? 'is-invalid' : '' }}" value="{{ Auth::user()->nama_lengkap }}">
+                                                    @error('nama_lengkap')
+                                                        <small class="text-danger">{{ $message }}</small>
+                                                    @enderror
+                                                </div>
+
+                                            </div>
+                                            <div class="col-lg-6">
+
+                                                <div class="form-group">
+                                                    <label for="ID">ID Meter:</label>
+                                                    <input type="number" name="ID_meter" class="form-control shadow {{ $errors->has('ID_meter') ? 'is-invalid' : '' }}" value="{{ old('ID_meter') }}">
+                                                    @error('ID_meter')
+                                                        <small class="text-danger">{{ $message }}</small>
+                                                    @enderror
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+
                                 <div class="form-group">
                                     <label for="kerusakan">Kerusakan:</label>
                                     <input type="text" name="kerusakan" id="kerusakan" class="form-control shadow {{ $errors->has('kerusakan') ? 'is-invalid' : '' }}" value="{{ old('kerusakan') }}">

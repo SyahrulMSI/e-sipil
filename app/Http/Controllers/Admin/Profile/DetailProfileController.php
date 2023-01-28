@@ -221,10 +221,10 @@ class DetailProfileController extends Controller
             $result = DetailUser::where('id', $id)->update($data);
 
             if($result){
-                Alert::success('Success', 'Profile berhasil di update');
+                Alert::success('Berhasil', 'Profile berhasil di update');
                 return redirect()->route('admin.my_profile.index');
             } else {
-                Alert::error('Error', 'Profile gagal di update');
+                Alert::error('Gagal', 'Profile gagal di update');
                 return redirect()->route('admin.my_profile.index');
             }
 
@@ -244,10 +244,10 @@ class DetailProfileController extends Controller
             $result = DetailUser::where('id', $id)->update($data);
 
             if($result){
-                Alert::success('Success', 'Profile berhasil di update');
+                Alert::success('Berhasil', 'Profile berhasil di update');
                 return redirect()->route('profile.my_profile.index');
             } else {
-                Alert::error('Error', 'Profile gagal di update');
+                Alert::error('Gagal', 'Profile gagal di update');
                 return redirect()->route('profile.my_profile.index');
             }
         }

@@ -72,10 +72,10 @@ class CustomerController extends Controller
         $result = User::create($data);
 
         if($result){
-            Alert::success('Success', 'Data berhasil disimpan.');
+            Alert::success('Berhasil', 'Data berhasil disimpan.');
             return redirect()->route('admin.customer.index');
         } else {
-            Alert::error('Error', 'Data gagal disimpan.');
+            Alert::error('Gagal', 'Data gagal disimpan.');
             return redirect()->route('admin.customer.create');
         }
     }
@@ -142,10 +142,10 @@ class CustomerController extends Controller
             $result = User::where('id', $id)->update($data);
 
             if($result){
-                Alert::success('Success', 'Data berhasil diupdate.');
+                Alert::success('Berhasil', 'Data berhasil diupdate.');
                 return redirect()->route('admin.customer.index');
             } else {
-                Alert::error('Error', 'Data gagal diupdate.');
+                Alert::error('Gagal', 'Data gagal diupdate.');
                 return redirect()->route('admin.customer.create');
             }
 
@@ -162,10 +162,10 @@ class CustomerController extends Controller
             $result = User::where('id', $id)->update($data);
 
             if($result){
-                Alert::success('Success', 'Data berhasil diupdate.');
+                Alert::success('Berhasil', 'Data berhasil diupdate.');
                 return redirect()->route('admin.customer.index');
             } else {
-                Alert::error('Error', 'Data gagal diupdate.');
+                Alert::error('Gagal', 'Data gagal diupdate.');
                 return redirect()->route('admin.customer.edit', $id);
             }
         }
@@ -182,10 +182,10 @@ class CustomerController extends Controller
         $result = User::destroy($id);
 
         if($result){
-            Alert::success('Success', 'Data berhasil dihapus.');
+            Alert::success('Berhasil', 'Data berhasil dihapus.');
             return redirect()->route('admin.customer.index');
         } else {
-            Alert::error('Error', 'Data gagal dihapus.');
+            Alert::error('Gagal', 'Data gagal dihapus.');
             return redirect()->route('admin.customer.index');
         }
     }

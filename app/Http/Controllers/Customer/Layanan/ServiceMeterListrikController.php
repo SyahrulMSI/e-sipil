@@ -66,7 +66,7 @@ class ServiceMeterListrikController extends Controller
 
         if(empty($cek)){
 
-            Alert::info('Info', 'Silahkan melengkapi biodata sebelum mengajukan permohonan !');
+            Alert::info('Informasi', 'Silahkan melengkapi biodata sebelum mengajukan permohonan !');
             return redirect()->route('customer.my_profile.index');
 
         } else {
@@ -97,7 +97,7 @@ class ServiceMeterListrikController extends Controller
             $jenis_kerusakan->deskripsi = $deskripsi;
             $jenis_kerusakan->save();
 
-            Alert::success('Success', 'Permohonan berhasil dibuat.');
+            Alert::success('Berhasil', 'Permohonan berhasil dibuat.');
             return redirect()->route('customer.service_meter_listrik.index');
 
         }

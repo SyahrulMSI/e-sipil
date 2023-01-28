@@ -84,10 +84,10 @@ class PelunasanController extends Controller
 
                 RincianPelunasan::create($data);
 
-                Alert::success('Success', 'Tagihan berhasil di buat');
+                Alert::success('Berhasil', 'Tagihan berhasil di buat');
                 return redirect()->route('admin.pelunasan.index');
             }  else {
-                Alert::error('Error','Tagihan gagal di buat');
+                Alert::error('Gagal','Tagihan gagal di buat');
                 return redirect()->route('admin.pelunasan.index');
             }
         }else if(isset($request->id_service)){
@@ -121,10 +121,10 @@ class PelunasanController extends Controller
 
                 RincianPelunasan::create($data);
 
-                Alert::success('Success', 'Tagihan berhasil di buat');
+                Alert::success('Berhasil', 'Tagihan berhasil di buat');
                 return redirect()->route('admin.pelunasan.index');
             }  else {
-                Alert::error('Error','Tagihan gagal di buat');
+                Alert::error('Gagal','Tagihan gagal di buat');
                 return redirect()->route('admin.pelunasan.index');
             }
         } else if(isset($request->id_tambah_daya)){
@@ -158,10 +158,10 @@ class PelunasanController extends Controller
 
                 RincianPelunasan::create($data);
 
-                Alert::success('Success', 'Tagihan berhasil di buat');
+                Alert::success('Berhasil', 'Tagihan berhasil di buat');
                 return redirect()->route('admin.pelunasan.index');
             }  else {
-                Alert::error('Error','Tagihan gagal di buat');
+                Alert::error('Gagal','Tagihan gagal di buat');
                 return redirect()->route('admin.pelunasan.index');
             }
         }else if(isset($request->id_pemasangan_baru)){
@@ -195,14 +195,14 @@ class PelunasanController extends Controller
 
                 RincianPelunasan::create($data);
 
-                Alert::success('Success', 'Tagihan berhasil di buat');
+                Alert::success('Berhasil', 'Tagihan berhasil di buat');
                 return redirect()->route('admin.pelunasan.index');
             }  else {
-                Alert::error('Error','Tagihan gagal di buat');
+                Alert::error('Gagal','Tagihan gagal di buat');
                 return redirect()->route('admin.pelunasan.index');
             }
         } else {
-            Alert::error('Error','Something Wrong !');
+            Alert::error('Gagal','Something Wrong !');
             return redirect()->route('admin.data_tugas.index');
         }
     }
@@ -252,10 +252,10 @@ class PelunasanController extends Controller
         $result = Transaksi::destroy($id);
 
         if($result){
-            Alert::success('Success', 'Data berhasil di hapus');
+            Alert::success('Berhasil', 'Data berhasil di hapus');
             return redirect()->route('admin.pelunasan.index');
         } else {
-            Alert::error('Error', 'Data gagal di hapus');
+            Alert::error('Gagal', 'Data gagal di hapus');
             return redirect()->route('admin.pelunasan.index');
         }
     }

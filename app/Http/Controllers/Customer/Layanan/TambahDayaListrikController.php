@@ -65,7 +65,7 @@ class TambahDayaListrikController extends Controller
 
         if(empty($cek)){
 
-            Alert::info('Info', 'Silahkan melengkapi biodata sebelum mengajukan permohonan !');
+            Alert::info('Informasi', 'Silahkan melengkapi biodata sebelum mengajukan permohonan !');
             return redirect()->route('customer.my_profile.index');
 
         } else {
@@ -90,10 +90,10 @@ class TambahDayaListrikController extends Controller
             $result = TambahDaya::create($data);
 
             if($result){
-                Alert::success('Success', 'Data permohonan berhasil di buat.');
+                Alert::success('Berhasils', 'Data permohonan berhasil di buat.');
                 return redirect()->route('customer.tambah_daya_listrik.index');
             } else {
-                Alert::error('Error', 'Data permohonan gagal di buat.');
+                Alert::error('Gagal', 'Data permohonan gagal di buat.');
                 return redirect()->route('customer.tambah_daya_listrik.index');
             }
 

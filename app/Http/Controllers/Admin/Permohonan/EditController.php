@@ -119,10 +119,10 @@ class EditController extends Controller
         ]);
 
         if($result){
-            Alert::success('Success', 'Data Tambah Daya berhasil di update');
+            Alert::success('Berhasil', 'Data Tambah Daya berhasil di update');
             return redirect()->route('admin.list_permohonan.index');
         } else {
-            Alert::error('Error', 'Data gagal di update.');
+            Alert::error('Gagal', 'Data gagal di update.');
             return redirect()->route('admin.tambah.daya', $id);
         }
 
@@ -164,7 +164,7 @@ class EditController extends Controller
            $jenis_kerusakan->deskripsi = $deskripsi;
            $jenis_kerusakan->update();
 
-           Alert::success('Success', 'Data Service Listrik Bangunan Berhasil di Update.');
+           Alert::success('Berhasil', 'Data Service Listrik Bangunan Berhasil di Update.');
            return redirect()->route('admin.list_permohonan.index');
     }
 
@@ -205,7 +205,7 @@ class EditController extends Controller
            $jenis_kerusakan->deskripsi = $deskripsi;
            $jenis_kerusakan->update();
 
-           Alert::success('Success', 'Data Service Meter Listrik Berhasil di Update.');
+           Alert::success('Berhasil', 'Data Service Meter Listrik Berhasil di Update.');
            return redirect()->route('admin.list_permohonan.index');
     }
 
@@ -214,10 +214,10 @@ class EditController extends Controller
         $result = PemasanganBaru::destroy($id);
 
         if($result){
-            Alert::success('Success', 'Data berhasil di hapus.');
+            Alert::success('Berhasil', 'Data berhasil di hapus.');
             return redirect()->route('admin.list_permohonan.index');
         } else {
-            Alert::error('Error', 'Data gagal di hapus.');
+            Alert::error('Gagal', 'Data gagal di hapus.');
             return redirect()->route('admin.list_permohonan.index');
         }
     }
@@ -227,10 +227,10 @@ class EditController extends Controller
         $result = TambahDaya::destroy($id);
 
         if($result){
-            Alert::success('Success', 'Data berhasil di hapus.');
+            Alert::success('Berhasil', 'Data berhasil di hapus.');
             return redirect()->route('admin.list_permohonan.index');
         } else {
-            Alert::error('Error', 'Data gagal di hapus.');
+            Alert::error('Gagal', 'Data gagal di hapus.');
             return redirect()->route('admin.list_permohonan.index');
         }
     }
@@ -240,10 +240,10 @@ class EditController extends Controller
         $result = InstalasiBangunan::destroy($id);
 
         if($result){
-            Alert::success('Success', 'Data berhasil di hapus.');
+            Alert::success('Berhasil', 'Data berhasil di hapus.');
             return redirect()->route('admin.list_permohonan.index');
         } else {
-            Alert::error('Error', 'Data gagal di hapus.');
+            Alert::error('Berhasil', 'Data gagal di hapus.');
             return redirect()->route('admin.list_permohonan.index');
         }
     }
@@ -255,10 +255,10 @@ class EditController extends Controller
                     JenisKerusakan::destroy($jk->id);
 
         if($result){
-            Alert::success('Success', 'Data berhasil di hapus.');
+            Alert::success('Berhasil', 'Data berhasil di hapus.');
             return redirect()->route('admin.list_permohonan.index');
         } else {
-            Alert::error('Error', 'Data gagal di hapus.');
+            Alert::error('Gagal', 'Data gagal di hapus.');
             return redirect()->route('admin.list_permohonan.index');
         }
     }
@@ -271,10 +271,10 @@ class EditController extends Controller
                     JenisKerusakan::destroy($jk->id);
 
         if($result){
-            Alert::success('Success', 'Data berhasil di hapus.');
+            Alert::success('Berhasil', 'Data berhasil di hapus.');
             return redirect()->route('admin.list_permohonan.index');
         } else {
-            Alert::error('Error', 'Data gagal di hapus.');
+            Alert::error('Gagal', 'Data gagal di hapus.');
             return redirect()->route('admin.list_permohonan.index');
         }
     }

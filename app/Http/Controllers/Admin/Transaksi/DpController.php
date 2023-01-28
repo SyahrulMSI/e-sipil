@@ -91,10 +91,10 @@ class DpController extends Controller
         $result = Transaksi::destroy($id);
 
         if($result){
-            Alert::success('Success', 'Data berhasil di hapus');
+            Alert::success('Berhasil', 'Data berhasil di hapus');
             return redirect()->route('admin.uang_muka.index');
         } else {
-            Alert::error('Error', 'Data gagal di hapus');
+            Alert::error('Gagal', 'Data gagal di hapus');
             return redirect()->route('admin.uang_muka.index');
         }
     }

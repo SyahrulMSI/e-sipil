@@ -137,7 +137,7 @@ class DataController extends Controller
             'form_params'  =>  $data
         ]);
 
-            Alert::success('Success', 'Status berhasil di update');
+            Alert::success('Berhasil', 'Status berhasil di update');
             return redirect()->route('admin.data_tugas.index');
         }
     }

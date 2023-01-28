@@ -88,7 +88,7 @@ class ListTugasController extends Controller
         ]);
 
         if($result){
-            Alert::success('Success', 'Status berhasil di update');
+            Alert::success('Berhasil', 'Status berhasil di update');
             return redirect()->route('petugas.list_tugas.index');
         }
     }

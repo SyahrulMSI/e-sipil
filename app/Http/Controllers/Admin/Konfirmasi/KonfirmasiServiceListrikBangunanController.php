@@ -84,10 +84,10 @@ class KonfirmasiServiceListrikBangunanController extends Controller
         getSnapRedirect($result);
 
         if($result){
-            Alert::success('Success', 'Tagihan berhasil di buat');
+            Alert::success('Berhasil', 'Tagihan berhasil di buat');
             return redirect()->route('admin.list_permohonan.index');
         }  else {
-            Alert::error('Error','Tagihan gagal di buat');
+            Alert::error('Gagal','Tagihan gagal di buat');
             return redirect()->route('admin.list_permohonan.index');
         }
     }

@@ -73,10 +73,10 @@ class AddPetugasServiceController extends Controller
 
         $result = Tugas::create($data);
         if($result){
-            Alert::success('Success', 'Data berhasil di simpan');
+            Alert::success('Berhasil', 'Data berhasil di simpan');
             return redirect()->route('admin.list_permohonan.add_petugas_service.index', $id);
         } else {
-            Alert::error('Error', 'Data gagal di simpan');
+            Alert::error('Gagal', 'Data gagal di simpan');
             return redirect()->route('admin.list_permohonan.add_petugas_service.index', $id);
         }
     }
@@ -129,10 +129,10 @@ class AddPetugasServiceController extends Controller
         $result = Tugas::destroy($id);
 
         if($result){
-            Alert::success('Success', 'Data berhasil di hapus');
+            Alert::success('Berhasil', 'Data berhasil di hapus');
             return redirect()->route('admin.list_permohonan.add_petugas_service.index', $s->id_service);
         } else {
-            Alert::error('Error', 'Data gagal di hapus');
+            Alert::error('Gagal', 'Data gagal di hapus');
             return redirect()->route('admin.list_permohonan.add_petugas_service.index', $s->id_service);
         }
     }

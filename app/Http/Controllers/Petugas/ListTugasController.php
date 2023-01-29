@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Tugas;
 use Auth;
 use Alert;
+use GuzzleHttp\Client;
 
 class ListTugasController extends Controller
 {
@@ -87,7 +88,44 @@ class ListTugasController extends Controller
             'status'    =>  $status
         ]);
 
+        $st = $status;
+
+        if($st == 1){
+            $data = [
+                'phone' => $user->no_telp,
+                'message' => 'Status pengerjaan kamu sekarang adalah Di Konfirmasi',
+            ];
+        } elseif($st == 2){
+            $data = [
+                'phone' => $user->no_telp,
+                'message' => 'Status pengerjaan kamu sekarang adalah Survei & Prepare',
+            ];
+        } elseif($st == 3){
+            $data = [
+                'phone' => $user->no_telp,
+                'message' => 'Status pengerjaan kamu sekarang adalah Proses',
+            ];
+        }elseif($st == 4){
+            $data = [
+                'phone' => $user->no_telp,
+                'message' => 'Status pengerjaan kamu sekarang adalah Testing',
+            ];
+        }elseif($st == 5){
+            $data = [
+                'phone' => $user->no_telp,
+                'message' => 'Status pengerjaan kamu sekarang adalah Finishing',
+            ];
+        }elseif($st == 6){
+            $data = [
+                'phone' => $user->no_telp,
+                'message' => 'Status pengerjaan kamu sekarang adalah Selesai',
+            ];
+        }
+
         if($result){
+
+            $this->waNotif($data);
+
             Alert::success('Berhasil', 'Status berhasil di update');
             return redirect()->route('petugas.list_tugas.index');
         }
@@ -102,5 +140,21 @@ class ListTugasController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function waNotif($data)
+    {
+        $url = env('WA_BLAS_URL');
+        $token = env('WA_BLAS_KEY');
+
+        $client = new Client();
+
+        $client->post($url, [
+            'headers'   =>  [
+                "Authorization" => $token
+            ],
+            'form_params'  =>  $data
+        ]);
+
     }
 }

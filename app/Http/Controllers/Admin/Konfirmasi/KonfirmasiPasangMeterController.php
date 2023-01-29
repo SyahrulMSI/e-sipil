@@ -181,7 +181,7 @@ class KonfirmasiPasangMeterController extends Controller
         $transaksi = Transaksi::find($transaksi_id);
 
         $nominal = $transaksi->total_bayar;
-        $user = User::where('id', $transaksi->user_id)->first();
+        $user = User::where('id', $transaksi->id_user)->first();
 
 
 
@@ -228,13 +228,24 @@ class KonfirmasiPasangMeterController extends Controller
 
         // return redirect('/');
 
+          if($transaksi->id_tambah_daya != null) {
+            $layanan = 'Tambah Daya Meter Listirk';
+        }else if($transaksi->id_pemasangan_baru != null) {
+              $layanan = 'Pemasangan Meter Baru';
+        }else if($transaksi->id_instalasi != null) {
+            $layanan = 'Instalasi Bangunan Baru';
+        }else if($transaksi->id_service != null) {
+            $layanan = 'Service Meter / bangunan';
+        }
+
+
         if($transaksi->type_pembayaran == 'dp'){
 
-            $this->pembayaranDp($user, $nominal);
+            $this->pembayaranDp($user, $nominal, $layanan);
 
         } else {
 
-            $this->pembayaranLunas($user, $nominal);
+            $this->pembayaranLunas($user, $nominal, $layanan);
 
         }
 
@@ -242,7 +253,7 @@ class KonfirmasiPasangMeterController extends Controller
     }
 
 
-    public function pembayaranDp($user, $nominal)
+    public function pembayaranDp($user, $nominal, $layanan)
     {
         $url = env('WA_BLAS_URL');
         $token = env('WA_BLAS_KEY');
@@ -251,7 +262,7 @@ class KonfirmasiPasangMeterController extends Controller
 
         $data = [
             'phone' => $user->no_telp,
-            'message' => 'Salam, Kami Pihak PT. SUMBER SAE SATU menyampaikan bahwa Uang Muka anda telah terbayarkan pada pelayanan Pasang Meter Baru sebesar Rp. ' . number_format($nominal, 0),
+            'message' => 'Salam, Kami Pihak PT. SUMBER SAE SATU menyampaikan bahwa Uang Muka anda telah terbayarkan pada pelayanan '. $layanan .' Baru sebesar Rp. ' . number_format($nominal, 0),
         ];
 
         $client->post($url, [
@@ -262,7 +273,7 @@ class KonfirmasiPasangMeterController extends Controller
         ]);
     }
 
-    public function pembayaranLunas($user, $nominal){
+    public function pembayaranLunas($user, $nominal, $layanan){
         $url = env('WA_BLAS_URL');
         $token = env('WA_BLAS_KEY');
 
@@ -270,7 +281,7 @@ class KonfirmasiPasangMeterController extends Controller
 
         $data = [
             'phone' => $user->no_telp,
-            'message' => 'Salam, Kami Pihak PT. SUMBER SAE SATU menyampaikan bahwa pelunasan anda telah terbayarkan pada pelayanan Pasang Meter Barus sebesar Rp. ' . number_format($nominal, 0) . 'Terima Kasih atas kepercayaan anda. Hubungi kami jika terdapat kendala pada pemasangan kami',
+            'message' => 'Salam, Kami Pihak PT. SUMBER SAE SATU menyampaikan bahwa pelunasan anda telah terbayarkan pada pelayanan '. $layanan .' sebesar Rp. ' . number_format($nominal, 0) . 'Terima Kasih atas kepercayaan anda. Hubungi kami jika terdapat kendala pada pemasangan kami',
         ];
 
         $client->post($url, [

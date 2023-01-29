@@ -180,6 +180,8 @@ class KonfirmasiServiceMeterListrikController extends Controller
 
         $transaksi = Transaksi::find($transaksi_id);
 
+        $nominal = $transaksi->total_bayar;
+        $user = User::where('id', $transaksi->user_id)->first();
 
 
         if ($transaction_status == 'capture') {
@@ -225,6 +227,55 @@ class KonfirmasiServiceMeterListrikController extends Controller
 
         // return redirect('/');
 
+        if($transaksi->type_pembayaran == 'dp'){
+
+            $this->pembayaranDp($user, $nominal);
+
+        } else {
+
+            $this->pembayaranLunas($user, $nominal);
+
+        }
+
         return redirect()->route('customer.success.index');
+    }
+
+    public function pembayaranDp($user, $nominal)
+    {
+        $url = env('WA_BLAS_URL');
+        $token = env('WA_BLAS_KEY');
+
+        $client = new Client();
+
+        $data = [
+            'phone' => $user->no_telp,
+            'message' => 'Salam, Kami Pihak PT. SUMBER SAE SATU menyampaikan bahwa Uang Muka anda telah terbayarkan pada pelayanan Service Meter Listrik sebesar Rp. ' . number_format($nominal, 0),
+        ];
+
+        $client->post($url, [
+            'headers'   =>  [
+                "Authorization" => $token
+            ],
+            'form_params'  => $data
+        ]);
+    }
+
+    public function pembayaranLunas($user, $nominal){
+        $url = env('WA_BLAS_URL');
+        $token = env('WA_BLAS_KEY');
+
+        $client = new Client();
+
+        $data = [
+            'phone' => $user->no_telp,
+            'message' => 'Salam, Kami Pihak PT. SUMBER SAE SATU menyampaikan bahwa pelunasan anda telah terbayarkan pada pelayanan Service Meter Listrik sebesar Rp. ' . number_format($nominal, 0) . 'Terima Kasih atas kepercayaan anda. Hubungi kami jika terdapat kendala pada pemasangan kami',
+        ];
+
+        $client->post($url, [
+            'headers'   =>  [
+                "Authorization" => $token
+            ],
+            'form_params'  => $data
+        ]);
     }
 }

@@ -9,6 +9,8 @@ use Midtrans;
 use App\Models\Transaksi;
 use Alert;
 use App\Models\RincianPelunasan;
+use GuzzleHttp\Client;
+use App\Models\User;
 
 class PelunasanController extends Controller
 {
@@ -84,8 +86,14 @@ class PelunasanController extends Controller
 
                 RincianPelunasan::create($data);
 
+                $user = User::where('id', $request->us)->first();
+                $nominal = $request->nominal_tagihan;
+                $service = 'Instalasi Bangunan Baru';
+                $this->pelunasanNotif($user, $nominal, $service);
+
                 Alert::success('Berhasil', 'Tagihan berhasil di buat');
                 return redirect()->route('admin.pelunasan.index');
+
             }  else {
                 Alert::error('Gagal','Tagihan gagal di buat');
                 return redirect()->route('admin.pelunasan.index');
@@ -120,6 +128,11 @@ class PelunasanController extends Controller
 
 
                 RincianPelunasan::create($data);
+
+                $user = User::where('id', $request->us)->first();
+                $nominal = $request->nominal_tagihan;
+                $service = 'Service';
+                $this->pelunasanNotif($user, $nominal, $service);
 
                 Alert::success('Berhasil', 'Tagihan berhasil di buat');
                 return redirect()->route('admin.pelunasan.index');
@@ -158,6 +171,12 @@ class PelunasanController extends Controller
 
                 RincianPelunasan::create($data);
 
+                $user = User::where('id', $request->us)->first();
+                $nominal = $request->nominal_tagihan;
+                $service = 'Tambah Daya Meter Listrik';
+                $this->pelunasanNotif($user, $nominal, $service);
+
+
                 Alert::success('Berhasil', 'Tagihan berhasil di buat');
                 return redirect()->route('admin.pelunasan.index');
             }  else {
@@ -194,6 +213,11 @@ class PelunasanController extends Controller
 
 
                 RincianPelunasan::create($data);
+
+                $user = User::where('id', $request->us)->first();
+                $nominal = $request->nominal_tagihan;
+                $service = 'Pemasangan Meter Baru';
+                $this->pelunasanNotif($user, $nominal, $service);
 
                 Alert::success('Berhasil', 'Tagihan berhasil di buat');
                 return redirect()->route('admin.pelunasan.index');
@@ -259,4 +283,26 @@ class PelunasanController extends Controller
             return redirect()->route('admin.pelunasan.index');
         }
     }
+
+    public function pelunasanNotif($user, $nominal, $service)
+    {
+        $url = env('WA_BLAS_URL');
+        $token = env('WA_BLAS_KEY');
+
+        $client = new Client();
+
+        $data = [
+            'phone' => $user->no_telp,
+            'message' => 'Salam, Kami Pihak PT. SUMBER SAE SATU menyampaikan bahwa terkait dengan selesainya pemasangan kelistrikan anda, pelunasan yang harus anda bayarkan pada pelayanan '. $service .' sebesar Rp. ' . number_format($nominal, 0),
+        ];
+
+        $client->post($url, [
+            'headers'   =>  [
+                "Authorization" => $token
+            ],
+            'form_params'  => $data
+        ]);
+    }
+
+
 }

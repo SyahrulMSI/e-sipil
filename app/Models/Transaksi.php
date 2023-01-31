@@ -64,4 +64,9 @@ class Transaksi extends Model
     {
         return $this->hasMany(RincianPelunasan::class, 'id_transaksi', 'id');
     }
+
+    public function Tugas()
+    {
+        return $this->hasMany(Tugas::class, 'id_transaksi', 'id');
+    }
 }

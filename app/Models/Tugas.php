@@ -62,4 +62,9 @@ class Tugas extends Model
         return $this->belongsTo(Service::class, 'id_service', 'id');
     }
 
+    public function Transaksi()
+    {
+        return $this->belongsTo(Transaksi::class, 'id_transaksi', 'id');
+    }
+
 }

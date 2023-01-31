@@ -95,7 +95,7 @@ class TambahDayaListrikController extends Controller
                 $user = User::where('id', Auth::user()->id)->first();
                 $this->sendNotification($user);
 
-                Alert::success('Berhasils', 'Data permohonan berhasil di buat.');
+                Alert::success('Berhasil', 'Data permohonan berhasil di buat.');
                 return redirect()->route('customer.tambah_daya_listrik.index');
             } else {
                 Alert::error('Gagal', 'Data permohonan gagal di buat.');

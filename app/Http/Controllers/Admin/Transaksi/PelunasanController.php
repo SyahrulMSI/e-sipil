@@ -72,6 +72,10 @@ class PelunasanController extends Controller
 
             getSnapRedirect($result);
 
+            Tugas::where('id_instalasi', $request->id_instalasi)->update([
+                'id_transaksi'  =>  $result->id
+            ]);
+
             if($result){
 
                 $data = array(
@@ -115,6 +119,10 @@ class PelunasanController extends Controller
 
             getSnapRedirect($result);
 
+            Tugas::where('id_service', $request->id_service)->update([
+                'id_transaksi'  =>  $result->id
+            ]);
+
             if($result){
 
                 $data = array(
@@ -156,6 +164,10 @@ class PelunasanController extends Controller
             $result = Transaksi::create($data);
 
             getSnapRedirect($result);
+
+            Tugas::where('id_tambah_daya', $request->id_tambah_daya)->update([
+                'id_transaksi'  =>  $result->id
+            ]);
 
             if($result){
 
@@ -199,6 +211,10 @@ class PelunasanController extends Controller
             $result = Transaksi::create($data);
 
             getSnapRedirect($result);
+
+            Tugas::where('id_pemasangan_baru', $request->id_pemasangan_baru)->update([
+                'id_transaksi'  =>  $result->id
+            ]);
 
             if($result){
 

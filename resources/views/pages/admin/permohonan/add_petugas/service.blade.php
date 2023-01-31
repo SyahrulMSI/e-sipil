@@ -50,7 +50,7 @@
                                                     @elseif($t->status == 5)
                                                     <span class="badge badge-primary badge-sm">Finishing</span>
                                                     @elseif($t->status == 6)
-                                                    <span class="badge badge-success badge-sm">Selesai/span>
+                                                    <span class="badge badge-success badge-sm">Selesai</span>
                                                 @endif
                                                 </td>
                                                 <td>

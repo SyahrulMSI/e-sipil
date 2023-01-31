@@ -8,6 +8,7 @@ use App\Models\Tugas;
 use Auth;
 use Alert;
 use GuzzleHttp\Client;
+use App\Models\User;
 
 class ListTugasController extends Controller
 {
@@ -82,6 +83,10 @@ class ListTugasController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $tgs = Tugas::findOrFail($id);
+
+        $user = User::where('id', $tgs->id_pelanggan)->first();
+
         $status = $request->status;
 
         $result = Tugas::where('id', $id)->update([
@@ -153,8 +158,9 @@ class ListTugasController extends Controller
             'headers'   =>  [
                 "Authorization" => $token
             ],
-            'form_params'  =>  $data
+            'form_params'  => $data
         ]);
+
 
     }
 }

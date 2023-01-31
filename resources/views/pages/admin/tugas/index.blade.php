@@ -197,6 +197,9 @@
                                             </div>
                                           </div>
 
+                                        @if(empty($t->Transaksi))
+
+
 
                                         <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#status{{ $t->id }}"><i class="fa fa-edit"></i> Ubah Status</button>
 
@@ -252,6 +255,75 @@
                                                 <a href="{{ route('admin.buat.tagihan', $t->id) }}" class="btn btn-success btn-sm rounded"><i class="fa fa-plus-circle"></i> Tagihan Pelunasan</a>
                                             @endif
                                           </div>
+
+                                        @elseif(!empty($t->Transaksi) &&
+                                        $t->Transaksi->status == 'WAITING' &&
+                                        $t->Transaksi->type_pembayaran == 'pelunasan')
+
+                                            @if($t->Transaksi->status === 'SUCCESS' &&
+                                            $t->Transaksi->type_pembayaran == 'pelunasan')
+
+
+                                            @else
+
+                                                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#status{{ $t->id }}"><i class="fa fa-edit"></i> Ubah Status</button>
+
+
+                                                <div class="modal fade" id="status{{ $t->id }}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header bg-primary">
+                                                        <h5 class="modal-title font-weight-bold text-white" id="staticBackdropLabel">Update Status</h5>
+                                                        <button type="button" class="close font-weight-bold text-white" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="row">
+                                                                <div class="col-lg-12">
+                                                                    <form action="{{ route('admin.data_tugas.update', $t->id) }}" entype="multipar/form-data" method="POST">
+                                                                        @csrf
+                                                                        @method('PUT')
+
+                                                                        <div class="form-group">
+                                                                            <labe class="text-left">Pilih Status:</label>
+                                                                            <select name="status" class="form-control shadow">
+                                                                                <option selected disabled>-- Pilih Status --</option>
+                                                                                <option value="1" {{ $t->status == 1  ? 'selected' : ''}}>Di Konfirmasi</option>
+                                                                                <option value="2" {{ $t->status == 2  ? 'selected' : ''}}>Survei & Prepare</option>
+                                                                                <option value="3" {{ $t->status == 3  ? 'selected' : ''}}>Proses</option>
+                                                                                <option value="4" {{ $t->status == 4  ? 'selected' : ''}}>Testing</option>
+                                                                                <option value="5" {{ $t->status == 5  ? 'selected' : ''}}>Finishing</option>
+                                                                                <option value="6" {{ $t->status == 6  ? 'selected' : ''}}>Selesai</option>
+                                                                            </select>
+                                                                        </div>
+
+                                                                        <div class="form-group">
+                                                                            <button class="btn btn-success btn-sm" type="submit">Simpan</button>
+                                                                        </div>
+
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="btn-group">
+                                                    @if ($t->status == 6)
+                                                    <br>
+                                                        <a href="{{ route('admin.buat.tagihan', $t->id) }}" class="btn btn-success btn-sm rounded"><i class="fa fa-plus-circle"></i> Tagihan Pelunasan</a>
+                                                    @endif
+                                                </div>
+
+                                                @endif
+
+                                        @endif
 
 
                                     </td>

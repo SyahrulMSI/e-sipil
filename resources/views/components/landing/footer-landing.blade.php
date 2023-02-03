@@ -1,63 +1,46 @@
-<footer class="site-footer">
+<footer class="site-footer" >
     <div class="site-footer__upper">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
                     <div class="footer-widget footer-widget__about">
                         <img src="assets/images/resources/logo-dark.png" width="119" alt="" class="footer-widget__logo">
-                        <p class="footer-widget__contact"><a href="tel:888-666-0000">888 666 0000</a></p>
+                        <p class="footer-widget__contact"><a href="tel:888-666-0000">0812 2926 0607</a></p>
                         <!-- /.footer-widget__contact -->
-                        <p class="footer-widget__contact"><a href="mailto:needhelp@example.com">needhelp@example.com</a>
-                            <p class="footer-widget__contact">855 road, broklyn street <br> new york 600</p><!-- /.footer-widget__contact -->
+                        <p class="footer-widget__contact"><a href="mailto:needhelp@example.com">sumbersaepati12@gmail.com</a>
+                            <p class="footer-widget__contact">Perum Puri Taman Gading No.8 <br> 4/1 Desa Puri Kabupaten Pati</p><!-- /.footer-widget__contact -->
                     </div><!-- /.footer-widget -->
                 </div><!-- /.col-lg-2 -->
-                <div class="col-lg-6 d-flex justify-content-between footer-widget__links-wrap">
+                <div class="col-lg-5 d-flex justify-content-between footer-widget__links-wrap" id="teknisi">
                     <div class="footer-widget">
-                        <h3 class="footer-widget__title">Explore</h3><!-- /.footer-widget__title -->
+                        <h3 class="footer-widget__title">Teknisi 1</h3><!-- /.footer-widget__title -->
                         <ul class="footer-widget__links list-unstyled">
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Our Team</a></li>
-                            <li><a href="#">Features</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">How It Works</a></li>
+                            <li><a href="#">Budi Laksono </a></li>
+                            <li><a href="#">Marianto </a></li>
+                            <li><a href="#">Darmani </a></li>
+                            <li><a href="#">Aji Setiawan</a></li>
                         </ul><!-- /.footer-widget__links -->
                     </div><!-- /.footer-widget -->
                     <div class="footer-widget">
-                        <h3 class="footer-widget__title">Services</h3><!-- /.footer-widget__title -->
+                        <h3 class="footer-widget__title">Teknisi 2</h3>
                         <ul class="footer-widget__links list-unstyled">
-                            <li><a href="#">Speed Optimization </a></li>
-                            <li><a href="#">Marketing Analysis </a></li>
-                            <li><a href="#">SEO and Backlinks </a></li>
-                            <li><a href="#">Content Marketing</a></li>
+                            <li><a href="#">Rizki Mutohar</a></li>
+                            <li><a href="#">Bambang</a></li>
+                            <li><a href="#">Ali Subandi</a></li>
+                            <li><a href="#">Ridwan Munir</a></li>
                         </ul><!-- /.footer-widget__links -->
                     </div><!-- /.footer-widget -->
-                    <div class="footer-widget">
-                        <h3 class="footer-widget__title">Links</h3><!-- /.footer-widget__title -->
-                        <ul class="footer-widget__links list-unstyled">
-                            <li><a href="#">Help </a></li>
-                            <li><a href="#">Support </a></li>
-                            <li><a href="#">Clients </a></li>
-                            <li><a href="#">Contact</a></li>
-                        </ul><!-- /.footer-widget__links -->
-                    </div><!-- /.footer-widget -->
+                    <div class="site-footer__social">
+                        <a href="#" class="fa fa-whatsapp"></a>
+                    </div><!-- /.site-footer__social -->
                 </div><!-- /.col-lg-6 -->
-                <div class="col-lg-3">
-                    <div class="footer-widget">
-                        <div class="site-footer__social">
-                            <a href="#" class="fa fa-facebook-square"></a>
-                            <a href="#" class="fa fa-twitter"></a>
-                            <a href="#" class="fa fa-instagram"></a>
-                            <a href="#" class="fa fa-pinterest-p"></a>
-                        </div><!-- /.site-footer__social -->
-                    </div><!-- /.footer-widget -->
-                </div><!-- /.col-lg-4 -->
             </div><!-- /.row -->
         </div><!-- /.container -->
     </div><!-- /.site-footer__upper -->
     <div class="site-footer__bottom">
         <div class="container">
             <div class="inner-container text-center">
-                <p class="site-footer__copy">&copy; copyright 2020 by <a href="#">Layerdrops.com</a></p>
+                <p class="site-footer__copy">&copy; copyright 2022 by <a href="https://github.com/SyahrulMSI">STEAM76.TECH</a></p>
                 <!-- /.site-footer__copy -->
             </div><!-- /.inner-container -->
         </div><!-- /.container -->

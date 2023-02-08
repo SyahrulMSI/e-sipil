@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('jenis_kerusakan', function (Blueprint $table) {
-            $table->foreign('id_service', 'fk_jenis_kerusakan_to_service')->references('id')->on('service')->onUpdate('cascade')->onDelete('cascade');
+            //$table->foreign('id_service', 'fk_jenis_kerusakan_to_service')->references('id')->on('service')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
@@ -26,7 +26,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('jenis_kerusakan', function (Blueprint $table) {
-            $table->dropForeign('fk_jenis_kerusakan_to_service');
+            //$table->dropForeign('fk_jenis_kerusakan_to_service');
         });
     }
 };

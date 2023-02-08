@@ -191,7 +191,7 @@
                                             @if($t->type_pembayaran == 'dp')
                                                 <span class="badge badge-danger">Uang Muka</span>
                                             @elseif($t->type_pembayaran == 'pelunasan')
-                                                <span class="badge badge-success">Pelunasa</span>
+                                                <span class="badge badge-success">Pelunasan</span>
                                             @endif
                                         </td>
                                         <td>Rp. {{ number_format($t->total_bayar, 0) }}</td>

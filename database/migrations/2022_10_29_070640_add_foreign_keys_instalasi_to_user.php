@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('instalasi', function (Blueprint $table) {
-            $table->foreign('id_user', 'fk_instalasi_to_users')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            //$table->foreign('id_user', 'fk_instalasi_to_users')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
@@ -26,7 +26,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('instalasi', function (Blueprint $table) {
-            $table->dropForeign('fk_instalasi_to_users');
+            //$table->dropForeign('fk_instalasi_to_users');
         });
     }
 };

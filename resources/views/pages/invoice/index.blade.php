@@ -20,12 +20,13 @@
         <div class="tm_invoice_in">
           <div class="tm_invoice_head tm_top_head tm_mb20 tm_mb10_md">
             <div class="tm_invoice_left">
-              <div class="tm_logo"><img src="{{ asset('logo/logo.png') }}" alt="Logo"></div>
+              <div class="tm_logo">
+                <img src="{{ asset('logo/logo.png') }}" alt="Logo" style="margin-left: 3em; text-shadow: 3px black !important">
             </div>
-            <div class="tm_invoice_right">
-            <img src="{{ asset('dashboard/images/logo-text.png') }}" class="img-fluid"alt="">
+            </div>
+            <div class="">
+                <img src="{{ asset('dashboard/images/logo-text.png') }}" class="img-fluid" alt="" style="margin-left: 12em;">
               <div class="tm_grid_row tm_col_3">
-
               </div>
             </div>
             <div class="tm_shape_bg tm_accent_bg"></div>
@@ -188,9 +189,12 @@
               <div class="tm_left_footer"></div>
               <div class="tm_right_footer">
                 <div class="tm_sign tm_text_center">
-                  <img src="assets/img/sign.svg" alt="Sign">
-                  <p class="tm_m0 tm_ternary_color">Jhon Donate</p>
-                  <p class="tm_m0 tm_f16 tm_primary_color">Accounts Manager</p>
+                    <p>TTD</p>
+                    <br>
+                    <br>
+                  {{--  <img src="assets/img/sign.svg" alt="Sign">  --}}
+                  <p class="tm_m0 tm_ternary_color" style="text-color: black !important">Dedy N</p>
+                  {{--  <p class="tm_m0 tm_f16 tm_primary_color"Direktur Utama</p>  --}}
                 </div>
               </div>
             </div>
@@ -198,8 +202,8 @@
           <div class="tm_bottom_invoice">
             <div class="tm_bottom_invoice_left">
               <p class="tm_m0 tm_f18 tm_accent_color tm_mb5">Terimakasih atas kerja samanya.</p>
-              <p class="tm_primary_color tm_f12 tm_m0 tm_bold">Terms & Condition</p>
-              <p class="tm_m0 tm_f12">IInvoice was created on a computer and is valid without the signature and seal.</p>
+              {{--  <p class="tm_primary_color tm_f12 tm_m0 tm_bold">Terms & Condition</p>
+              <p class="tm_m0 tm_f12">IInvoice was created on a computer and is valid without the signature and seal.</p>  --}}
             </div>
             <div class="tm_bottom_invoice_right tm_mobile_hide">
                 <div class="tm_logo"><img src="{{ asset('logo/logo.png') }}" alt="Logo"></div>

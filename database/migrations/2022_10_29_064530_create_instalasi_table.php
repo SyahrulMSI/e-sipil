@@ -15,7 +15,14 @@ return new class extends Migration
     {
         Schema::create('instalasi', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_user')->index('fk_instalasi_to_users');
+            // $table->foreignId('id_user')->index('fk_instalasi_to_users');
+
+            $table->unsignedBigInteger('id_user')
+            ->nullable()
+            ->contrained('users')
+            ->cascadeOnUpdate()
+            ->cascadeOnDelete();
+
             $table->string('nomor_registrasi', 20);
             $table->date('tanggal');
             $table->longText('alamat');

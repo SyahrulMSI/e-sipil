@@ -15,7 +15,15 @@ return new class extends Migration
     {
         Schema::create('jenis_kerusakan', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_service')->index('fk_jenis_kerusakan_to_service');
+
+            //$table->foreignId('id_service')->index('fk_jenis_kerusakan_to_service');
+
+            $table->unsignedBigInteger('id_service')
+            ->nullable()
+            ->contrained('service')
+            ->cascadeOnUpdate()
+            ->cascadeOnDelete();
+
             $table->string('kerusakan');
             $table->longText('deskripsi')->nullable();
             $table->softDeletes();

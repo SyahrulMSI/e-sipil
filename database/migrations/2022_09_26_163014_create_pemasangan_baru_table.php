@@ -15,7 +15,14 @@ return new class extends Migration
     {
         Schema::create('pemasangan_baru', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_user')->index('fk_pemasangan_baru_to_users');
+            //$table->foreignId('id_user')->index('fk_pemasangan_baru_to_users');
+
+            $table->unsignedBigInteger('id_user')
+            ->nullable()
+            ->contrained('users')
+            ->cascadeOnUpdate()
+            ->cascadeOnDelete();
+
             $table->string('nomor_registrasi', 20);
             $table->date('tanggal');
             $table->enum('jenis_pemasangan', ['rumah','bisnis','perusahaan']);

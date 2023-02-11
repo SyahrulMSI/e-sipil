@@ -56,7 +56,7 @@
                                         @elseif($t->id_instalasi != null)
                                             <p>{{ $t->Instalasi->alamat }}</p>
                                         @elseif($t->id_service != null)
-                                           <p>{{ $p->Service->alamat }}</p>
+                                           <p>{{ $t->Service->alamat }}</p>
                                         @else
                                             <span class="font-weight-bold badge badge-info">-</span>
                                         @endif

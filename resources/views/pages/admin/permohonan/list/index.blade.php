@@ -71,10 +71,20 @@
                                                                 <td>{{ $pb->daya }}</td>
                                                                 <td>{{ $pb->lokasi_pemasangan }}</td>
                                                                 <td>
-                                                                    @if ($pb->status_permohonan == 1)
-                                                                        <span class="badge badge-danger">Menuggu Konfirmasi</span>
+                                                                    @if($pb->status_permohonan == 0)
+                                                                        <span class="badge badge-danger badge-sm">Menunggu Konfirmasi</span>
+                                                                    @elseif($pb->status_permohonan == 1)
+                                                                        <span class="badge badge-info badge-sm">Di Konfirmasi</span>
                                                                     @elseif($pb->status_permohonan == 2)
-                                                                        <span class="badge badge-success">Terkonfirmasi</span>
+                                                                        <span class="badge badge-primary badge-sm">Survei & Prepare</span>
+                                                                    @elseif($pb->status_permohonan == 3)
+                                                                        <span class="badge badge-success badge-sm">Proses</span>
+                                                                    @elseif($pb->status_permohonan == 4)
+                                                                        <span class="badge badge-warning badge-sm">Testing</span>
+                                                                    @elseif($pb->status_permohonan == 5)
+                                                                        <span class="badge badge-primary badge-sm">Finishing</span>
+                                                                    @elseif($pb->status_permohonan == 6)
+                                                                        <span class="badge badge-success badge-sm">Selesai</span>
                                                                     @endif
                                                                 </td>
                                                                 <td>
@@ -180,10 +190,20 @@
                                                                 <td>{{ $td->daya_baru }}</td>
                                                                 <td>{{ $td->lokasi_meter }}</td>
                                                                 <td>
-                                                                    @if ($td->status_permohonan == 1)
-                                                                        <span class="badge badge-danger">Menunggu Konfirmasi</span>
+                                                                    @if($td->status_permohonan == 0)
+                                                                        <span class="badge badge-danger badge-sm">Menunggu Konfirmasi</span>
+                                                                    @elseif($td->status_permohonan == 1)
+                                                                        <span class="badge badge-info badge-sm">Di Konfirmasi</span>
                                                                     @elseif($td->status_permohonan == 2)
-                                                                        <span class="badge badge-success">Terkonfirmasi</span>
+                                                                        <span class="badge badge-primary badge-sm">Survei & Prepare</span>
+                                                                    @elseif($td->status_permohonan == 3)
+                                                                        <span class="badge badge-success badge-sm">Proses</span>
+                                                                    @elseif($td->status_permohonan == 4)
+                                                                        <span class="badge badge-warning badge-sm">Testing</span>
+                                                                    @elseif($td->status_permohonan == 5)
+                                                                        <span class="badge badge-primary badge-sm">Finishing</span>
+                                                                    @elseif($td->status_permohonan == 6)
+                                                                        <span class="badge badge-success badge-sm">Selesai</span>
                                                                     @endif
                                                                 </td>
                                                                 <td>
@@ -301,10 +321,20 @@
                                                                     Rp. {{ number_format($tot, 0) }}
                                                                 </td>
                                                                 <td>
-                                                                    @if ($ib->status_permohonan == 1)
-                                                                        <span class="badge badge-danger">Menunggu Konfirmasi</span>
+                                                                    @if($ib->status_permohonan == 0)
+                                                                        <span class="badge badge-danger badge-sm">Menunggu Konfirmasi</span>
+                                                                    @elseif($ib->status_permohonan == 1)
+                                                                        <span class="badge badge-info badge-sm">Di Konfirmasi</span>
                                                                     @elseif($ib->status_permohonan == 2)
-                                                                        <span class="badge badge-success">Terkonfirmasi</span>
+                                                                        <span class="badge badge-primary badge-sm">Survei & Prepare</span>
+                                                                    @elseif($ib->status_permohonan == 3)
+                                                                        <span class="badge badge-success badge-sm">Proses</span>
+                                                                    @elseif($ib->status_permohonan == 4)
+                                                                        <span class="badge badge-warning badge-sm">Testing</span>
+                                                                    @elseif($ib->status_permohonan == 5)
+                                                                        <span class="badge badge-primary badge-sm">Finishing</span>
+                                                                    @elseif($ib->status_permohonan == 6)
+                                                                        <span class="badge badge-success badge-sm">Selesai</span>
                                                                     @endif
                                                                 </td>
                                                                 <td>
@@ -422,10 +452,20 @@
                                                                     @endforeach
                                                                 </td>
                                                                 <td>
-                                                                    @if ($sm->status_permohonan == 1)
-                                                                        <span class="badge badge-danger">Menunggu Konfirmasi</span>
+                                                                    @if($sm->status_permohonan == 0)
+                                                                        <span class="badge badge-danger badge-sm">Menunggu Konfirmasi</span>
+                                                                    @elseif($sm->status_permohonan == 1)
+                                                                        <span class="badge badge-info badge-sm">Di Konfirmasi</span>
                                                                     @elseif($sm->status_permohonan == 2)
-                                                                        <span class="badge badge-success">Terkonfirmasi</span>
+                                                                        <span class="badge badge-primary badge-sm">Survei & Prepare</span>
+                                                                    @elseif($sm->status_permohonan == 3)
+                                                                        <span class="badge badge-success badge-sm">Proses</span>
+                                                                    @elseif($sm->status_permohonan == 4)
+                                                                        <span class="badge badge-warning badge-sm">Testing</span>
+                                                                    @elseif($sm->status_permohonan == 5)
+                                                                        <span class="badge badge-primary badge-sm">Finishing</span>
+                                                                    @elseif($sm->status_permohonan == 6)
+                                                                        <span class="badge badge-success badge-sm">Selesai</span>
                                                                     @endif
                                                                 </td>
                                                                 <td>
@@ -533,10 +573,20 @@
                                                                     @endforeach
                                                                 </td>
                                                                 <td>
-                                                                    @if ($lb->status_permohonan == 1)
-                                                                        <span class="badge badge-danger">Menunggu Konfirmasi</span>
-                                                                    @elseif($pb->status_permohonan == 2)
-                                                                        <span class="badge badge-success">Terkonfirmasi</span>
+                                                                    @if($lb->status_permohonan == 0)
+                                                                        <span class="badge badge-danger badge-sm">Menunggu Konfirmasi</span>
+                                                                    @elseif($lb->status_permohonan == 1)
+                                                                        <span class="badge badge-info badge-sm">Di Konfirmasi</span>
+                                                                    @elseif($lb->status_permohonan == 2)
+                                                                        <span class="badge badge-primary badge-sm">Survei & Prepare</span>
+                                                                    @elseif($lb->status_permohonan == 3)
+                                                                        <span class="badge badge-success badge-sm">Proses</span>
+                                                                    @elseif($lb->status_permohonan == 4)
+                                                                        <span class="badge badge-warning badge-sm">Testing</span>
+                                                                    @elseif($lb->status_permohonan == 5)
+                                                                        <span class="badge badge-primary badge-sm">Finishing</span>
+                                                                    @elseif($lb->status_permohonan == 6)
+                                                                        <span class="badge badge-success badge-sm">Selesai</span>
                                                                     @endif
                                                                 </td>
                                                                 <td>

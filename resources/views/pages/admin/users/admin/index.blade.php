@@ -42,8 +42,8 @@
                                         </td>
                                         <td>
                                             <div class="btn-group">
-                                                <a href="{{ route('admin.administrator.show', $us->id) }}" class="btn btn-primary btn-sm  rounded"><i class="fa fa-eye"></i></a>
-                                                &nbsp;
+                                                {{--  <a href="{{ route('admin.administrator.show', $us->id) }}" class="btn btn-primary btn-sm  rounded"><i class="fa fa-eye"></i></a>
+                                                &nbsp;  --}}
                                                 <a href="{{ route('admin.administrator.edit', $us->id) }}" class="btn btn-warning btn-sm  rounded"><i class="fa fa-edit"></i></a>
                                                 &nbsp;
                                                 <button type="button" class="btn btn-danger btn-sm rounded" data-toggle="modal" data-target="#delete{{ $us->id }}"><i class="fa fa-trash"></i></button>

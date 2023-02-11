@@ -424,7 +424,7 @@
                                                                 <td>
                                                                     @if ($sm->status_permohonan == 1)
                                                                         <span class="badge badge-danger">Menunggu Konfirmasi</span>
-                                                                    @elseif($pb->status_permohonan == 2)
+                                                                    @elseif($sm->status_permohonan == 2)
                                                                         <span class="badge badge-success">Terkonfirmasi</span>
                                                                     @endif
                                                                 </td>

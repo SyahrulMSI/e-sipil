@@ -7,7 +7,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header bg-primary">
-                    <h5 class="card-title text-white fomt-weight-bold">Data Customer</h5>
+                    <h5 class="card-title text-white fomt-weight-bold">Data Petugas Teknisi</h5>
                 </div>
                 <div class="card-body">
                     <div class="btn-group mb-3">
@@ -42,8 +42,8 @@
                                         </td>
                                         <td>
                                             <div class="btn-group">
-                                                <a href="{{ route('admin.petugas.show', $us->id) }}" class="btn btn-primary btn-sm  rounded"><i class="fa fa-eye"></i></a>
-                                                &nbsp;
+                                                {{--  <a href="{{ route('admin.petugas.show', $us->id) }}" class="btn btn-primary btn-sm  rounded"><i class="fa fa-eye"></i></a>
+                                                &nbsp;  --}}
                                                 <a href="{{ route('admin.petugas.edit', $us->id) }}" class="btn btn-warning btn-sm  rounded"><i class="fa fa-edit"></i></a>
                                                 &nbsp;
                                                 <button type="button" class="btn btn-danger btn-sm rounded" data-toggle="modal" data-target="#delete{{ $us->id }}"><i class="fa fa-trash"></i></button>

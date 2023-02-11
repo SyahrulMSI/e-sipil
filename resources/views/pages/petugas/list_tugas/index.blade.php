@@ -47,7 +47,19 @@
                                             <span class="font-weight-bold badge badge-info">-</span>
                                         @endif
                                     </td>
-                                    <td>Lorem ipsum dolor sit amet</td>
+                                    <td>
+                                        @if ($t->id_tambah_daya != null)
+                                            <p>{{ $t->TambahDaya->lokasi_meter }}</p>
+                                        @elseif($t->id_pemasangan_baru != null)
+                                            <p>{{ $t->PemasanganBaru->lokasi_pemasangan }}</p>
+                                        @elseif($t->id_instalasi != null)
+                                            <p>{{ $t->Instalasi->alamat }}</p>
+                                        @elseif($t->id_service != null)
+                                           <p>{{ $p->Service->alamat }}</p>
+                                        @else
+                                            <span class="font-weight-bold badge badge-info">-</span>
+                                        @endif
+                                    </td>
                                     <td>
                                         @if($t->status == 0)
                                             <span class="badge badge-danger badge-sm">Menunggu Konfirmasi</span>

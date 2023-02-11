@@ -80,7 +80,7 @@ class ServiceListrikBangunanController extends Controller
             $service->tanggal = date('Y-m-d');
             $service->alamat = $alamat;
             $service->jenis_service = $jenis_service;
-            $service->status_permohonan = 1;
+            $service->status_permohonan = 0;
             $service->save();
 
             //get service id current create

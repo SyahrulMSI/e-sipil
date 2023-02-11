@@ -9,6 +9,11 @@ use App\Models\User;
 use Alert;
 use GuzzleHttp\Client;
 
+use App\Models\TambahDaya;
+use App\Models\PemasanganBaru;
+use App\Models\InstalasiBangunan;
+use App\Models\Service;
+
 class DataController extends Controller
 {
     /**
@@ -136,6 +141,26 @@ class DataController extends Controller
         //     ],
         //     'form_params'  =>  $data
         // ]);
+
+        if($data->id_tambah_daya != null){
+
+            TambahDaya::where('id', $data->id_tambah_daya)->update([
+                'status_permohonan' => $request->status
+            ]);
+
+        } else if($data->id_pemasangan_baru != null){
+            PemasanganBaru::where('id', $data->id_pemasangan_baru)->update([
+                'status_permohonan' => $request->status
+            ]);
+        } else if($data->id_instalasi != null){
+            InstalasiBangunan::where('id', $data->id_instalasi)->update([
+                'status_permohonan' => $request->statuws
+            ]);
+        } else if($data->id_service != null){
+            Service::where('id', $data->id_service)->update([
+                'status_permohonan' => $request->status
+            ]);
+        }
 
         $this->waNotif($data);
 

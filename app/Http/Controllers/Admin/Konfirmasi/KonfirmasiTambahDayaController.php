@@ -68,7 +68,7 @@ class KonfirmasiTambahDayaController extends Controller
         ]);
 
         TambahDaya::where('id', $id)->update([
-            'status_permohonan' =>  2
+            'status_permohonan' =>  1
         ]);
 
         $td = TambahDaya::where('id', $id)->first();

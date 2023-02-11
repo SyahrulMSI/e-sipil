@@ -69,7 +69,7 @@ class KonfirmasiServiceMeterListrikController extends Controller
         ]);
 
         Service::where('id', $id)->update([
-            'status_permohonan' =>  2
+            'status_permohonan' =>  1
         ]);
 
         $sml = Service::where('id', $id)->first();

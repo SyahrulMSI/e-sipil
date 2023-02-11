@@ -79,7 +79,7 @@ class PasangMeterBaruController extends Controller
                 'jenis_pemasangan'  =>  $jenis,
                 'daya'  => $daya,
                 'lokasi_pemasangan' =>  $lokasi,
-                'status_permohonan' =>  1
+                'status_permohonan' =>  0
             );
 
             $result = PemasanganBaru::create($data);

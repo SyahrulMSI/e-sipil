@@ -10,6 +10,11 @@ use Alert;
 use GuzzleHttp\Client;
 use App\Models\User;
 
+use App\Models\TambahDaya;
+use App\Models\PemasanganBaru;
+use App\Models\InstalasiBangunan;
+use App\Models\Service;
+
 class ListTugasController extends Controller
 {
     /**
@@ -129,10 +134,33 @@ class ListTugasController extends Controller
 
         if($result){
 
+            if($tgs->id_tambah_daya != null){
+
+                TambahDaya::where('id', $tgs->id_tambah_daya)->update([
+                    'status_permohonan' => $request->status
+                ]);
+
+            } else if($tgs->id_pemasangan_baru != null){
+                PemasanganBaru::where('id', $tgs->id_pemasangan_baru)->update([
+                    'status_permohonan' => $request->status
+                ]);
+            } else if($tgs->id_instalasi != null){
+                InstalasiBangunan::where('id', $tgs->id_instalasi)->update([
+                    'status_permohonan' => $request->statuws
+                ]);
+            } else if($tgs->id_service != null){
+                Service::where('id', $tgs->id_service)->update([
+                    'status_permohonan' => $request->status
+                ]);
+            }
+
             $this->waNotif($data);
 
             Alert::success('Berhasil', 'Status berhasil di update');
             return redirect()->route('petugas.list_tugas.index');
+
+        } else {
+
         }
     }
 

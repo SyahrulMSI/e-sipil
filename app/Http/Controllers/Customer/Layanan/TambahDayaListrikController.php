@@ -85,7 +85,7 @@ class TambahDayaListrikController extends Controller
                 'daya_lama'  => $daya_l,
                 'daya_baru'  => $daya_b,
                 'lokasi_meter' =>  $lokasi,
-                'status_permohonan' =>  1
+                'status_permohonan' =>  0
             );
 
             $result = TambahDaya::create($data);

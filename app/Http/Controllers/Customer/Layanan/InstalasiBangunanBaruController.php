@@ -81,7 +81,7 @@ class InstalasiBangunanBaruController extends Controller
                 'jenis_instalasi'   => $jenis,
                 'penetapan_harga_per_titik'  =>  $harga,
                 'jumlah_titik'  => $jml_titik,
-                'status_permohonan' => 1,
+                'status_permohonan' => 0,
             );
 
             $result = InstalasiBangunan::create($data);

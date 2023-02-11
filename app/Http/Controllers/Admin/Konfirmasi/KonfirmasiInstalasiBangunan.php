@@ -72,7 +72,7 @@ class KonfirmasiInstalasiBangunan extends Controller
 
         InstalasiBangunan::where('id', $id)->update([
             'jumlah_titik'   =>  $request->jumlah_titik,
-            'status_permohonan' =>  2
+            'status_permohonan' =>  1
         ]);
 
         $ib = InstalasiBangunan::where('id', $id)->first();
